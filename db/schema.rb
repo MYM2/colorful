@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_062441) do
+ActiveRecord::Schema.define(version: 2019_09_09_063154) do
 
   create_table "arrivals", force: :cascade do |t|
     t.integer "product_id"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 2019_09_09_062441) do
   create_table "discs", force: :cascade do |t|
     t.integer "product_id"
     t.integer "disc_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "disposals", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "scrapped_qty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
