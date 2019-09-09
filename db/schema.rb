@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_063412) do
+ActiveRecord::Schema.define(version: 2019_09_09_064330) do
 
   create_table "arrivals", force: :cascade do |t|
     t.integer "product_id"
@@ -108,6 +108,17 @@ ActiveRecord::Schema.define(version: 2019_09_09_063412) do
     t.string "inquirer_name"
     t.string "mail"
     t.text "inquiry_content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "deliveries_address"
+    t.integer "payment_method"
+    t.integer "subtotal_ex_tax"
+    t.integer "subtotal_in_tax"
+    t.integer "freight"
+    t.integer "arrival_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deliveries_address: MyString
+  payment_method: 1
+  subtotal_ex_tax: 1
+  subtotal_in_tax: 1
+  freight: 1
+  arrival_status: 1
+
+two:
+  deliveries_address: MyString
+  payment_method: 1
+  subtotal_ex_tax: 1
+  subtotal_in_tax: 1
+  freight: 1
+  arrival_status: 1
