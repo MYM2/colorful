@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_064944) do
+ActiveRecord::Schema.define(version: 2019_09_09_065132) do
 
   create_table "arrivals", force: :cascade do |t|
     t.integer "product_id"
@@ -108,6 +108,12 @@ ActiveRecord::Schema.define(version: 2019_09_09_064944) do
     t.string "inquirer_name"
     t.string "mail"
     t.text "inquiry_content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "label_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
