@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  end_user_id: 1
+  inquirer_name: MyString
+  mail: MyString
+  inquiry_content: MyText
+
+two:
+  end_user_id: 1
+  inquirer_name: MyString
+  mail: MyString
+  inquiry_content: MyText
