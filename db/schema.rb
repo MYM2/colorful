@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_055349) do
+ActiveRecord::Schema.define(version: 2019_09_09_055725) do
 
   create_table "deliveries", force: :cascade do |t|
     t.integer "end_user_id"
@@ -56,6 +56,13 @@ ActiveRecord::Schema.define(version: 2019_09_09_055349) do
     t.string "inquirer_name"
     t.string "mail"
     t.text "inquiry_content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.integer "inquiry_id"
+    t.text "reply_content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
