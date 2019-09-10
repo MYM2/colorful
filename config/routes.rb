@@ -1,64 +1,33 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'rankings/index'
+    resources :rankings, only: [:index]
+    resources :searches, only: [:index]
+    resources :admin_users, only: [:index]
+    resources :orders, only: [:index, :show, :update]
+    resources :disposals, only: [:create]
+    resources :arrivals, only: [:index, :create]
+    resources :artists
+    resources :products
+    resources :replies, only: [:create]
+    resources :inquiries, only: [:index, :show]
+    resources :end_users, only: [:index, :show, :edit, :destroy, :update]
   end
-  namespace :admin do
-    get 'searches/index'
-  end
-  namespace :admin do
-    get 'admin_users/index'
-  end
-  namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'arrivals/index'
-  end
-  namespace :admin do
-    get 'artists/index'
-    get 'artists/show'
-    get 'artists/edit'
-    get 'artists/new'
-  end
-  namespace :admin do
-    get 'products/index'
-    get 'products/show'
-    get 'products/edit'
-    get 'products/new'
-  end
-  namespace :admin do
-    get 'inquiries/index'
-    get 'inquiries/show'
-  end
-  namespace :admin do
-    get 'end_users/index'
-    get 'end_users/show'
-    get 'end_users/edit'
-  end
-  get 'end_users/index'
-  get 'end_users/show'
-  get 'end_users/edit'
-  get 'leaves/show'
-  get 'rankings/index'
-  get 'cards/index'
-  get 'searches/index'
-  get 'orders/index'
-  get 'orders/new'
-  get 'carts/index'
-  get 'artists/index'
-  get 'artists/show'
-  get 'products/index'
-  get 'products/show'
-  get 'inquiries/new'
-  get 'deliveries/index'
-  get 'deliveries/edit'
-  get 'deliveries/new'
-  get 'end_users/show'
-  get 'end_users/edit'
-  get 'g/end_users'
-  get 'g/show'
-  get 'g/edit'
+
+  resources :end_users, only: [:show, :edit, :update]
+  resources :leaves, only: [:show, :update]
+  resources :rankings, only: [:index]
+  resources :cards, only: [:index]
+  resources :searches, only: [:index]
+  resources :order_contents, only: [:create]
+  resources :orders, only: [:index, :create, :new]
+  resources :carts, only: [:index, :destroy, :update, :create]
+  resources :artists, only: [:index, :show]
+  resources :reviews, only: [:destroy, :create]
+  resources :favorites, only: [:destroy, :create]
+  resources :products, only: [:index, :show]
+  resources :inquiries, only: [:new, :create]
+  resources :deliveries, only: [:index, :edit, :destroy, :new, :update, :create]
+
   devise_for :admin_users
   devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
