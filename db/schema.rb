@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_065709) do
+ActiveRecord::Schema.define(version: 2019_09_10_111916) do
 
   create_table "admin_users", force: :cascade do |t|
-    t.string "admin_email", default: "", null: false
+    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_065709) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["admin_email"], name: "index_admin_users_on_admin_email", unique: true
+    t.index ["email"], name: "index_admin_users_on_admin_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_065709) do
 
   create_table "artists", force: :cascade do |t|
     t.string "artist_name"
-    t.string "artist_image"
+    t.string "artist_image_id"
     t.text "artist_introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_065709) do
     t.integer "phone_number"
     t.integer "zipcode"
     t.string "address"
-    t.boolean "leaved"
+    t.boolean "leaved", default: false, null: false
     t.datetime "leave_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_065709) do
     t.integer "subtotal_ex_tax"
     t.integer "subtotal_in_tax"
     t.integer "freight"
-    t.integer "arrival_status"
+    t.integer "arrival_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -162,8 +162,8 @@ ActiveRecord::Schema.define(version: 2019_09_09_065709) do
     t.string "product_name"
     t.integer "price"
     t.integer "label_id"
-    t.boolean "stopped"
-    t.string "jacket_image"
+    t.boolean "stopped", default: false, null: false
+    t.string "jacket_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_name"], name: "index_products_on_product_name"

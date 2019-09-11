@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  devise_for :admin_users
+  devise_for :end_users
   namespace :admin do
     resources :rankings, only: [:index]
     resources :searches, only: [:index]
@@ -28,7 +31,6 @@ Rails.application.routes.draw do
   resources :inquiries, only: [:new, :create]
   resources :deliveries, only: [:index, :edit, :destroy, :new, :update, :create]
 
-  devise_for :admin_users
-  devise_for :end_users
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
