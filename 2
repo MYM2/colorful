@@ -1,0 +1,23 @@
+
+<div class = "product-list">
+  <h1>商品入荷履歴（新着順）</h1>
+
+  <div class ="product-list-content">
+    <% @products.each do |products| %>
+      <div class="product-list-content">
+        <%= attachment_image_tag products, :jacket_image, :fill, 200, 200, fallback: "no_image.png", class: "product-list-image" %>
+        <%= products.product_name %>
+        <br>
+        <%= products.artist.artist_name %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="paginate">
+    <%= paginate @products, class: "paginate" %>
+  </div>
+
+</div>
+
+
+

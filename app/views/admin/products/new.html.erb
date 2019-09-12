@@ -3,7 +3,7 @@
 
   <h4>CDの情報を入力してください</h4>
   <br>
-  <%= form_for(@product, url: {controller: "admin/products", action: "create" }) do |f| %>
+  <%= form_for(@product_new, url: {controller: "admin/products", action: "create" }) do |f| %>
         <%= f.label "アーティスト名を選択" %>
         <%= f.collection_select(:artist_id, Artist.all, :id, :artist_name) %>
         <br>

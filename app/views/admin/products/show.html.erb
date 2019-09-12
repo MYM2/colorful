@@ -1,2 +1,55 @@
-<h1>Admin::Products#show</h1>
-<p>Find me in app/views/admin/products/show.html.erb</p>
+<div class="product-show">
+
+<!== 作品情報 ==>
+  <div class="product-content clearfix">
+
+<!== ジャケット画像 ==>
+    <div class="product-content-image">
+      <%= attachment_image_tag @product, :jacket_image, fallback: "no_image.png", class: "product-content-image-file" %>
+      <p>いいね機能実装予定</p>
+    </div>
+
+<!== アーティスト情報、分類 ==>
+    <div class="product-content-text">
+      <h1><span class="glyphicon glyphicon-music" aria-hidden="true"></span><%= @product.product_name %></h1>
+      <br>
+      <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to @artist.artist_name, admin_artist_path(@artist) %></h3>
+      <h3><%= @genre.genre_name %></h3>
+      <h3><%= @label.label_name %></h3>
+    </div>
+
+<!== 販売情報 ==>
+    <div class="product-content-price">
+      <p>税別 <%= @product.price %>円</p>
+      <br>
+      <% if @product.stopped == false %>
+        <p class= "stopped-false" >※販売中</p>
+      <% elsif @product == true %>
+        <p class= "stopped-true" >※販売停止中</p>
+      <% end %>
+    </div>
+  </div>
+
+<!== 収録情報 ==>
+        <div class="show-discs">
+          <h3>収録曲</h3>
+          <% @discs.each do |disc| %>
+                <p>DISC:<%= disc.disc_number %></p>
+                <p>Songs</p>
+                <!== 収録曲の処理 ==>
+                <% disc.songs.each do |song|%>
+                  <%= song.track_number %>.<%= song.song_name %>
+                  <br>
+                <% end %>
+                <br>
+          <% end %>
+        </div>
+
+<!== 管理情報 ==>
+      <div class="manage-product">
+        <p>在庫数変更機能　予定</p>
+        <%= link_to "商品編集画面へ", edit_admin_product_path(@product) %>
+        <%= link_to "一覧", admin_products_path %>
+        <button class="btn btn-danger">販売ステータス変更 予定</button>
+      </div>
+</div>

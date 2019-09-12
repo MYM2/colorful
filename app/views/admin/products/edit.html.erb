@@ -1,2 +1,69 @@
-<h1>Admin::Products#edit</h1>
-<p>Find me in app/views/admin/products/edit.html.erb</p>
+
+<div class="input-product">
+  <h1>商品編集</h1>
+
+  <h4>CDの情報を入力してください</h4>
+  <br>
+  <%= form_for(@product, url: admin_product_path(@product)) do |f| %>
+        <%= f.label "アーティスト名を選択" %>
+        <%= f.collection_select(:artist_id, Artist.all, :id, :artist_name) %>
+        <br>
+        <br>
+        <%= f.label "作品名" %>
+        <%= f.text_field :product_name, autofocus: true, class:"form-control", placeholder: "シングル名／アルバム名" %>
+        <br>
+        <br>
+        <%= f.attachment_field :jacket_image %>
+        <br>
+        <br>
+        <%= f.label "価格（税別）" %>
+        <%= f.text_field :price, autofocus: true, class:"form-control", placeholder: "価格（税別）" %>
+        <br>
+        <br>
+        <%= f.label "レーベルを選択" %>
+        <%= f.collection_select(:label_id, Label.all, :id, :label_name) %>
+        <br>
+        <br>
+        <%= f.label "ジャンルを選択" %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name) %>
+        <br>
+        <br>
+
+        <div class="edit-discs">
+          <%= f.fields_for :discs do |disc| %>
+            <h4>DISC</h4>
+            <%= disc.text_field :disc_number %>
+
+
+          <%# 編集時にはidが必要 %>
+          <%= disc.hidden_field :id, value: disc.object.id %>
+            <div class="edit-songs">
+              <h4>収録曲</h4>
+              <%= disc.fields_for :songs do |song| %>
+              <table>
+                <tbody>
+                  <tr>
+                  <td><%= song.text_field :track_number %></td>
+                  <td><%= song.text_field :song_name %></td>
+                  <td><%= song.hidden_field :id, value: song.object.id %></td>
+                  </tr>
+                </tbody>
+              </table>
+                <br>
+              <% end %>
+                      <div>
+                        <%= link_to_add_association '曲を追加', disc , :songs, class: "btn btn-default" %>
+                      </div>
+                      <br>
+            </div>
+        <% end %>
+        </div>
+
+        <div>
+          <%= link_to_add_association 'Discを追加', f , :discs, class: "btn btn-default" %>
+        </div>
+
+        <br>
+        <%= f.submit value="確定", class: "btn btn-primary"%>
+  <% end %>
+</div>

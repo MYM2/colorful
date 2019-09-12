@@ -1,6 +1,13 @@
   <div class="nested-fields">
-    <%= f.text_field :track_number, placeholder: "トラックNo" %>
-    <%= f.text_field :song_name, placeholder: "曲名" %>
-    <%= link_to_remove_association "曲を削除", f, class: "btn btn-default" %>
+    <table>
+      <tbody>
+        <tr>
+          <td><%= f.text_field :track_number, placeholder: "トラックNo" %></td>
+          <td><%= f.text_field :song_name, placeholder: "曲名" %></td>
+          <td><%= link_to_remove_association "曲を削除", f, class: "btn btn-default" %></td>
+          </tr>
+      </tbody>
+    </table>
+
   </div>
 

@@ -1,9 +1,9 @@
-  <div class="nested-fields input-disc">
-    <p>Disc</p>
+  <div class="nested-fields input-discs">
+    <p>新規Disc</p>
     <%= f.text_field :disc_number, placeholder: "ディスクNoを入力" %>
     <%= link_to_remove_association "Discを削除", f, class: "btn btn-default" %>
 
-      <div class="input-song">
+      <div class="input-songs">
         <p>収録曲</p>
         <div>
           <%= link_to_add_association "曲を追加", f , :songs, class: "btn btn-default" %>
