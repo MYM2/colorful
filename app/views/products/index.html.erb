@@ -1,2 +1,31 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+
+<div class = "product-list">
+  <h1>商品一覧（新着順）</h1>
+
+  <div class ="product-list-contents clearfix">
+    <% @products.each do |product| %>
+      <div class="product-list-content">
+        <%= link_to(admin_product_path(product)) do %>
+          <%= attachment_image_tag product, :jacket_image, fallback: "no_image.png", class: "product-list-image" %>
+        <% end %>
+        <div class="product-list-text">
+          <h4><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= link_to product.product_name, admin_product_path(product) %></h4>
+          <br>
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to product.artist.artist_name, admin_artist_path(product.artist) %>
+          <br>
+          <%= product.genre.genre_name %>
+          <br>
+          <br>
+          ¥<%= product.price %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="paginate">
+    <%= paginate @products, class: "paginate" %>
+  </div>
+
+</div>
+
+

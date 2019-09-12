@@ -1,3 +1,110 @@
 // Place all the styles related to the admin::products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+//商品追加画面 編集画面
+.input-product {
+  width: 80%;
+  margin: auto;
+}
+
+.input-product h1 {
+  text-align: center;
+}
+
+.input-discs {
+  border: 1px solid gray;
+}
+.input-songs {
+  margin-left: 5%;
+}
+.edit-discs {
+  border: 1px solid gray;
+}
+.edit-songs {
+  margin-left: 5%;
+}
+.show-discs {
+  padding-top: 3%;
+  width: 50%;
+  margin: auto;
+}
+
+//商品一覧画面
+.product-list {
+  width: 80%;
+  margin: auto;
+}
+.product-list h1 {
+  text-align: center;
+  padding: 5px;
+  border: 1px solid gray;
+}
+
+.product-list-content {
+  float: left;
+  overflow: hidden;  //はみ出た文は非表示
+  text-overflow: ellipsis;  //はみ出た文は...で表示
+  white-space: nowrap;   //改行禁止
+  vertical-align: top;
+  border: 1px solid gray;
+  width: 25%;
+  height:15em;
+  padding: 1%;
+}
+
+.product-list-image {
+  border-radius: 50%;
+  width: 50%;
+  float:left;
+}
+.product-list-text {
+  width: 50%;
+  float:left;
+  padding: 5%;
+}
+.paginate {
+  text-align: center;
+}
+
+//商品詳細画面
+.product-show {
+  width: 80%;
+  margin: auto;
+}
+.product-content {
+  margin-top: 5%;
+}
+.product-content-image {
+  padding: 2%;
+  width: 20%;
+  float: left;
+}
+.product-content-image-file {
+  width: 100%;
+}
+
+.product-content-text {
+  width: 40%;
+  padding: 0 5%;
+  float: left;
+}
+
+.product-content-price {
+  width: 40%;
+  padding: 2%;
+  font-size: 30px;
+  float:left;
+}
+.stopped-false {
+  color: orange;
+}
+.saled-true {
+  color: gray;
+}

@@ -22,6 +22,7 @@
     <div class="product-content-price">
       <p>税別 <%= @product.price %>円</p>
       <br>
+      <p>在庫があるか表示　予定</p>
       <% if @product.stopped == false %>
         <p class= "stopped-false" >※販売中</p>
       <% elsif @product == true %>
