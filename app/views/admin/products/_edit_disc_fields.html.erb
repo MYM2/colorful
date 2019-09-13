@@ -1,6 +1,7 @@
 
             <h4>DISC</h4>
             <%= disc_edit.text_field :disc_number %>
+            <%= link_to "ディスクを削除", admin_disc_path(disc_edit.object.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
 
 
           <%# 編集時にはidが必要 %>

@@ -29,11 +29,13 @@
         <br>
         <br>
 
+        <div class="reload">
           <%= f.fields_for :discs do |disc| %>
             <div class="edit-discs">
               <%= render 'edit_disc_fields', disc_edit: disc %>
             </div>
           <% end %>
+        </div>
 
 
         <div class="input-discs">
