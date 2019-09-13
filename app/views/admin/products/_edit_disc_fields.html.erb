@@ -1,0 +1,21 @@
+
+            <h4>DISC</h4>
+            <%= disc_edit.text_field :disc_number %>
+
+
+          <%# 編集時にはidが必要 %>
+          <%= disc_edit.hidden_field :id, value: disc_edit.object.id %>
+            <div class="edit-songs">
+              <h4>収録曲</h4>
+              <%= disc_edit.fields_for :songs do |song| %>
+                <div class="input-songs">
+                  <%= render 'edit_song_fields', song_edit: song %>
+                </div>
+                <br>
+                <br>
+              <% end %>
+                <div class="input_songs">
+                  <%= link_to_add_association '曲を追加', disc_edit , :songs, class: "btn btn-default" %>
+                </div>
+            </div>
+

@@ -3,8 +3,8 @@
     <%= f.text_field :disc_number, placeholder: "ディスクNoを入力" %>
     <%= link_to_remove_association "Discを削除", f, class: "btn btn-default" %>
 
-      <div class="input-songs">
-        <p>収録曲</p>
+      <div class="edit-songs">
+        <h4>収録曲</h4>
         <div>
           <%= link_to_add_association "曲を追加", f , :songs, class: "btn btn-default" %>
         </div>

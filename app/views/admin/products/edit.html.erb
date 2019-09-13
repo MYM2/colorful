@@ -29,37 +29,14 @@
         <br>
         <br>
 
-        <div class="edit-discs">
           <%= f.fields_for :discs do |disc| %>
-            <h4>DISC</h4>
-            <%= disc.text_field :disc_number %>
-
-
-          <%# 編集時にはidが必要 %>
-          <%= disc.hidden_field :id, value: disc.object.id %>
-            <div class="edit-songs">
-              <h4>収録曲</h4>
-              <%= disc.fields_for :songs do |song| %>
-              <table>
-                <tbody>
-                  <tr>
-                  <td><%= song.text_field :track_number %></td>
-                  <td><%= song.text_field :song_name %></td>
-                  <td><%= song.hidden_field :id, value: song.object.id %></td>
-                  </tr>
-                </tbody>
-              </table>
-                <br>
-              <% end %>
-                      <div>
-                        <%= link_to_add_association '曲を追加', disc , :songs, class: "btn btn-default" %>
-                      </div>
-                      <br>
+            <div class="edit-discs">
+              <%= render 'edit_disc_fields', disc_edit: disc %>
             </div>
-        <% end %>
-        </div>
+          <% end %>
 
-        <div>
+
+        <div class="input-discs">
           <%= link_to_add_association 'Discを追加', f , :discs, class: "btn btn-default" %>
         </div>
 

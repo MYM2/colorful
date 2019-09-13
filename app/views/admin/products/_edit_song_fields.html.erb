@@ -1,0 +1,11 @@
+<div class="input-songs">
+  <table>
+    <tbody>
+      <tr>
+        <td><%= song_edit.text_field :track_number %></td>
+        <td><%= song_edit.text_field :song_name %></td>
+        <td><%= song_edit.hidden_field :id, value: song_edit.object.id %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
