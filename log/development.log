@@ -7030,3 +7030,141 @@ Processing by ProductsController#index as HTML
 Completed 200 OK in 5309ms (Views: 5289.4ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/products" for 10.0.2.2 at 2019-09-14 03:50:26 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 3202ms (Views: 3180.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/products/1" for 10.0.2.2 at 2019-09-14 03:51:10 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering admin/products/show.html.erb within layouts/application
+  Rendered admin/products/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 755ms (Views: 735.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/inquiries/1" for 10.0.2.2 at 2019-09-14 03:52:01 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mInquiry Load (0.9ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:6
+Completed 404 Not Found in 19ms (ActiveRecord: 6.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Inquiry with 'id'=1):
+  
+app/controllers/admin/inquiries_controller.rb:6:in `show'
+Started GET "/admin/inquiries/2" for 10.0.2.2 at 2019-09-14 03:54:25 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mInquiry Load (1.2ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:6
+Completed 404 Not Found in 4ms (ActiveRecord: 1.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Inquiry with 'id'=2):
+  
+app/controllers/admin/inquiries_controller.rb:6:in `show'
+Started POST "/inquiries" for 10.0.2.2 at 2019-09-14 03:55:09 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"e8YZ2GbH9nRVB88D25xuxubpPjfbcPCm29jHJNL1s1erJdfyPsPfnUtSvuRy67QJZOryr6AnvxNtFgn4JL6fIw==", "inquiry"=>{"inquirer_name"=>"吉松　拓巳", "mail"=>"dnklfnvlkgfnvdo@gmail.com", "inquiry_content"=>"平井堅のCDをもっと増やして欲しい"}, "submit"=>"投稿する"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/inquiries_controller.rb:8
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/inquiries_controller.rb:8
+Redirected to http://localhost:3000/products
+Completed 302 Found in 41ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/products" for 10.0.2.2 at 2019-09-14 03:55:09 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 633ms (Views: 618.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/inquiries/1" for 10.0.2.2 at 2019-09-14 03:55:40 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mInquiry Load (1.6ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:6
+Completed 404 Not Found in 4ms (ActiveRecord: 1.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Inquiry with 'id'=1):
+  
+app/controllers/admin/inquiries_controller.rb:6:in `show'
+Started POST "/inquiries" for 10.0.2.2 at 2019-09-14 04:06:08 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"e8YZ2GbH9nRVB88D25xuxubpPjfbcPCm29jHJNL1s1erJdfyPsPfnUtSvuRy67QJZOryr6AnvxNtFgn4JL6fIw==", "inquiry"=>{"inquirer_name"=>"吉松　拓巳", "mail"=>"dnklfnvlkgfnvdo@gmail.com", "inquiry_content"=>"平井堅のCDをもっと増やして欲しい"}, "submit"=>"投稿する"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/inquiries_controller.rb:8
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/inquiries_controller.rb:8
+Redirected to http://localhost:3000/products
+Completed 302 Found in 8ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/products" for 10.0.2.2 at 2019-09-14 04:06:08 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 678ms (Views: 657.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/inquiries" for 10.0.2.2 at 2019-09-14 04:06:49 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"e8YZ2GbH9nRVB88D25xuxubpPjfbcPCm29jHJNL1s1erJdfyPsPfnUtSvuRy67QJZOryr6AnvxNtFgn4JL6fIw==", "inquiry"=>{"inquirer_name"=>"平井　堅", "mail"=>"dnklfnvlkgfnvdo@gmail.com", "inquiry_content"=>"勝手に私を使わないで欲しい"}, "submit"=>"投稿する"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/inquiries_controller.rb:8
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/inquiries_controller.rb:8
+Redirected to http://localhost:3000/products
+Completed 302 Found in 8ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 10.0.2.2 at 2019-09-14 04:06:49 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 744ms (Views: 725.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/inquiries" for 10.0.2.2 at 2019-09-14 04:15:21 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"e8YZ2GbH9nRVB88D25xuxubpPjfbcPCm29jHJNL1s1erJdfyPsPfnUtSvuRy67QJZOryr6AnvxNtFgn4JL6fIw==", "inquiry"=>{"inquirer_name"=>"平井　堅", "mail"=>"dnklfnvlkgfnvdo@gmail.com", "inquiry_content"=>"勝手に私を使わないで欲しい"}, "submit"=>"投稿する"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/inquiries_controller.rb:8
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/inquiries_controller.rb:8
+Redirected to http://localhost:3000/products
+Completed 302 Found in 7ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/products" for 10.0.2.2 at 2019-09-14 04:15:21 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  Rendered products/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 761ms (Views: 748.4ms | ActiveRecord: 0.0ms)
+
+
