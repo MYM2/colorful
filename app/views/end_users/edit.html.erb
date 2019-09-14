@@ -2,7 +2,24 @@
 <%= form_for(@end_user) do |f| %>
     <h4>氏名　姓/名</h4>
     <%= f.text_field :lastname_kanji %>
-    <%= f.text_field :lastname_kana %>
+    <%= f.text_field :firstname_kanji %>
 
-    <p><%= f.submit 'Update User' %></p>
+    <h4>カナ氏名　姓/名</h4>
+    <%= f.text_field :lastname_kana %>
+    <%= f.text_field :firstname_kana %>
+
+    <h4>郵便番号</h4>
+    <%= f.text_field :zipcode %>
+
+    <h4>住所</h4>
+    <%= f.text_field :address %>
+
+    <h4>電話番号</h4>
+    <%= f.text_field :phone_number %>
+
+    <h4>メールアドレス</h4>
+    <%= f.text_field :email %>
+
+
+    <p><%= f.submit '更新' %></p>
 <% end %>
