@@ -20,3 +20,21 @@
 //= require_tree .
 
 
+$(function() {
+  $('.slick').slick(
+    {
+        autoplay:true,
+        dots:true,
+    }
+  );
+});
+
+//ジャケット画像にマウスカーソルを載せたとき四角に戻す。
+$(function() {
+  $('.product-list-image').hover(function()
+   {
+      $(this).stop().animate({borderRadius:'0'},100);
+   }, function() {
+    $(this).stop().animate({borderRadius:'1000'},100);
+   });
+});

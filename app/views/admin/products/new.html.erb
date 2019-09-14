@@ -1,2 +1,36 @@
-<h1>Admin::Products#new</h1>
-<p>Find me in app/views/admin/products/new.html.erb</p>
+<div class="input-product">
+  <h1>商品追加</h1>
+
+  <h4>CDの情報を入力してください</h4>
+  <br>
+  <%= form_for(@product_new, url: {controller: "admin/products", action: "create" }) do |f| %>
+        <%= f.label "アーティスト名を選択" %>
+        <%= f.collection_select(:artist_id, Artist.all, :id, :artist_name) %>
+        <br>
+        <br>
+        <%= f.text_field :product_name, autofocus: true, class:"form-control", placeholder: "シングル名／アルバム名" %>
+        <br>
+        <br>
+        <%= f.attachment_field :jacket_image %>
+        <br>
+        <br>
+        <%= f.text_field :price, autofocus: true, class:"form-control", placeholder: "価格（税別）" %>
+        <br>
+        <br>
+        <%= f.label "レーベルを選択" %>
+        <%= f.collection_select(:label_id, Label.all, :id, :label_name) %>
+        <br>
+        <br>
+        <%= f.label "ジャンルを選択" %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name) %>
+        <br>
+        <br>
+        
+        <div>
+          <%= link_to_add_association 'Discを追加', f , :discs, class: "btn btn-default" %>
+        </div>
+
+        <br>
+        <%= f.submit value="商品を追加", class: "btn btn-primary"%>
+  <% end %>
+</div>
