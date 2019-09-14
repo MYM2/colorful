@@ -18,3 +18,6 @@ class EndUsersController < ApplicationController
       params.require(:end_user).permit(:lastname_kanji, :firstname_kanji, :lastname_kana, :firstname_kana, :zipcode, :address, :phone_number, :email)
     end
 end
+
+
+#空コミット用コメント
