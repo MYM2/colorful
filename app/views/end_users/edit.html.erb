@@ -1,0 +1,8 @@
+<h3>ユーザー情報編集</h3>
+<%= form_for(@end_user) do |f| %>
+    <h4>氏名　姓/名</h4>
+    <%= f.text_field :lastname_kanji %>
+    <%= f.text_field :lastname_kana %>
+
+    <p><%= f.submit 'Update User' %></p>
+<% end %>
