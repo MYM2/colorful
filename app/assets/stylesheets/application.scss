@@ -13,10 +13,78 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
- }
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "slick-theme";
+ @import "slick";
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.container {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.nav nav-pills nav-stacked {
+ background: #fcfbfb;
+}
+
+footer {
+ width: 100%;
+ height: 50px;
+ padding: 10px 0px;
+ font-size: 13px;
+ position: fixed;
+ bottom: 0;
+ background-color: #f5f5f5;
+}
+.logo {
+ padding: 0px 20px;
+ font-size: 20px;
+}
+footer a {
+ color: #777;
+ padding: 0px 20px;
+}
+.copyright {
+ color: #777;
+ padding: 8px 30px 0px 0px;
+ float: right !important;
+}
+
+.registration {
+ text-align: center;
+ padding: 30px;
+}
+.session {
+ text-align: center;
+ padding: 50px;
+}
+.st_field input[type="text"] {
+ width: 225px;
+ height: 40px;
+}
+.t_field input[type="text"] {
+ width: 455px;
+ height: 40px;
+}
+.t_field input[type="email"] {
+ width: 455px;
+ height: 40px;
+}
+.t_field input[type="password"] {
+ width: 455px;
+ height: 40px;
+}
+.t_actions input[type="submit"] {
+ width: 455px;
+ height: 40px;
+}

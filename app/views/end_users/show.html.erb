@@ -1,2 +1,34 @@
-<h1>EndUsers#show</h1>
-<p>Find me in app/views/end_users/show.html.erb</p>
+<!-- end_usersコントローラーのshowアクションに書き込む　@end_user = EndUser.find(params[:id]) -->
+
+<h3><%= @end_user.lastname_kanji %> <%= @end_user.firstname_kanji %>様のマイページ</h3>
+
+
+<h4>会員情報一覧</h4>
+<i>氏名</i><%= @end_user.lastname_kanji %> <%= @end_user.firstname_kanji %><br/>
+<i>カナ</i><%= @end_user.lastname_kana %> <%= @end_user.firstname_kana %><br/>
+<i>郵便番号</i><%= @end_user.zipcode %><br/>
+<i>住所</i><%= @end_user.address %><br/>
+<i>電話番号</i><%= @end_user.phone_number %><br/>
+<i>メールアドレス</i><%= @end_user.email %><br/>
+
+
+<a href="/end_users/<%= current_end_user.id %>/edit" class="btn btn-primary" role="button">編集</a>
+
+<h4>クレジットカード一覧</h4>
+・VISA 下4桁 0000
+<a href="" class="btn btn-primary" role="button">編集</a>
+<a href="" class="btn btn-danger" role="button">削除</a><br/>
+<a href="#" class="btn btn-primary" role="button">クレジットカードの追加はこちら</a>
+
+<h4>お届け先一覧</h4>
+<i>氏名：</i><%= @end_user.lastname_kanji %> <%= @end_user.firstname_kanji %><br/>
+<i>郵便番号：</i><%= @end_user.zipcode %><br/>
+<i>住所：</i><%= @end_user.address %><br/>
+<i>電話番号：</i><%= @end_user.phone_number %>
+<a href="" class="btn btn-primary" role="button">編集</a>
+<a href="" class="btn btn-danger" role="button">削除</a><br/>
+<a href="/deliveries/new" class="btn btn-primary" role="button">お届け先の追加はこちら</a><br/>
+
+<a href="/orders" class="btn btn-primary" role="button">購入履歴</a><br/>
+<a href="/leaves/<%= current_end_user.id %>" class="btn btn-danger" role="button">退会手続きへ</a>
+

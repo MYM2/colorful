@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :replies, only: [:create]
     resources :inquiries, only: [:index, :show]
     resources :end_users, only: [:index, :show, :edit, :destroy, :update]
+    resources :discs, only: [:destroy]
+    resources :songs, only: [:destroy]
   end
 
   resources :end_users, only: [:show, :edit, :update]

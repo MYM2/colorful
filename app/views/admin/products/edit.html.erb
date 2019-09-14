@@ -1,2 +1,50 @@
-<h1>Admin::Products#edit</h1>
-<p>Find me in app/views/admin/products/edit.html.erb</p>
+
+<div class="input-product">
+  <h1>商品編集</h1>
+
+  <h4>CDの情報を入力してください</h4>
+  <br>
+  <%= form_for(@product, url: admin_product_path(@product)) do |f| %>
+        <%= f.label "アーティスト名を選択" %>
+        <%= f.collection_select(:artist_id, Artist.all, :id, :artist_name) %>
+        <br>
+        <br>
+        <%= f.label "作品名" %>
+        <%= f.text_field :product_name, autofocus: true, class:"form-control", placeholder: "シングル名／アルバム名" %>
+        <br>
+        <br>
+        <%= f.attachment_field :jacket_image %>
+        <br>
+        <br>
+        <%= f.label "価格（税別）" %>
+        <%= f.text_field :price, autofocus: true, class:"form-control", placeholder: "価格（税別）" %>
+        <br>
+        <br>
+        <%= f.label "レーベルを選択" %>
+        <%= f.collection_select(:label_id, Label.all, :id, :label_name) %>
+        <br>
+        <br>
+        <%= f.label "ジャンルを選択" %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name) %>
+        <br>
+        <br>
+
+        <div class="reload">
+          <%= f.fields_for :discs do |disc| %>
+            <div class="edit-discs">
+              <%= render 'edit_disc_fields', disc_edit: disc %>
+            </div>
+          <% end %>
+        </div>
+
+
+        <div class="input-discs">
+          <%= link_to_add_association 'Discを追加', f , :discs, class: "btn btn-default" %>
+        </div>
+
+        <br>
+        <%= f.submit value="確定", class: "btn btn-primary"%>
+        <%= link_to "商品詳細画面に戻る", admin_product_path(@product), class: "btn btn-default"%>
+  <% end %>
+
+</div>

@@ -1,2 +1,43 @@
-<h1>Admin::AdminUsers#index</h1>
-<p>Find me in app/views/admin/admin_users/index.html.erb</p>
+<div class="container">
+     <div class="row">
+      <%= render 'layouts/list'%>
+        <div class="col-xs-10">
+
+<div class="admin_menu">
+<h2>管理者メニュー</h2>
+<div class="menu">
+	<ul>
+　<li>
+    <a class="glyphicon glyphicon-king" aria-hidden="true" aria-hidden="true" href="/admin/rankings">ランキング</a>
+  </li>
+  <li>
+    <a class="glyphicon glyphicon-cd" aria-hidden="true" href="/admin/products">商品在庫一覧</a>
+  </li>
+   <li>
+    <a class="glyphicon glyphicon-paperclip" href="/admin/arrivals">入荷履歴一覧</a>
+  </li>
+  <li>
+    <a class="glyphicon glyphicon-book" aria-hidden="true" href="/admin/orders">全体購入履歴</a>
+  </li>
+  <li>
+    <a class="glyphicon glyphicon-envelope" aria-hidden="true" href="/admin/inquiries">問い合わせ一覧</a>
+  </li>
+  <li>
+    <a class="glyphicon glyphicon-user users" href="/admin/end_users">ユーザー一覧</a>
+  </li>
+  <li>
+    <a class="glyphicon glyphicon-music" aria-hidden="true"  href="/admin/artists">アーティスト一覧</a>
+  </li>
+  <li>
+    <a class="glyphicon glyphicon-plus" aria-hidden="true" href="/admin/artists/new">アーティスト登録</a>
+  </li>
+  <li>
+    <a class="glyphicon glyphicon-plus" aria-hidden="true" href="/admin/products/new">商品追加</a>
+  </li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
