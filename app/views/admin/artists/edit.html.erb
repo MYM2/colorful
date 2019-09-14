@@ -1,2 +1,45 @@
-<h1>Admin::Artists#edit</h1>
-<p>Find me in app/views/admin/artists/edit.html.erb</p>
+<div class="artist">
+	<%  if @artist.errors.any? %>
+		<div class="arert alert-danger">
+			<ul>
+				<% @artist.errors.fullmessages.each do |message| %>
+				<li><%= message %></li>
+			</ul>
+				<% end %>
+		</div>
+	<% end %>
+
+
+	<h2 class="artist_title">アーティスト情報編集</h2>
+
+	<h4>アーティスト情報を入力してください</h4>
+
+	<div class="form">
+		<%= form_for @artist, url: admin_artist_path do |a| %>
+			<div class="image">
+				<%= a.attachment_field :artist_image, :class => 'attachment' %>
+				<div class="artist_image">
+					<%= attachment_image_tag @artist, :artist_image, :class => 'artist_image1', format:'jpeg' %>
+				</div>
+			</div>
+			<div class="">
+				<%= a.text_field :artist_name, :placeholder => "アーティスト名", :class => 'artist_name' %>
+			</div>
+			<div class="">
+				<%= a.text_area :artist_introduction, :placeholder => "紹介文の入力", :class => 'artist_introduction' %>
+			</div>
+			<div class="">
+				<%= a.submit '更新', :class => "btn_artist" %>
+			</div>
+
+		<% end %>
+	</div>
+	
+	<%= link_to admin_artist_path(@artist.id) do %>
+		<button class="back">戻る</button>
+	<% end %>
+	<div class="delete_box">
+		<%= link_to 'アーティストを削除', @artist, method: :delete, 'data-confirm' => '本当に削除しますか？', :class => "delete" %>
+	</div>
+</div>
+

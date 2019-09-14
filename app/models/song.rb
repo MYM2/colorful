@@ -3,5 +3,5 @@ class Song < ApplicationRecord
 
 
 	validates :song_name, presence: true
-	validates :track_number, greater_than_or_equal_to: 1
+	validates :track_number, :numericality => { :greater_than_or_equal_to => 1 }
 end

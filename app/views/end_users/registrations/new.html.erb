@@ -1,29 +1,58 @@
-<h2>Sign up</h2>
+<div class="registration">
+
+<h2>ようこそColorfulへ！</h2>
+
+<h4>会員情報を入力して下さい</h4>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+　 <div class="st_field">
+    <%= f.text_field :lastname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　姓"  %>
 
-  <div class="field">
-    <%= f.label :password %>
+    <%= f.text_field :firstname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　名" %>
+  </div><br />
+
+   <div class="st_field">
+    <%= f.text_field :lastname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　姓" %>
+
+    <%= f.text_field :firstname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　名" %>
+  </div><br />
+
+   <div class="st_field">
+    <%= f.text_field :zipcode, autofocus: true, :size=>"25", placeholder: "郵便番号" %>
+    ※ハイフン無しで入力してください
+  </div><br />
+
+   <div class="t_field">
+    <%= f.text_field :address, autofocus: true, :size=>"55", placeholder: "住所" %>
+  </div><br />
+
+   <div class="st_field">
+    <%= f.text_field :phone_number, autofocus: true, :size=>"25", placeholder: "電話番号" %>
+    ※ハイフン無しで入力してください
+  </div><br />
+
+  <div class="t_field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"55", placeholder: "メールアドレス" %>
+  </div><br />
+
+  <div class="t_field">
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <em><% @minimum_password_length %></em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", :size=>"55", placeholder: "パスワード" %>
+  </div><br />
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <div class="t_field">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"55", placeholder: "パスワード(確認用)" %>
+  </div><br />
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="t_actions">
+    <%= f.submit "新規登録" %>
   </div>
-<% end %>
+<% end %><br />
 
-<%= render "end_users/shared/links" %>
+<p class="glyphicon glyphicon-record" aria-hidden="true">アカウントをお持ちの方は<a href="/end_users/sign_in">ログイン</a>へ</p>
+</div>
+

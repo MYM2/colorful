@@ -1,2 +1,26 @@
-<h1>Inquiries#new</h1>
-<p>Find me in app/views/inquiries/new.html.erb</p>
+
+<div class="inquiry_end_user">
+	<div class="inquiry_title">
+		<h1 class=''>お問い合わせ内容入力</h1>
+	</div>
+	<div class="inquiry_form">
+		<h4 class="inquiry">お名前とメールアドレスを入力してください</h4>
+		<%= form_for(@inquiry) do |inquiry| %>
+			<div class="form_name">
+				<%= inquiry.text_field :inquirer_name, :placeholder => 'お名前', :class => 'form_name' %>
+			</div>
+			<div class="form_mail_box">
+				<%= inquiry.email_field :mail, :placeholder => 'メールアドレス', :class => 'form_mail' %>
+			</div>
+			<h4 class="inquire">お問い合わせ内容を入力をしてください</h4>
+			<div class="form_content_box">
+				<%= inquiry.text_area :inquiry_content, :class => 'form_content' %>
+			</div>
+			<div class="submit_box">
+				<input id="submit" type="submit" name="submit" value="投稿する">
+			</div>
+
+		<% end %>
+	</div>
+
+</div>
