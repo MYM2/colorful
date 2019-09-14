@@ -23,4 +23,8 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .DS_Store
+<<<<<<< HEAD
 .env
+=======
+.env
+>>>>>>> 0f0a4c19fa96155e3857ae5bd8488dfb398476f4

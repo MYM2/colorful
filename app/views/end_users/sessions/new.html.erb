@@ -1,26 +1,30 @@
-<h2>Log in</h2>
+<div class="session">
+
+<h2>ようこそColorfulへ！</h2></br>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="t_field">
+    <%= f.email_field :email, autofocus: true, :size=>"55", placeholder: "メールアドレス", autocomplete: "email" %>
+  </div><br />
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <div class="t_field">
+    <%= f.password_field :password, autocomplete: "current-password", :size=>"55", placeholder: "漢字氏名　名" %>
+  </div><br />
 
-  <% if devise_mapping.rememberable? %>
+  <!-- <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
-  <% end %>
+   <% end %>       ※パスワードの記憶(ログイン時)-->
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="t_actions">
+    <%= f.submit "ログイン" %>
   </div>
-<% end %>
+<% end %><br />
 
-<%= render "end_users/shared/links" %>
+<p class="glyphicon glyphicon-record" aria-hidden="true">アカウントをお持ちでない場合は<a href="/end_users/sign_up">新規登録</a>へ</p><br />
+
+<p class="glyphicon glyphicon-record" aria-hidden="true">パスワードをお忘れの場合は<a href="/end_users/password/new">こちら</a>へ</p>
+
+</div>
