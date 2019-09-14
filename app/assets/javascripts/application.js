@@ -20,13 +20,21 @@
 //= require_tree .
 
 
-jQuery(function() {
-  jQuery('.slick').slick(
+$(function() {
+  $('.slick').slick(
     {
-        prevArrow:'<i class="fa fa-angle-left arrow arrow-left"></i>',
-        nextArrow:'<i class="fa fa-angle-right arrow arrow-right"></i>',
         autoplay:true,
         dots:true,
     }
   );
+});
+
+//ジャケット画像にマウスカーソルを載せたとき四角に戻す。
+$(function() {
+  $('.product-list-image').hover(function()
+   {
+      $(this).stop().animate({borderRadius:'0'},100);
+   }, function() {
+    $(this).stop().animate({borderRadius:'1000'},100);
+   });
 });
