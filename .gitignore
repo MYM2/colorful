@@ -24,9 +24,3 @@
 /config/master.key
 .DS_Store
 .env
-
-db/development.sqlite3
-log/development.log
-
-
-

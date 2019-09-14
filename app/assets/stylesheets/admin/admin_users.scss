@@ -1,3 +1,17 @@
 // Place all the styles related to the admin::admin_users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin_menu {
+  width: 100%;
+  padding: 10px 30px;
+
+}
+.menu{
+  font-size: 20px;
+  padding: 0px 20px;
+}
+
+ul {
+  list-style: none;
+}
