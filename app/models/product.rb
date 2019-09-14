@@ -10,9 +10,9 @@ class Product < ApplicationRecord
 	belongs_to :artist
 	belongs_to :genre
 
-	attachment :product_image
+	attachment :jacket_image
 
-	validates :product_name, :price, :stopped, presence: true
+	validates :product_name, :price, presence: true
 
 	accepts_nested_attributes_for :discs, allow_destroy: true
 	# cocoon使用時の記述
