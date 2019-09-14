@@ -1,2 +1,30 @@
-<h1>Admin::Artists#show</h1>
-<p>Find me in app/views/admin/artists/show.html.erb</p>
+<div class="artist">
+
+
+	<h1 class="artist_title">アーティスト情報詳細</h1>
+
+	<div class="artist_name2">
+			<h3><%= @artist.artist_name %></h4>
+	</div>
+	<div class="artist_information">
+		<div class=" col-lg-6">
+			<%= attachment_image_tag @artist, :artist_image, class:'artist_image2', format:'jpeg' %>
+		</div>
+		<div class="artist_introduction col-lg-6">
+			<p><%= @artist.artist_introduction %></p>
+		</div>
+	</div>
+	<div class="artist_edit">
+	<%= link_to 'アーティスト情報編集', edit_admin_artist_path(@artist.id),class: 'edit_tag' %>
+	</div>
+
+	<div class="box">
+		<h3>作品一覧</h3>
+	</div>
+
+
+</div>
+
+<div class="artist_index">
+	<%= link_to 'アーティスト一覧へ戻る', admin_artists_path, class: 'index_tag' %>
+</div>

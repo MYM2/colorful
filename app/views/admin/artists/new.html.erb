@@ -1,2 +1,36 @@
-<h1>Admin::Artists#new</h1>
-<p>Find me in app/views/admin/artists/new.html.erb</p>
+<div class="artist">
+	<%  if @artist_new.errors.any? %>
+		<div class="arert alert-danger">
+			<ul>
+				<% @artist_new.errors.fullmessages.each do |message| %>
+				<li><%= message %></li>
+			</ul>
+				<% end %>
+		</div>
+	<% end %>
+
+
+	<h2 class="artist_title">アーティスト情報新規登録</h2>
+
+	<h4>アーティスト情報を入力してください</h4>
+
+	<div class="form">
+		<%= form_for @artist_new, url: admin_artists_path do |a| %>
+			<btn class="">
+				<%= a.attachment_field :artist_image, :class => 'attachment' %>
+			</btn>
+			<div class="">
+				<%= a.text_field :artist_name, :placeholder => "アーティスト名", :class => 'artist_name' %>
+			</div>
+			<div class="">
+				<%= a.text_area :artist_introduction, :placeholder => "紹介文の入力", :class => 'artist_introduction' %>
+			</div>
+			<%= a.submit '新規登録', :class => "btn_artist" %>
+
+		<% end %>
+	</div>
+	
+	<%= link_to admin_admin_users_path do %>
+		<button class="back">戻る</button>
+	<% end %>
+</div>
