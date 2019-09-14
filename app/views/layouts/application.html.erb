@@ -38,7 +38,7 @@
       <ul class="nav navbar-nav navbar-right">
        <% if end_user_signed_in? %>
         <li>
-            <a href="artists">アーティスト一覧</a>
+            <%= link_to 'アーティスト一覧', artists_path %>
           </li>
           <li>
             <a href="/end_users/<%= current_end_user.id %>">マイページ</a>
