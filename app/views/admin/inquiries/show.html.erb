@@ -1,16 +1,32 @@
-<div class="inquiry">
+<div class="inquiry_show">
 	<div class="inquiry_show_title">
 		<h1>問い合わせ返信画面</h1>
 	</div>
-	<h4>お問い合わせ内容</h4>
 	<div class="inquiry_show_content">
-		<%= @inquiry.inquiry_name %>
+		<h2>お問い合わせ内容</h2>
+		<div class="inquiry_show_name">
+			<h4><%= @inquiry.inquirer_name %></h4>
+		</div>
+		<div class="inquiry_mail">
+			<h4><%= @inquiry.mail %></h4>
+		</div>
+		<div class="inquiry_show_content_box">
+			<%= @inquiry.inquiry_content %>
+		</div>
 	</div>
 
-
-
-
-
+	<div class="inquiry_show_reply">
+		<h2>お問い合わせ返信</h2>
+		<h4>返信内容を入力してください</h4>
+		<div class="reply">
+			<%= form_for@reply, url: admin_replies_path do |reply| %>
+			<%= reply.text_area :reply_content, :class => 'reply_content' %>
+			<% end %>
+		</div>
+	</div>
+	<div class="back_inquiry">
+		<%= link_to '戻る', admin_inquiries_path, :class => 'inquiry_back' %>
+	</div>
 
 
 
