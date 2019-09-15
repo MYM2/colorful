@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// show画面のcss
+// show画面のCSS
 
 .inquiry_show{
 	width: 80%;
@@ -13,15 +13,15 @@
 	text-align: center;
 }
 // 問い合わせ内容
-.inquiry_show_content{
+.inquiry_show_box{
 	border: 1px solid #000000;
 	padding: 20px;
 	background-color: #f0d4b8;
 }
-.inquiry_show_content h2{
+.inquiry_show_box h2{
 	text-align: center;
 }
-.inquiry_show_name{
+.inquirer_show_name{
 	margin: 30px 0;
 }
 .inquiry_mail{
@@ -34,9 +34,7 @@
 	background-color:#f8f8cc;
 }
 
-.inquiry_show_content{
 
-}
 // -----------------------------------
 
 
@@ -66,6 +64,7 @@
 	border-radius: 10px;
 	background-color: #d9d6d3;
 	margin: 20px 0;
+	padding: 5px;
 }
 // -----------------------------------
 .back_inquiry{
@@ -77,3 +76,43 @@
 	border: 1px solid #000000;
 	background-color: #d9d6d3;
 }
+
+// index画面のCSS
+.inquiry_index_box2{
+	height: 90px;
+}
+
+.inquiry_index{
+	width: 80%;
+	margin: 0 auto;
+}
+.inquiry_index_box{
+	border-top: 2px solid #000000;
+	margin-bottom: 20px;
+}
+.inquirer_index_name h3{
+	color: #2a5bc0;
+}
+.inquiry_link_box{
+	float: right;
+	margin-right: 10%;
+}
+.inquiry_link{
+	padding: 25px 60px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: #82fff2;
+    color: #000000;
+}
+.inquiry_index_content{
+	height: 100px;
+	border: 1px solid #000000;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+
+
+
+
+

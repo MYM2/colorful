@@ -5,13 +5,16 @@
 	</div>
 	<div class="inquiry_form">
 		<h4 class="inquiry">お名前とメールアドレスを入力してください</h4>
+
 		<%= form_for(@inquiry) do |inquiry| %>
-			<div class="form_name">
-				<%= inquiry.text_field :inquirer_name, :placeholder => 'お名前', :class => 'form_name' %>
-			</div>
-			<div class="form_mail_box">
-				<%= inquiry.email_field :mail, :placeholder => 'メールアドレス', :class => 'form_mail' %>
-			</div>
+		
+				<div class="form_name">
+					<%= inquiry.text_field :inquirer_name, :placeholder => 'お名前', :class => 'form_name', value: @user.firstname_kanji+@user.lastname_kanji %>
+				</div>
+				<div class="form_mail_box">
+					<%= inquiry.email_field :mail, :placeholder => 'メールアドレス', :class => 'form_mail', :class => 'form_name', value: @user.email %>
+				</div>
+
 			<h4 class="inquire">お問い合わせ内容を入力をしてください</h4>
 			<div class="form_content_box">
 				<%= inquiry.text_area :inquiry_content, :class => 'form_content' %>

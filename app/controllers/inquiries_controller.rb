@@ -1,6 +1,7 @@
 class InquiriesController < ApplicationController
   def new
   	@inquiry = Inquiry.new
+    @user = EndUser.find(current_end_user.id)
   end
 
   def create
