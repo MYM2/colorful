@@ -19,8 +19,12 @@
 		<h2>お問い合わせ返信</h2>
 		<h4>返信内容を入力してください</h4>
 		<div class="reply">
-			<%= form_for@reply, url: admin_replies_path do |reply| %>
+			<%= form_for @reply, url: admin_replies_path do |reply| %>
+			<%= reply.hidden_field :inquiry_id, :value => @inquiry.id %>
 			<%= reply.text_area :reply_content, :class => 'reply_content' %>
+			<div class="reply_submit_box">
+				<%= reply.submit '送信', :class => 'reply_submit' %>
+			</div>
 			<% end %>
 		</div>
 	</div>

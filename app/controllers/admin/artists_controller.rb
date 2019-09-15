@@ -19,7 +19,7 @@ class Admin::ArtistsController < ApplicationController
     artist = Artist.find(params[:id])
     artist.update(artist_params)
     flash[:notice] = 'アーティストの情報を更新しました。'
-    redirect_to admin_artist_path(@artist.id)
+    redirect_to admin_artist_path(artist.id)
   end
 
   def create
