@@ -19,14 +19,14 @@ class Admin::ArtistsController < ApplicationController
     artist = Artist.find(params[:id])
     artist.update(artist_params)
     flash[:notice] = 'アーティストの情報を更新しました。'
-    redirect_to admin_artist_path(@artist.id)
+    redirect_to admin_artist_path(artist.id)
   end
 
   def create
     @artist_new = Artist.new(artist_params)
     @artist_new.save
     flash[:notice] = 'アーティストを新規追加しました。'
-    redirect_to admin_artist_path(@artist_new.id)
+    redirect_to admin_artist_path(@artist_new)
   end
 
   def destroy

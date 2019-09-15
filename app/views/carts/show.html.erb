@@ -1,0 +1,13 @@
+
+<div class="cart-content-list">
+
+    <h1>カート内容</h1>
+
+    <% @carts.each do |cart_content| %>
+        <%= render 'cart_content_fields', cart: cart_content %>
+    <% end %>
+
+    <div class="paginate">
+      <%= paginate @carts, class: "paginate" %>
+    </div>
+</div>
