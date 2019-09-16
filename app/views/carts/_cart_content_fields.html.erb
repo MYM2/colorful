@@ -14,8 +14,7 @@
         <div class="cart-price">
           <h4>税込み<%= cart.product.price * cart.product_qty %>円</h4>
           <br>
-          <%= form_for(cart, url: cart_path(cart.id), method: :patch) do |f| %>
-            <%# <%= binding.pry %1> %>
+            <%= form_with model: cart do |f| %>
             <%= f.select :product_qty, options_for_select((1..15), cart.product_qty)%>
             <%= submit_tag "数量変更", :name => nil, class: "btn btn-warning" %>
           <% end %>
