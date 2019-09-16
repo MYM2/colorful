@@ -20,5 +20,6 @@
             <%= submit_tag "数量変更", :name => nil, class: "btn btn-warning" %>
           <% end %>
           <br>
+          <%= link_to "商品を削除する", cart_path(cart), method: :delete, class: "btn btn-danger" %>
         </div>
 </div>

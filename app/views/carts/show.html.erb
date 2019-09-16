@@ -3,6 +3,10 @@
 
     <h1>カート内容</h1>
 
+    <% if @carts.empty? %>
+      <h2><%= "カート内の商品は0件です。" %></h2>
+    <% end %>
+
     <% @carts.each do |cart_content| %>
         <%= render 'cart_content_fields', cart: cart_content %>
     <% end %>
