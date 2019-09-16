@@ -42,6 +42,9 @@ class Admin::ProductsController < ApplicationController
       if @product.update(product_params)
         flash[:success] = "商品の情報変更が完了しました。"
         redirect_to admin_product_path(@product)
+      else
+        flash[:danger] = "商品の新規登録に失敗しました。"
+        redirect_to edit_admin_product_path
       end
   end
 
