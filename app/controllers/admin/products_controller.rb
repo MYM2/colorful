@@ -1,5 +1,4 @@
 class Admin::ProductsController < ApplicationController
-  before_action :authenticate_end_user!
 
   def index
     @products = Product.includes([:artist, :genre]).page(params[:page]).reverse_order.per(20)
@@ -32,6 +31,9 @@ class Admin::ProductsController < ApplicationController
       if @product.save
         flash[:success] = "商品の新規登録が完了しました。"
         redirect_to admin_product_path(@product)
+      else
+        flash[:danger] = "商品の新規登録に失敗しました。"
+        render :new
       end
   end
 
