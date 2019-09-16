@@ -30,7 +30,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
       if @product.save
-        flash[:succsess] = "商品の登録が完了しました。"
+        flash[:success] = "商品の新規登録が完了しました。"
         redirect_to admin_product_path(@product)
       end
   end
@@ -38,7 +38,7 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
       if @product.update(product_params)
-        flash[:succsess] = "商品の変更が完了しました。"
+        flash[:success] = "商品の情報変更が完了しました。"
         redirect_to admin_product_path(@product)
       end
   end

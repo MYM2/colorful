@@ -29,7 +29,7 @@ class CartsController < ApplicationController
   def update
     @cart = Cart.find(params[:id])
       if @cart.update(cart_params)
-        flash[:succsess] = "商品の数量を変更しました。"
+        flash[:success] = "商品の数量を変更しました。"
         redirect_to cart_path(current_end_user)
       end
   end
