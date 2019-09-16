@@ -33,7 +33,7 @@ class Admin::ProductsController < ApplicationController
         redirect_to admin_product_path(@product)
       else
         flash[:danger] = "商品の新規登録に失敗しました。"
-        render :new
+        redirect_to new_admin_product_path
       end
   end
 
