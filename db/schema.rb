@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(version: 2019_09_14_113928) do
   end
 
   create_table "inquiries", force: :cascade do |t|
-    t.integer "end_user_id"
     t.string "inquirer_name"
     t.string "mail"
     t.text "inquiry_content"
