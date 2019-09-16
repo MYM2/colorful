@@ -54673,3 +54673,637 @@ Processing by InquiriesController#new as HTML
 Completed 200 OK in 1017ms (Views: 990.4ms | ActiveRecord: 4.1ms)
 
 
+Started GET "/admin/inquiries" for 10.0.2.2 at 2019-09-16 03:46:14 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Admin::InquiriesController#index as HTML
+  Rendering admin/inquiries/index.html.erb within layouts/application
+  [1m[36mInquiry Load (1.2ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" ORDER BY "inquiries"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/admin/inquiries/index.html.erb:5
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "inquiries"[0m
+  ↳ app/views/admin/inquiries/index.html.erb:22
+  Rendered admin/inquiries/index.html.erb within layouts/application (110.1ms)
+  [1m[36mEndUser Load (1.4ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 3409ms (Views: 3361.8ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/admin/inquiries/6" for 10.0.2.2 at 2019-09-16 03:46:20 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mInquiry Load (1.2ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:7
+  Rendering admin/inquiries/show.html.erb within layouts/application
+  Rendered admin/inquiries/show.html.erb within layouts/application (9.8ms)
+  [1m[36mEndUser Load (0.9ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 825ms (Views: 785.3ms | ActiveRecord: 7.5ms)
+
+
+Started POST "/admin/replies" for 10.0.2.2 at 2019-09-16 03:46:26 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::RepliesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hQ0+wDloMqv+Kyy3u5Ys/6Z1ol3cgtZRJ5SRmFeie+cIjdbVZDZp/f8QNksJ5kpAEPPPiVEXCcVQZI+JB6Vvjg==", "reply"=>{"inquiry_id"=>"6", "reply_content"=>"rrrrrrrrrrrrrrrrrrr"}, "commit"=>"送信"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admin/replies_controller.rb:4
+  [1m[36mInquiry Load (3.8ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/admin/replies_controller.rb:4
+  [1m[36mReply Create (2.9ms)[0m  [1m[32mINSERT INTO "replies" ("inquiry_id", "reply_content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["inquiry_id", 6], ["reply_content", "rrrrrrrrrrrrrrrrrrr"], ["created_at", "2019-09-16 03:46:26.891443"], ["updated_at", "2019-09-16 03:46:26.891443"]]
+  ↳ app/controllers/admin/replies_controller.rb:4
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/admin/replies_controller.rb:4
+Redirected to http://localhost:3000/admin/inquiries
+Completed 302 Found in 30ms (ActiveRecord: 10.6ms)
+
+
+Started GET "/admin/inquiries" for 10.0.2.2 at 2019-09-16 03:46:26 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#index as HTML
+  Rendering admin/inquiries/index.html.erb within layouts/application
+  [1m[36mInquiry Load (2.5ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" ORDER BY "inquiries"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/admin/inquiries/index.html.erb:5
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "inquiries"[0m
+  ↳ app/views/admin/inquiries/index.html.erb:22
+  Rendered admin/inquiries/index.html.erb within layouts/application (93.7ms)
+  [1m[36mEndUser Load (1.3ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 976ms (Views: 938.7ms | ActiveRecord: 5.0ms)
+
+
+Started POST "/admin/replies" for 10.0.2.2 at 2019-09-16 03:49:25 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::RepliesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gxgCtiT/kk6K/cB0/zP2rAO4UaFTKfOdDM33Q0Tl+cI1stjuG1hv4QkFhS/SIfJ0nj3tZaMZzCwTkNxIyRvKaQ==", "reply"=>{"inquiry_id"=>"6", "reply_content"=>""}, "commit"=>"送信"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admin/replies_controller.rb:4
+  [1m[36mInquiry Load (1.8ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/admin/replies_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admin/replies_controller.rb:4
+Redirected to http://localhost:3000/admin/inquiries
+Completed 302 Found in 10ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/admin/inquiries" for 10.0.2.2 at 2019-09-16 03:49:25 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#index as HTML
+  Rendering admin/inquiries/index.html.erb within layouts/application
+  [1m[36mInquiry Load (1.1ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" ORDER BY "inquiries"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/admin/inquiries/index.html.erb:5
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "inquiries"[0m
+  ↳ app/views/admin/inquiries/index.html.erb:22
+  Rendered admin/inquiries/index.html.erb within layouts/application (106.6ms)
+  [1m[36mEndUser Load (1.2ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 785ms (Views: 756.9ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/admin/inquiries/7" for 10.0.2.2 at 2019-09-16 06:04:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mInquiry Load (1.4ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:7
+  Rendering admin/inquiries/show.html.erb within layouts/application
+  Rendered admin/inquiries/show.html.erb within layouts/application (1.8ms)
+  [1m[36mEndUser Load (1.9ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 7572ms (Views: 7534.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/admin/inquiries/7" for 10.0.2.2 at 2019-09-16 06:04:46 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mInquiry Load (1.4ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:7
+  Rendering admin/inquiries/show.html.erb within layouts/application
+  Rendered admin/inquiries/show.html.erb within layouts/application (1.6ms)
+  [1m[36mEndUser Load (1.1ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 893ms (Views: 861.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/admin/inquiries" for 10.0.2.2 at 2019-09-16 06:04:49 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#index as HTML
+  Rendering admin/inquiries/index.html.erb within layouts/application
+  [1m[36mInquiry Load (1.3ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" ORDER BY "inquiries"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/admin/inquiries/index.html.erb:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "inquiries"[0m
+  ↳ app/views/admin/inquiries/index.html.erb:25
+  Rendered admin/inquiries/index.html.erb within layouts/application (79.2ms)
+  [1m[36mEndUser Load (1.2ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 684ms (Views: 651.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/admin/inquiries" for 10.0.2.2 at 2019-09-16 06:04:55 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#index as HTML
+  Rendering admin/inquiries/index.html.erb within layouts/application
+  [1m[36mInquiry Load (1.1ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" ORDER BY "inquiries"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/admin/inquiries/index.html.erb:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "inquiries"[0m
+  ↳ app/views/admin/inquiries/index.html.erb:25
+  Rendered admin/inquiries/index.html.erb within layouts/application (79.1ms)
+  [1m[36mEndUser Load (1.0ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 791ms (Views: 771.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/admin/inquiries" for 10.0.2.2 at 2019-09-16 06:05:00 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#index as HTML
+  Rendering admin/inquiries/index.html.erb within layouts/application
+  [1m[36mInquiry Load (1.0ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" ORDER BY "inquiries"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/admin/inquiries/index.html.erb:4
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "inquiries"[0m
+  ↳ app/views/admin/inquiries/index.html.erb:25
+  Rendered admin/inquiries/index.html.erb within layouts/application (69.1ms)
+  [1m[36mEndUser Load (1.4ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 784ms (Views: 764.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/admin/inquiries" for 10.0.2.2 at 2019-09-16 06:05:55 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#index as HTML
+  Rendering admin/inquiries/index.html.erb within layouts/application
+  [1m[36mInquiry Load (1.2ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" ORDER BY "inquiries"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/admin/inquiries/index.html.erb:4
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "inquiries"[0m
+  ↳ app/views/admin/inquiries/index.html.erb:25
+  Rendered admin/inquiries/index.html.erb within layouts/application (82.5ms)
+  [1m[36mEndUser Load (0.9ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 4025ms (Views: 4001.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/admin/inquiries/7" for 10.0.2.2 at 2019-09-16 06:06:07 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mInquiry Load (1.1ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:7
+  Rendering admin/inquiries/show.html.erb within layouts/application
+  Rendered admin/inquiries/show.html.erb within layouts/application (1.5ms)
+  [1m[36mEndUser Load (1.1ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 691ms (Views: 669.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/admin/inquiries/7" for 10.0.2.2 at 2019-09-16 06:07:12 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mInquiry Load (1.1ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:7
+  Rendering admin/inquiries/show.html.erb within layouts/application
+  Rendered admin/inquiries/show.html.erb within layouts/application (3.6ms)
+  [1m[36mEndUser Load (1.0ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 3886ms (Views: 3858.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/admin/inquiries/7" for 10.0.2.2 at 2019-09-16 06:07:48 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mInquiry Load (1.0ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:7
+  Rendering admin/inquiries/show.html.erb within layouts/application
+  Rendered admin/inquiries/show.html.erb within layouts/application (1.1ms)
+  [1m[36mEndUser Load (2.1ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 4057ms (Views: 4020.9ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/admin/inquiries/7" for 10.0.2.2 at 2019-09-16 06:08:56 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mInquiry Load (2.4ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:7
+  Rendering admin/inquiries/show.html.erb within layouts/application
+  Rendered admin/inquiries/show.html.erb within layouts/application (1.4ms)
+  [1m[36mEndUser Load (1.1ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 3760ms (Views: 3732.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/admin/inquiries/7" for 10.0.2.2 at 2019-09-16 06:09:35 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mInquiry Load (1.5ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:7
+  Rendering admin/inquiries/show.html.erb within layouts/application
+  Rendered admin/inquiries/show.html.erb within layouts/application (1.3ms)
+  [1m[36mEndUser Load (1.0ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 3944ms (Views: 3918.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/admin/inquiries" for 10.0.2.2 at 2019-09-16 06:09:43 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#index as HTML
+  Rendering admin/inquiries/index.html.erb within layouts/application
+  [1m[36mInquiry Load (1.0ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" ORDER BY "inquiries"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/admin/inquiries/index.html.erb:4
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "inquiries"[0m
+  ↳ app/views/admin/inquiries/index.html.erb:25
+  Rendered admin/inquiries/index.html.erb within layouts/application (83.1ms)
+  [1m[36mEndUser Load (1.6ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 1071ms (Views: 1049.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/inquiries" for 10.0.2.2 at 2019-09-16 06:10:05 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/inquiries"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/inquirie" for 10.0.2.2 at 2019-09-16 06:10:08 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/inquirie"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/inquiries/new" for 10.0.2.2 at 2019-09-16 06:10:14 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#new as HTML
+  [1m[36mEndUser Load (1.5ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  [1m[36mEndUser Load (2.0ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  Rendering inquiries/new.html.erb within layouts/application
+  Rendered inquiries/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 842ms (Views: 810.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/inquiries/new" for 10.0.2.2 at 2019-09-16 06:11:56 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#new as HTML
+  [1m[36mEndUser Load (2.9ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  [1m[36mEndUser Load (1.6ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  Rendering inquiries/new.html.erb within layouts/application
+  Rendered inquiries/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 3694ms (Views: 3660.4ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/inquiries/new" for 10.0.2.2 at 2019-09-16 06:13:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#new as HTML
+  [1m[36mEndUser Load (2.6ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  [1m[36mEndUser Load (1.5ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  Rendering inquiries/new.html.erb within layouts/application
+  Rendered inquiries/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 3961ms (Views: 3938.2ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/inquiries/new" for 10.0.2.2 at 2019-09-16 06:14:15 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#new as HTML
+  [1m[36mEndUser Load (1.8ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  [1m[36mEndUser Load (1.6ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  Rendering inquiries/new.html.erb within layouts/application
+  Rendered inquiries/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 3859ms (Views: 3820.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/inquiries/new" for 10.0.2.2 at 2019-09-16 06:15:31 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#new as HTML
+  [1m[36mEndUser Load (1.1ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  [1m[36mEndUser Load (2.4ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  Rendering inquiries/new.html.erb within layouts/application
+  Rendered inquiries/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 3473ms (Views: 3449.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/inquiries/new" for 10.0.2.2 at 2019-09-16 06:17:03 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#new as HTML
+  [1m[36mEndUser Load (0.9ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  [1m[36mEndUser Load (1.0ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  Rendering inquiries/new.html.erb within layouts/application
+  Rendered inquiries/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 773ms (Views: 734.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/inquiries/new" for 10.0.2.2 at 2019-09-16 06:17:27 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#new as HTML
+  [1m[36mEndUser Load (1.0ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  [1m[36mEndUser Load (8.0ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/inquiries_controller.rb:4
+  Rendering inquiries/new.html.erb within layouts/application
+  Rendered inquiries/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 979ms (Views: 932.8ms | ActiveRecord: 9.0ms)
+
+
+Started POST "/inquiries" for 10.0.2.2 at 2019-09-16 06:18:22 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by InquiriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NmV2+xmRi6sqYY5XqrmhZ4VPglkpKZI761Sm31IP7m2Az6yjJjZ2BKmZywyHq6W/GMo+ndkZrYr0CY3U3/Hdxg==", "inquiry"=>{"inquirer_name"=>"よしみ天童", "mail"=>"afdfdfdfgvsda@gmail.com", "inquiry_content"=>"私のCDも売りなさい"}, "submit"=>"投稿する"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/inquiries_controller.rb:9
+  [1m[36mInquiry Create (6.3ms)[0m  [1m[32mINSERT INTO "inquiries" ("inquirer_name", "mail", "inquiry_content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["inquirer_name", "よしみ天童"], ["mail", "afdfdfdfgvsda@gmail.com"], ["inquiry_content", "私のCDも売りなさい"], ["created_at", "2019-09-16 06:18:22.386798"], ["updated_at", "2019-09-16 06:18:22.386798"]]
+  ↳ app/controllers/inquiries_controller.rb:9
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/inquiries_controller.rb:9
+Redirected to http://localhost:3000/products
+Completed 302 Found in 22ms (ActiveRecord: 9.3ms)
+
+
+Started GET "/products" for 10.0.2.2 at 2019-09-16 06:18:22 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/products/index.html.erb:11
+  Rendered products/index.html.erb within layouts/application (49.4ms)
+  [1m[36mEndUser Load (1.0ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 800ms (Views: 767.1ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/images/ajax-loader.gif" for 10.0.2.2 at 2019-09-16 06:18:23 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/images/ajax-loader.gif"):
+Started GET "/fonts/slick.woff" for 10.0.2.2 at 2019-09-16 06:18:23 +0000
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/fonts/slick.woff"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/fonts/slick.ttf" for 10.0.2.2 at 2019-09-16 06:18:23 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/fonts/slick.ttf"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/admin/inquiries/1" for 10.0.2.2 at 2019-09-16 06:18:35 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mInquiry Load (2.1ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" WHERE "inquiries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/inquiries_controller.rb:7
+  Rendering admin/inquiries/show.html.erb within layouts/application
+  Rendered admin/inquiries/show.html.erb within layouts/application (2.6ms)
+  [1m[36mEndUser Load (1.6ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 809ms (Views: 772.4ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/admin/inquiries" for 10.0.2.2 at 2019-09-16 06:18:40 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#index as HTML
+  Rendering admin/inquiries/index.html.erb within layouts/application
+  [1m[36mInquiry Load (1.5ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" ORDER BY "inquiries"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/admin/inquiries/index.html.erb:4
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "inquiries"[0m
+  ↳ app/views/admin/inquiries/index.html.erb:25
+  Rendered admin/inquiries/index.html.erb within layouts/application (78.9ms)
+  [1m[36mEndUser Load (1.0ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 787ms (Views: 761.8ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/admin/inquiries?page=2" for 10.0.2.2 at 2019-09-16 06:18:51 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::InquiriesController#index as HTML
+  Parameters: {"page"=>"2"}
+  Rendering admin/inquiries/index.html.erb within layouts/application
+  [1m[36mInquiry Load (1.0ms)[0m  [1m[34mSELECT  "inquiries".* FROM "inquiries" ORDER BY "inquiries"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 5]]
+  ↳ app/views/admin/inquiries/index.html.erb:4
+  Rendered admin/inquiries/index.html.erb within layouts/application (74.9ms)
+  [1m[36mEndUser Load (2.1ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 875ms (Views: 851.6ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/admin/artists/new" for 10.0.2.2 at 2019-09-16 06:19:01 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::ArtistsController#new as HTML
+  Rendering admin/artists/new.html.erb within layouts/application
+  Rendered admin/artists/new.html.erb within layouts/application (3.6ms)
+  [1m[36mEndUser Load (1.0ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 721ms (Views: 683.1ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/admin/artists/new" for 10.0.2.2 at 2019-09-16 06:22:50 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::ArtistsController#new as HTML
+  Rendering admin/artists/new.html.erb within layouts/application
+  Rendered admin/artists/new.html.erb within layouts/application (1.5ms)
+  [1m[36mEndUser Load (1.6ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 2976ms (Views: 2956.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/admin/artists/1" for 10.0.2.2 at 2019-09-16 06:23:03 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::ArtistsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArtist Load (1.1ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/artists_controller.rb:7
+Completed 404 Not Found in 3ms (ActiveRecord: 1.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Artist with 'id'=1):
+  
+app/controllers/admin/artists_controller.rb:7:in `show'
+Started GET "/admin/artists/2" for 10.0.2.2 at 2019-09-16 06:23:06 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::ArtistsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArtist Load (1.0ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admin/artists_controller.rb:7
+  Rendering admin/artists/show.html.erb within layouts/application
+  Rendered admin/artists/show.html.erb within layouts/application (1.0ms)
+  [1m[36mEndUser Load (1.1ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 840ms (Views: 812.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/attachments/4bdaa9008670b10270528c94f1f0af6a22bdc8fe/store/0fd2a0450579616d1c653ee318b8a949c49e1bff2a9e850361c26dcde44a/artist_image.jpeg" for 10.0.2.2 at 2019-09-16 06:23:07 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Refile::App: [2019-09-16 06:23:07 +0000] GET "/4bdaa9008670b10270528c94f1f0af6a22bdc8fe/store/0fd2a0450579616d1c653ee318b8a949c49e1bff2a9e850361c26dcde44a/artist_image.jpeg" 200 25.3ms
+
+Started GET "/admin/artists/2/edit" for 10.0.2.2 at 2019-09-16 06:23:11 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::ArtistsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArtist Load (1.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admin/artists_controller.rb:11
+  Rendering admin/artists/edit.html.erb within layouts/application
+  Rendered admin/artists/edit.html.erb within layouts/application (2.5ms)
+  [1m[36mEndUser Load (0.9ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 728ms (Views: 706.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/admin/artists/2/edit" for 10.0.2.2 at 2019-09-16 06:23:51 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::ArtistsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArtist Load (1.7ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/admin/artists_controller.rb:11
+  Rendering admin/artists/edit.html.erb within layouts/application
+  Rendered admin/artists/edit.html.erb within layouts/application (2.0ms)
+  [1m[36mEndUser Load (1.1ms)[0m  [1m[34mSELECT  "end_users".* FROM "end_users" WHERE "end_users"."id" = ? ORDER BY "end_users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:39
+Completed 200 OK in 3217ms (Views: 3184.5ms | ActiveRecord: 2.7ms)
+
+

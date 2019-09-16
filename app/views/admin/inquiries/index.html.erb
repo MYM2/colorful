@@ -1,28 +1,28 @@
 <div class="inquiry_index">
-
 	<h1>お問い合わせ一覧</h1>
 
 	<% @inquiry.each do |inquiry| %>
 		<div class="inquiry_index_box">
 			<div class="inquiry_index_box2">
+				<!-- 問い合わせ者名 -->
 				<div class="inquirer_index_name">
 					<h3><%= inquiry.inquirer_name %></h3>
 				</div>
+				<!-- 問い合わせ詳細へのボタン -->
 				<div class="inquiry_link_box ">
 					<%= link_to '返信フォームへ', admin_inquiry_path(inquiry), :class => 'inquiry_link' %>
 				</div>
 			</div>
+			<!-- 問い合わせ内容 -->
 			<div class="inquiry_index_content">
 				<%= inquiry.inquiry_content %>
 			</div>
 
 		</div>
 	<% end %>
+	<!-- ページネイトの表示 -->
 	<div class="paginate">
     	<%= paginate @inquiry, class: "paginate" %>
   	</div>
-
-
-
 
 </div>

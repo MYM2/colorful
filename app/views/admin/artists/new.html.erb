@@ -1,15 +1,5 @@
 <div class="artist">
-	<%  if @artist_new.errors.any? %>
-		<div class="arert alert-danger">
-			<ul>
-				<% @artist_new.errors.fullmessages.each do |message| %>
-				<li><%= message %></li>
-			</ul>
-				<% end %>
-		</div>
-	<% end %>
-
-
+	
 	<h2 class="artist_title">アーティスト情報新規登録</h2>
 
 	<h4>アーティスト情報を入力してください</h4>

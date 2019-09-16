@@ -1,44 +1,42 @@
 <div class="inquiry_show">
+	<!-- 問い合わせ内容 -->
 	<div class="inquiry_show_title">
 		<h1>問い合わせ返信画面</h1>
 	</div>
 	<div class="inquiry_show_box">
 		<h2>お問い合わせ内容</h2>
 		<div class="inquirer_show_name">
+			<!-- 問い合わせ者の名前 -->
 			<h4><%= @inquiry.inquirer_name %></h4>
 		</div>
 		<div class="inquiry_mail">
+			<!-- 問い合わせ者アドレス -->
 			<h4><%= @inquiry.mail %></h4>
 		</div>
+		    <!-- 問い合わせ内容 -->
 		<div class="inquiry_show_content_box">
 			<%= @inquiry.inquiry_content %>
 		</div>
 	</div>
-
+<!-- --------------返信フォーム---------------------- -->
 	<div class="inquiry_show_reply">
 		<h2>お問い合わせ返信</h2>
 		<h4>返信内容を入力してください</h4>
 		<div class="reply">
 			<%= form_for @reply, url: admin_replies_path do |reply| %>
+			<!-- replyのinquiry_idに@inquiryのidを代入 -->
 			<%= reply.hidden_field :inquiry_id, :value => @inquiry.id %>
+			<!-- 返信内容入力フォーム -->
 			<%= reply.text_area :reply_content, :class => 'reply_content' %>
+			<!-- 送信ボタン -->
 			<div class="reply_submit_box">
 				<%= reply.submit '送信', :class => 'reply_submit' %>
 			</div>
 			<% end %>
 		</div>
 	</div>
+<!-- --------------------------------------------- -->
 	<div class="back_inquiry">
 		<%= link_to '戻る', admin_inquiries_path, :class => 'inquiry_back' %>
 	</div>
-
-
-
-
-
-
-
-
-
-
 </div>

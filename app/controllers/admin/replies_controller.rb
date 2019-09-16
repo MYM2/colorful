@@ -6,8 +6,8 @@ class Admin::RepliesController < ApplicationController
 		redirect_to admin_inquiries_path
 	end
 
-private
-def reply_params
-	params.require(:reply).permit(:reply_content,:inquiry_id)
-end
+	private
+	def reply_params
+		params.require(:reply).permit(:reply_content,:inquiry_id)
+	end
 end
