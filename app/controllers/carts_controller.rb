@@ -9,7 +9,7 @@ class CartsController < ApplicationController
   def destroy
     @cart = Cart.find(params[:id])
     if @cart.destroy
-        flash[:succsess] = "カートの商品を削除しました。"
+        flash[:success] = "カートの商品を削除しました。"
         redirect_to cart_path(current_end_user)
     end
   end
@@ -19,7 +19,7 @@ class CartsController < ApplicationController
     @cart.end_user_id = current_end_user.id
     @product = Product.find(@cart.product_id)
       if @cart.save
-        flash[:succsess] = "カートに商品を追加しました。"
+        flash[:success] = "カートに商品を追加しました。"
         redirect_to product_path(@product)
       else
         redirect_to products_path
