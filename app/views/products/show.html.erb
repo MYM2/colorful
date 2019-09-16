@@ -23,9 +23,15 @@
       <p>税別 <%= @product.price %>円</p>
       <br>
       <!== カートに入れる個数 ==>
-      <%= select_tag :qty, options_for_select({"1": 1 , "2": 2 , "3": 3 , "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10}, 1) %>
+
       <br>
-      <button class="btn btn-warning">カートに入れる</button>
+      <%# <%= form_tag(@cart{ :controller => 'carts', :action => 'create' }, method: :post) do |f| %1> %>
+      <%= form_with model: @cart do |f| %>
+        <%= f.select :product_qty, options_for_select((1..15)) %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= submit_tag 'カートに入れる', :name => nil, class: "btn btn-warning" %>
+      <% end %>
+
       <p>在庫があるか表示　予定</p>
       <% if @product.stopped == false %>
         <p class= "stopped-false" >※販売中</p>

@@ -33,7 +33,7 @@ $(function() {
 
 //ジャケット画像にマウスカーソルを載せたとき四角に戻す。
 $(function() {
-  $('.product-list-image').hover(function()
+  $('.product-list-image-animation').hover(function()
    {
       $(this).stop().animate({borderRadius:'0'},100);
    }, function() {
