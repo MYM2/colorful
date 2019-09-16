@@ -4,6 +4,12 @@ class CartsController < ApplicationController
   def show
     @end_user = current_end_user
     @carts = @end_user.carts.includes(:product).page(params[:page]).reverse_order.per(5)
+
+    @carts_total = @end_user.carts.includes(:product)
+      @total_price = 0
+      @carts_total.each do |cart|
+        @total_price += cart.product.price * cart.product_qty
+       end
   end
 
   def destroy

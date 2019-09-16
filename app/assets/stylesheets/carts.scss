@@ -20,21 +20,32 @@
 
 .cart-content {
   width: 100%;
+  border-top: 1px solid gray;
 }
 .cart-image {
   float: left;
-  width: 300px;
-  height: 300px;
-  padding: 5%;
+  width: 20%;
+  height: 20%;
+  padding: 3%;
 }
 
 .cart-text {
   float: left;
-  padding: 5%;
+  width: 30%;
+  padding: 3%;
 }
 .cart-price {
-  float: left;
-  padding: 5%;
+  float: right;
+  width: 30%;
+  padding: 3%;
 }
-
+.cart-total {
+  width: 100%;
+  border-bottom: 1px solid gray;
+}
+.cart-total h4 {
+  float: right;
+  width: 30%;
+  padding: 3%;
+}
 

@@ -9,8 +9,14 @@
     <% end %>
 
     <% @carts.each do |cart_content| %>
+      <div class="cart-contents">
         <%= render 'cart_content_fields', cart: cart_content %>
+      </div>
     <% end %>
+
+    <div class="cart-total">
+          <h4>合計 <%= @total_price %> 円</h4>
+    </div>
 
     <div class="paginate">
       <%= paginate @carts, class: "paginate" %>
