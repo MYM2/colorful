@@ -12,7 +12,6 @@ class CartsController < ApplicationController
         flash[:succsess] = "カートの商品を削除しました。"
         redirect_to cart_path(current_end_user)
     end
-
   end
 
   def create
@@ -36,6 +35,6 @@ class CartsController < ApplicationController
 
   private
     def cart_params
-    params.require(:cart).permit(:id, :product_id, :product_qty)
+    params.require(:cart).permit(:product_id, :product_qty)
     end
 end
