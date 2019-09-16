@@ -26,7 +26,7 @@ class Admin::ArtistsController < ApplicationController
     @artist_new = Artist.new(artist_params)
     @artist_new.save
     flash[:notice] = 'アーティストを新規追加しました。'
-    redirect_to admin_artist_path(@artist_new.id)
+    redirect_to admin_artist_path(@artist_new)
   end
 
   def destroy

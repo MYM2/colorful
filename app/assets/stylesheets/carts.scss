@@ -1,3 +1,40 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+//商品追加画面 編集画面
+.cart-content-list {
+  width: 80%;
+  margin: auto;
+}
+
+.cart-content-list h1 {
+  text-align: center;
+}
+
+.cart-content {
+  width: 100%;
+}
+.cart-image {
+  float: left;
+  width: 300px;
+  height: 300px;
+  padding: 5%;
+}
+
+.cart-text {
+  float: left;
+  padding: 5%;
+}
+.cart-price {
+  float: left;
+  padding: 5%;
+}
+
+
