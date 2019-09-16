@@ -1,7 +1,9 @@
 class InquiriesController < ApplicationController
   def new
   	@inquiry = Inquiry.new
-    @user = EndUser.find(current_end_user.id)
+    if end_user_signed_in?
+      @user = EndUser.find(current_end_user.id)
+    end
   end
 
   def create
