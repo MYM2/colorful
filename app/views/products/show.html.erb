@@ -25,9 +25,10 @@
       <!== カートに入れる個数 ==>
 
       <br>
-      <%= form_tag({ :controller => 'carts', :action => 'create' }, method: :post) do |f| %>
-        <%= select_tag :product_qty, options_for_select((1..15)) %>
-        <%= hidden_field_tag :product_id, @product.id %>
+      <%# <%= form_tag(@cart{ :controller => 'carts', :action => 'create' }, method: :post) do |f| %1> %>
+      <%= form_with model: @cart do |f| %>
+        <%= f.select :product_qty, options_for_select((1..15)) %>
+        <%= f.hidden_field :product_id, value: @product.id %>
         <%= submit_tag 'カートに入れる', :name => nil, class: "btn btn-warning" %>
       <% end %>
 

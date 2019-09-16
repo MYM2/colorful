@@ -15,8 +15,9 @@ class CartsController < ApplicationController
   end
 
   def create
-    @cart = Cart.new(product_id: params[:product_id], product_qty: params[:product_qty], end_user_id: current_end_user.id)
-    @product = Product.find(params[:product_id])
+    @cart = Cart.new(cart_params)
+    @cart.end_user_id = current_end_user.id
+    @product = Product.find(@cart.product_id)
       if @cart.save
         flash[:succsess] = "カートに商品を追加しました。"
         redirect_to product_path(@product)
