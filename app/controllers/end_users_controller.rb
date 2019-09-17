@@ -1,6 +1,8 @@
 class EndUsersController < ApplicationController
   def show
   	@end_user = EndUser.find(params[:id])
+    @delivery = @end_user.deliveries.page(params[:page]).reverse_order.per(2)
+    # 届け先住所のページネーションです
   end
 
   def edit
@@ -18,6 +20,3 @@ class EndUsersController < ApplicationController
       params.require(:end_user).permit(:lastname_kanji, :firstname_kanji, :lastname_kana, :firstname_kana, :zipcode, :address, :phone_number, :email)
     end
 end
-
-
-#空コミット用コメント
