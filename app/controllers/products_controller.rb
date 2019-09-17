@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
     @artist = @product.artist
     @genre = @product.genre
     @label = @product.label
+    @cart = Cart.new
   end
 
 end
