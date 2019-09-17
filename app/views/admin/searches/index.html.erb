@@ -1,2 +1,33 @@
-<h1>Admin::Searches#index</h1>
-<p>Find me in app/views/admin/searches/index.html.erb</p>
+<h1>検索機能</h1>
+
+<%= search_form_for @search, url: admin_searches_path do |f| %>
+  <div class="form-group">
+    <%= f.label :product_name_cont, "Name" %>
+    <%= f.text_field :product_name_cont, class: "form-control", placeholder: '検索' %>
+  </div>
+  <div class="actions"><%= f.submit "検索" %></div
+<% end %>
+
+	<div class ="product-list-contents clearfix">
+    <% @search_products.each do |product| %>
+      <div class="product-list-content">
+        <%= link_to(product_path(product)) do %>
+          <%= attachment_image_tag product, :jacket_image, fallback: "no_image.png", class: "product-list-image product-list-image-animation" %>
+        <% end %>
+        <div class="product-list-text">
+          <h4><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= link_to product.product_name, product_path(product) %></h4>
+          <br>
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to product.artist.artist_name, artist_path(product.artist) %>
+          <br>
+          <%= product.genre.genre_name %>
+          <br>
+          <br>
+          ¥<%= product.price %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="paginate">
+    <%= paginate @products, class: "paginate" %>
+  </div>

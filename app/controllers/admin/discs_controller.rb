@@ -4,7 +4,7 @@ class Admin::DiscsController < ApplicationController
     @disc = Disc.find(params[:id])
     @product = @disc.product
     if @disc.destroy
-        flash[:success] = "ディスクを削除"
+      flash[:success] = "ディスクNo." + @disc.disc_number.to_s +  "を削除しました。"
     end
 
     redirect_to edit_admin_product_path(@product)

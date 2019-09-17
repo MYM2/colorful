@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
-  
+
+
 
   def index
     @products = Product.includes([:artist, :genre]).page(params[:page]).reverse_order.per(20)
@@ -30,16 +31,22 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
       if @product.save
-        flash[:succsess] = "商品の登録が完了しました。"
+        flash[:success] = "商品の新規登録が完了しました。"
         redirect_to admin_product_path(@product)
+      else
+        flash[:danger] = "商品の新規登録に失敗しました。"
+        redirect_to new_admin_product_path
       end
   end
 
   def update
     @product = Product.find(params[:id])
       if @product.update(product_params)
-        flash[:succsess] = "商品の変更が完了しました。"
+        flash[:success] = "商品の情報変更が完了しました。"
         redirect_to admin_product_path(@product)
+      else
+        flash[:danger] = "商品の新規登録に失敗しました。"
+        redirect_to edit_admin_product_path
       end
   end
 

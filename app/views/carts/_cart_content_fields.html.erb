@@ -12,12 +12,14 @@
         </div>
 
         <div class="cart-price">
-          <h4>税込み<%= cart.product.price * cart.product_qty %>円</h4>
+          <h4>税込み <%= cart.product.price * cart.product_qty %> 円</h4>
+          <br>
           <br>
             <%= form_with model: cart do |f| %>
             <%= f.select :product_qty, options_for_select((1..15), cart.product_qty)%>
             <%= submit_tag "数量変更", :name => nil, class: "btn btn-warning" %>
           <% end %>
+          <br>
           <br>
           <%= link_to "商品を削除する", cart_path(cart), method: :delete, class: "btn btn-danger" %>
         </div>
