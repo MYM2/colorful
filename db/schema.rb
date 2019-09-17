@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 2019_09_17_074631) do
     t.string "firstname_kanji"
     t.string "lastname_kana"
     t.string "firstname_kana"
-    t.integer "phone_number"
-    t.integer "zipcode"
+    t.string "phone_number"
+    t.string "zipcode"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_074631) do
     t.string "firstname_kanji"
     t.string "lastname_kana"
     t.string "firstname_kana"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.boolean "leaved", default: false, null: false
     t.datetime "leave_at"
     t.datetime "created_at", null: false
