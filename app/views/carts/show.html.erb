@@ -1,0 +1,28 @@
+
+<div class="cart-content-list">
+  <%= render 'layouts/messages' %>
+
+    <h1>カート内容</h1>
+
+    <% if @carts.empty? %>
+      <h2><%= "カート内の商品は0件です。" %></h2>
+    <% else %>
+
+      <% @carts.each do |cart_content| %>
+        <div class="cart-contents">
+          <%= render 'cart_content_fields', cart: cart_content %>
+        </div>
+      <% end %>
+
+      <div class="cart-total clearfix">
+        <div class="cart-total-content">
+            <h4>合計 <%= @total_price %> 円</h4>
+            <%= link_to "レジに進む", new_order_path, class: "btn btn-warning" %>
+        </div>
+      </div>
+
+      <div class="paginate">
+        <%= paginate @carts, class: "paginate" %>
+      </div>
+    <% end %>
+</div>

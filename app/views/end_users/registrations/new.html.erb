@@ -19,14 +19,23 @@
     <%= f.text_field :firstname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　名" %>
   </div><br />
 
-   <div class="st_field">
-    <%= f.text_field :zipcode, autofocus: true, :size=>"25", placeholder: "郵便番号" %>
-    ※ハイフン無しで入力してください
-  </div><br />
 
-   <div class="t_field">
-    <%= f.text_field :address, autofocus: true, :size=>"55", placeholder: "住所" %>
-  </div><br />
+       <div class="t_field">
+        <!-- アソシエーション名(モデル名)↓ -->
+         <%= f.fields_for :deliveries do |d| %>
+    
+                <div class="">
+                  <%= d.text_field :address %>
+                  <%= d.text_field :zipcode %>
+                  <%= d.text_field :lastname_kanji%>
+                  <%= d.text_field :firstname_kanji %>
+                  <%= d.text_field :lastname_kana %>
+                  <%= d.text_field :firstname_kana %>
+                  <%= d.text_field :phone_number %>
+     
+                </div>
+          <% end %>
+      </div><br />
 
    <div class="st_field">
     <%= f.text_field :phone_number, autofocus: true, :size=>"25", placeholder: "電話番号" %>

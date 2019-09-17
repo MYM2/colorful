@@ -1,3 +1,119 @@
 // Place all the styles related to the admin::inquiries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// show画面のCSS
+
+.inquiry_show{
+	width: 80%;
+	margin: 0 auto;
+}
+.inquiry_show_title h1{
+	text-align: center;
+}
+// 問い合わせ内容
+.inquiry_show_box{
+	border: 1px solid #000000;
+	padding: 20px;
+	background-color: #f0d4b8;
+}
+.inquiry_show_box h2{
+	text-align: center;
+}
+.inquirer_show_name{
+	margin: 30px 0;
+}
+.inquiry_mail{
+	margin-bottom: 30px
+}
+.inquiry_show_content_box{
+	height: 200px;
+	border : 1px solid #000000;
+	border-radius: 10px;
+	background-color:#f8f8cc;
+	padding: 5px;
+}
+
+
+// -----------------------------------
+
+
+// 問い合わせ返信
+.inquiry_show_reply{
+	margin-top: 30px;
+	border: 1px solid #000000;
+	padding: 20px;
+	background-color: #f0d4b8;
+}
+.inquiry_show_reply h2{
+	text-align: center;
+}
+.inquiry_show_reply h4{
+}
+.reply_content{
+	width: 100%;
+	height: 150px;
+	border-radius: 10px;
+	background-color:#f8f8cc;
+	padding: 5px;
+}
+.reply_submit_box{
+}
+.reply_submit{
+	height: 50px;
+	width: 100%;
+	border-radius: 10px;
+	background-color: #d9d6d3;
+	margin: 20px 0;
+}
+// -----------------------------------
+.back_inquiry{
+	margin-top: 50px;
+}
+.inquiry_back{
+	padding: 30px 50px;
+	border-radius: 10%;
+	border: 1px solid #000000;
+	background-color: #d9d6d3;
+}
+
+// index画面のCSS----------------------
+.inquiry_index_box2{
+	height: 90px;
+}
+
+.inquiry_index{
+	width: 80%;
+	margin: 0 auto;
+}
+.inquiry_index_box{
+	border-top: 2px solid #000000;
+	margin-bottom: 20px;
+}
+.inquirer_index_name h3{
+	color: #2a5bc0;
+}
+.inquiry_link_box{
+	float: right;
+	margin-right: 10%;
+}
+.inquiry_link{
+	padding: 25px 60px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: #82fff2;
+    color: #000000;
+}
+.inquiry_index_content{
+	height: 100px;
+	border: 1px solid #000000;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+
+
+
+
+

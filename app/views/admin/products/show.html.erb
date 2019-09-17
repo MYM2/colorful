@@ -1,4 +1,5 @@
 <div class="product-show">
+  <%= render 'layouts/messages' %>
 
 <!== 作品情報 ==>
   <div class="product-content clearfix">
@@ -25,7 +26,7 @@
       <p>在庫があるか表示　予定</p>
       <% if @product.stopped == false %>
         <p class= "stopped-false" >※販売中</p>
-      <% elsif @product == true %>
+      <% elsif @product.stopped == true %>
         <p class= "stopped-true" >※販売停止中</p>
       <% end %>
     </div>

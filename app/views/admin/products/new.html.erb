@@ -1,11 +1,12 @@
 <div class="input-product">
+  <%= render 'layouts/messages' %>
   <h1>商品追加</h1>
 
   <h4>CDの情報を入力してください</h4>
   <br>
   <%= form_for(@product_new, url: {controller: "admin/products", action: "create" }) do |f| %>
         <%= f.label "アーティスト名を選択" %>
-        <%= f.collection_select(:artist_id, Artist.all, :id, :artist_name) %>
+        <%= f.collection_select(:artist_id, Artist.all, :id, :artist_name, prompt: "アーティストを選択して下さい") %>
         <br>
         <br>
         <%= f.text_field :product_name, autofocus: true, class:"form-control", placeholder: "シングル名／アルバム名" %>
@@ -18,11 +19,11 @@
         <br>
         <br>
         <%= f.label "レーベルを選択" %>
-        <%= f.collection_select(:label_id, Label.all, :id, :label_name) %>
+        <%= f.collection_select(:label_id, Label.all, :id, :label_name, prompt: "レーベルを選択して下さい") %>
         <br>
         <br>
         <%= f.label "ジャンルを選択" %>
-        <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name) %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :genre_name, prompt: "ジャンルを選択して下さい") %>
         <br>
         <br>
         
