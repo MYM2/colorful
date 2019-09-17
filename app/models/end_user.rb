@@ -5,7 +5,6 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          has_many :deliveries, dependent: :destroy
-         has_many :inquiries, dependent: :destroy
          has_many :reviews, dependent: :destroy
          has_many :favorites, dependent: :destroy
          has_many :orders, dependent: :destroy

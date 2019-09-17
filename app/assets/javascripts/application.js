@@ -14,6 +14,7 @@
 //= require activestorage
 //= require turbolinks
 
+
 //= require jquery
 //= require cocoon
 
@@ -39,4 +40,3 @@ $(function() {
     $(this).stop().animate({borderRadius:'1000'},100);
    });
 });
-
