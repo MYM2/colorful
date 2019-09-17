@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :favorites, only: [:destroy, :create]
   resources :products, only: [:index, :show]
   resources :inquiries, only: [:new, :create]
-  resources :deliveries, only: [:index, :edit, :destroy, :new, :update, :create]
+  resources :deliveries, only: [:show, :edit, :destroy, :new, :update, :create]
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
