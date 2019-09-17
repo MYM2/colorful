@@ -27,9 +27,9 @@
 
 
       <% if admin_user_signed_in? %>
-       <a class="navbar-brand" href="/admin/products">colorful</a>
+       <a class="navbar-brand" href="/admin/products" data-turbolinks="false" >colorful</a>
       <% else %>
-       <a class="navbar-brand" href="/products">colorful</a>
+       <a class="navbar-brand" href="/products" data-turbolinks="false" >colorful</a>
       <% end %>
 
     </div>
@@ -91,9 +91,9 @@
 <!-- ここからフッターです。 -->
 <footer>
     <% if admin_user_signed_in? %>
-    <a class="logo" href="/admin/products">colorful</a>
+    <a class="logo" href="/admin/products" data-turbolinks="false">colorful</a>
     <% else %>
-    <a class="logo" href="/products">colorful</a>
+    <a class="logo" href="/products"i data-turbolinks="false" >colorful</a>
     <% end %>
 
     <% if admin_user_signed_in? %>

@@ -1,2 +1,26 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class="confirmation">
+  <h1>注文確認画面</h1>
+
+  <div class="order-user-confirmation">
+    <div class="user-deliver">
+    </div>
+    <div class="user-payment-method">
+    </div>
+  </div>
+
+  <%# オーダー内容 %>
+  <div class="order-content-confirmation">
+      <% @carts.each do |cart_content| %>
+        <div class="cart-contents">
+          <%= render 'order_content_fields', cart: cart_content %>
+        </div>
+      <% end %>
+
+      <div class="cart-total clearfix">
+        <div class="cart-total-content">
+            <h4>合計 <%= @total_price %> 円</h4>
+        </div>
+      </div>
+  </div>
+
+</div>
