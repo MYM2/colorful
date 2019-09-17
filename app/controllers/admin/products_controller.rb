@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-  before_action :authenticate_end_user!
+  
 
   def index
     @products = Product.includes([:artist, :genre]).page(params[:page]).reverse_order.per(20)

@@ -22,7 +22,7 @@
 //= require_tree .
 
 
-$(function() {
+$(document).on('turbolinks:load',function() {
   $('.slick').slick(
     {
         autoplay:true,
@@ -32,7 +32,7 @@ $(function() {
 });
 
 //ジャケット画像にマウスカーソルを載せたとき四角に戻す。
-$(function() {
+$(document).on('turbolinks:load',function() {
   $('.product-list-image-animation').hover(function()
    {
       $(this).stop().animate({borderRadius:'0'},100);
