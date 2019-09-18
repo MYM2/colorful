@@ -11,7 +11,7 @@ class EndUser < ApplicationRecord
          has_many :carts, dependent: :destroy
 
          validates :email, :encrypted_password, :lastname_kanji, :firstname_kanji, :lastname_kana,
-			  :firstname_kana, :phone_number, :zipcode, :address,
+			  :firstname_kana, :phone_number,
 			   presence: true
 
 
