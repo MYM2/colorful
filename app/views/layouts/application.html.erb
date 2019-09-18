@@ -41,7 +41,7 @@
             <%= link_to 'アーティスト一覧', artists_path,:class => 'header_btn' %>
           </li>
           <li>
-            <a href="/end_users/<%= current_end_user.id %>">マイページ</a>
+            <a href="/end_users/<%= current_end_user.id %>" class="header_btn">マイページ</a>
           </li>
           <li>
             <a href="/rankings" class="header_btn">ランキング</a>
@@ -70,17 +70,30 @@
         <% end %>
 
                 <!-- ここから検索バーです -->
+        <% if admin_user_signed_in? %>
+        
           <%= search_form_for @search, url: admin_searches_path do |f| %>
-          <div class="search_btn_box">
-            <%= f.submit "検索", class: "search_btn" %>
-          </div>
-          <div class="search_form_box">
-            <%= f.text_field :product_name_or_artist_artist_name_or_genre_genre_name_cont, class: "search_form", placeholder: '検索キーワード' %>
-          </div>
-     
+            <div class="search_btn_box">
+              <%= f.submit "検索", class: "search_btn" %>
+            </div>
+            <div class="search_form_box">
+              <%= f.text_field :product_name_or_artist_artist_name_or_genre_genre_name_cont, class: "search_form", placeholder: '検索キーワード' %>
+            </div>
+          <% end %>
+
+        <% else %>
+
+          <%= search_form_for @search, url: searches_path do |f| %>
+            <div class="search_btn_box">
+              <%= f.submit "検索", class: "search_btn" %>
+            </div>
+            <div class="search_form_box">
+              <%= f.text_field :product_name_or_artist_artist_name_or_genre_genre_name_cont, class: "search_form", placeholder: '検索キーワード' %>
+            </div>
+          <% end %>
         <% end %>
         　　　　<!-- ここまで検索バーです -->
-                    
+
 
 
 
@@ -92,7 +105,7 @@
 
   <%= yield %>
 
- 
+
 
 <!-- ここからフッターです。 -->
 <footer>
