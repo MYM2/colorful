@@ -22,6 +22,11 @@
    padding: 0;
    box-sizing: border-box;
 }
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
 
 body {
   margin-top: 100px;
@@ -105,11 +110,33 @@ footer a {
   color: blue;
 }
 
+// ここからheader
+header{
+  background-color: #e7e7e7;
 
-.search_submit{
+}
+.colorful_logo{
+  padding: 40px;
+  float: left;
+  background-color: #fff651;
+  border-radius: 10px;
+}
+.header_btn{
+  padding: 40px 15px;
   float: right;
 }
-.search_field{
+
+.search_btn_box{
+  margin: auto 20px;
+}
+.search_btn{
+  padding: 15px;
+  float: right;
+  margin: 24px 10px;
+}
+.search_form{
   width: 50%;
   float: right;
+  line-height: 48px;
+  margin: 24px 0;
 }

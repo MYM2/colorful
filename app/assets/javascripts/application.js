@@ -25,11 +25,9 @@ window.addEventListener('popstate', function(e) {
   window.location.reload();
 });
 
-<<<<<<< HEAD
-$(document).on('turbolinks:load',function() {
-=======
+
 $(document).on('turbolinks:load', function() {
->>>>>>> 470140796592932d4a90677748230bf561281ea1
+
   $('.slick').slick(
     {
         autoplay:true,
@@ -39,13 +37,11 @@ $(document).on('turbolinks:load', function() {
 });
 
 //ジャケット画像にマウスカーソルを載せたとき四角に戻す。
-<<<<<<< HEAD
-$(document).on('turbolinks:load',function() {
-=======
+
 $(document).on('turbolinks:load', function() {
->>>>>>> 470140796592932d4a90677748230bf561281ea1
+
   $('.product-list-image-animation').hover(function()
-   {  
+   {
     $(this).stop().animate({borderRadius:'0'},100);
    }, function() {
     $(this).stop().animate({borderRadius:'1000'},100);
