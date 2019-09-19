@@ -2,17 +2,17 @@
           <%= attachment_image_tag cart.product, :jacket_image, fallback: "no_image.png", class: "cart-image" %>
 
         <div class="cart-text">
-          <h4><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= cart.product.product_name%></h4>
+          <h3><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= cart.product.product_name%></h3>
           <br>
-          <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= cart.product.artist.artist_name %></p>
+          <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= cart.product.artist.artist_name %></h4>
           <br>
           <%= cart.product.genre.genre_name %>
         </div>
 
         <div class="cart-price">
-          <h4>税込み <%= cart.product.price * cart.product_qty %> 円</h4>
+          <h3>税込み <%= (cart.product.price * cart.product_qty).to_s(:delimited) %> 円</h3>
           <br>
           <br>
-          <p>数量 <%= cart.product_qty %></p>
+          <h4>数量 <%= cart.product_qty %></h4>
         </div>
 </div>

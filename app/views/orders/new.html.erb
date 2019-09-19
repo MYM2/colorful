@@ -1,5 +1,5 @@
-<div class="confirmation">
-  <h1>注文確認画面</h1>
+<div class="confirmation clearfix">
+  <h1>ご注文内容</h1>
 
   <div class="order-user-confirmation">
     <div class="user-deliver">
@@ -10,6 +10,7 @@
 
   <%# オーダー内容 %>
   <div class="order-content-confirmation">
+  <h1>お届け商品</h1>
       <% @carts.each do |cart_content| %>
         <div class="cart-contents">
           <%= render 'order_content_fields', cart: cart_content %>
@@ -18,8 +19,34 @@
 
       <div class="cart-total clearfix">
         <div class="cart-total-content">
-            <h4>合計 <%= @total_price %> 円</h4>
+            <h2>合計 <%= @total_price.to_s(:delimited) %> 円</h2>
         </div>
+      </div>
+  </div>
+
+  <%# 最終確認内容 %>
+  <div class="order-price-confirmation">
+    <h1>ご注文内容</h1>
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td>商品の小計</td>
+          <td class="table-Left-justification"><%= @total_price.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <td>送料</td>
+          <td class="table-Left-justification"><%= @freight.to_s(:delimited) %></td>
+        </tr>
+        <tr class="order-price-total">
+          <td>合計</td>
+          <td class="table-Left-justification"><%= (@total_price + @freight).to_s(:delimited) %></td>
+        </tr>
+      </tbody>
+    </table>
+      <div class="order-confirm">
+        <h4> ※この内容で注文します</h4>
+        <br>
+        <%= link_to "注文を確定する", orders_path(@order_new), method: :post, class: "btn btn-warning" %>
       </div>
   </div>
 

@@ -9,7 +9,29 @@
 }
 
 .order-content-confirmation {
-  width: 60%;
   margin: auto;
   border: 1px solid gray;
 }
+.order-price-confirmation {
+  width: 40%;
+  margin-top: 100px;
+  float: right;
+  border: 1px solid gray;
+}
+.order-price-confirmation table {
+  width: 80%;
+  margin: auto;
+}
+.table-Left-justification {
+  text-align: right;
+}
+.order-confirm {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 80%;
+  margin: auto;
+}
+.order-price-total {
+  font-size: 24px;
+}
+
