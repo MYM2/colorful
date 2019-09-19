@@ -21,7 +21,7 @@
           <%= product.genre.genre_name %>
           <br>
           <br>
-          ¥<%= product.price %>
+          ¥<%= product.price.to_s(:delimited) %>
         </div>
       </div>
     <% end %>
