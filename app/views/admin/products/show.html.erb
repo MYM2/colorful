@@ -49,12 +49,22 @@
 
 <!== 管理情報 ==>
   <!-- 在庫管理機能 -->
+    <!-- 入荷機能 -->
     <div class="stock">
-      <%= form_with model: @arrival do |arrival| %>
-        <%= arrival.select :received_qty, options_for_select((1..20)) %>
-        <%= arrival.hidden_field :product_id, value: @product.id %>
-        <%= submit_tag '入荷する', :name => nil, class: "btn btn-warning" %>
-      <% end %>
+      <div class="product_arrival_box">
+        <%= form_for @arrival,url: admin_arrivals_path do |arrival| %>
+          <%= arrival.select :received_qty, options_for_select((1..20)), class: 'qty_btn' %>
+          <%= arrival.hidden_field :product_id, value: @product.id %>
+          <%= submit_tag '入荷する', :name => nil, class: "btn btn-warning" %>
+        <% end %>
+      </div>
+      <!-- 廃棄機能 -->
+      <div class="product_disposal_box">
+        <%= form_for @disposal,url: admin_disposals_path do |disposal| %>
+          <%= disposal.select :scrapped_qty, options_for_select((1..20)), class: 'qty_btn' %>
+          <%= disposal.hidden_field :product_id, value: @product.id %>
+          <%= submit_tag '廃棄する', :name => nil, class: "btn btn-warning" %>
+        <% end %>
     </div>
 
 

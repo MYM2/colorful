@@ -12,7 +12,8 @@ class Admin::ProductsController < ApplicationController
     @artist = @product.artist
     @genre = @product.genre
     @label = @product.label
-    @arrival = Arribal.new
+    @arrival = Arrival.new
+    @disposal = Disposal.new
   end
 
   def edit
