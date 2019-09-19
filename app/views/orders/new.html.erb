@@ -5,11 +5,11 @@
     <div class="user-deliver">
      <%# 選択住所 %>
      <h1>お届け先住所  <%= link_to "編集", edit_delivery_path(@delivery), class: "btn btn-default" %></h1>
-        <table class="table table-striped">
+        <table class="table table-bordered table-striped">
           <tbody>
             <tr>
               <td>氏名</td>
-              <td><%= @delivery.lastname_kanji %> <%= @delivery.firstname_kanji %></td>
+              <td><%= @delivery.lastname_kanji %> <%= @delivery.firstname_kanji %>　様</td>
             </tr>
             <tr>
               <td>郵便番号</td>
