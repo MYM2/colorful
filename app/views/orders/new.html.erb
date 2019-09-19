@@ -1,10 +1,41 @@
 <div class="confirmation clearfix">
   <h1>ご注文内容</h1>
 
-  <div class="order-user-confirmation">
+  <div class="order-user-confirmation clearfix">
     <div class="user-deliver">
+     <%# 選択住所 %>
+     <h1>お届け先住所  <%= link_to "編集", edit_delivery_path(@delivery), class: "btn btn-default" %></h1>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td>氏名</td>
+              <td><%= @delivery.lastname_kanji %> <%= @delivery.firstname_kanji %></td>
+            </tr>
+            <tr>
+              <td>郵便番号</td>
+              <td><%= @delivery.zipcode %></td>
+            </tr>
+            <tr>
+              <td>住所</td>
+              <td><%= @delivery.address %></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td><%= @delivery.phone_number %></td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
     </div>
     <div class="user-payment-method">
+     <%# 支払い方法選択 %>
+     <h1>お支払い方法  <%= link_to "編集", cards_path, class: "btn btn-default" %></h1>
+       <div class="radio-button-area">
+         <%= radio_button_tag :payment_method, 0 %> クレジットカード<br>
+          <h4>カード内容　表示予定</h4>
+         <%= radio_button_tag :payment_method, 1 %> 銀行振込<br>
+         <%= radio_button_tag :payment_method, 2 %> 代金引換<br>
+       </div>
     </div>
   </div>
 

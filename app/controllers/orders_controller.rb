@@ -6,9 +6,11 @@ class OrdersController < ApplicationController
     # オーダー関係オブジェクト
     @order = Order.new
     @order_content = OrderContent.new
+    @end_user = current_end_user
+
+    @delivery = @end_user.deliveries.find_by(default: :true)
 
     # カートの中身
-    @end_user = current_end_user
     @carts = @end_user.carts.includes(:product)
     @freight = 500
 

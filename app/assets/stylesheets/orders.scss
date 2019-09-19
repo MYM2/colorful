@@ -2,25 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.clearfix {
+  content: "";
+  display: block;
+  clear: both;
+}
 
 .confirmation {
   width: 80%;
   margin: auto;
 }
 
+.order-user-confirmation {
+  margin: 50px auto;
+  border: 1px solid gray;
+}
+.user-deliver, .user-payment-method {
+  width: 50%;
+  float: left;
+}
+.user-deliver table, .user-deliver h1, .user-payment-method h1, .radio-button-area, .order-content-confirmation h1, .order-price-confirmation table, .order-price-confirmation h1 {
+  width: 80%;
+  margin: 50px auto;
+}
+.radio-button-area {
+  font-size: 24px;
+}
+
 .order-content-confirmation {
   margin: auto;
   border: 1px solid gray;
 }
+.order-content, .cart-total {
+  width: 80%;
+  margin: auto;
+}
+
 .order-price-confirmation {
   width: 40%;
   margin-top: 100px;
   float: right;
   border: 1px solid gray;
-}
-.order-price-confirmation table {
-  width: 80%;
-  margin: auto;
 }
 .table-Left-justification {
   text-align: right;
