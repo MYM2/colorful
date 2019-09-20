@@ -24,6 +24,17 @@ class OrdersController < ApplicationController
   end
 
   def create
-    puts "order-create"
+    # オーダー関係オブジェクト
+    @order = Order.new(order_params)
+    params[:carts].each do |cart|
+      @cart = Oreder_content.new(:carts)
+    end
+
   end
+
+  private
+    def order_params
+    params.require(:order).permit(:deliveries_address, :payment_method, :subtotal_ex_tax, :subtotal_in_tax, :freight, :arrival_status, :order_content, :carts)
+    end
+
 end

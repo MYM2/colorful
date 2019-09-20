@@ -31,10 +31,10 @@
      <%# 支払い方法選択 %>
      <h1>お支払い方法  <%= link_to "編集", cards_path, class: "btn btn-default" %></h1>
        <div class="radio-button-area">
-         <%= radio_button_tag :payment_method, 0 %> クレジットカード<br>
+         <%= radio_button_tag :payment, 0 %> クレジットカード<br>
           <h4>カード内容　表示予定</h4>
-         <%= radio_button_tag :payment_method, 1 %> 銀行振込<br>
-         <%= radio_button_tag :payment_method, 2 %> 代金引換<br>
+         <%= radio_button_tag :payment, 1 %> 銀行振込<br>
+         <%= radio_button_tag :payment, 2 %> 代金引換<br>
        </div>
     </div>
   </div>
@@ -77,7 +77,22 @@
       <div class="order-confirm">
         <h4> ※この内容で注文します</h4>
         <br>
-        <%= link_to "注文を確定する", orders_path(@order_new), method: :post, class: "btn btn-warning" %>
+
+        <%= form_with(model: @order) do |f| %>
+          <%= f.hidden_field :deliveries_address, :value => @delivery.address %>
+          <%= f.hidden_field :payment_method, :value => :payment %>
+          <%= f.hidden_field :subtotal_ex_tax, :value => @total_price %>
+          <%= f.hidden_field :subtotal_in_tax, :value => @total_price %>
+          <%= f.hidden_field :freight, :value => @freight %>
+          <%= f.hidden_field :arrival_status, :value => 0 %>
+
+          <%= f.fields_for :carts do |cart| %>
+            <%= cart.hidden_field :product_id, :value => cart.product_id %>
+            <%= cart.hidden_field :product_id, :value => cart.product_qty %>
+          <% end %>
+
+          <%= f.submit "注文を確定する", :name => nil, class: "btn btn-warning" %>
+        <% end %>
       </div>
   </div>
 
