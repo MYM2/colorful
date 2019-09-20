@@ -29,5 +29,13 @@ class Admin::EndUsersController < ApplicationController
   end
 
   def update
+     @admin_end_user = EndUser.with_deleted.find(params[:id])
+     @admin_end_user.update(admin_end_user_params)
+     redirect_to admin_end_user_path(@admin_end_user.id)
   end
+
+  protected
+    def admin_end_user_params
+      params.require(:end_user).permit(:lastname_kanji, :firstname_kanji, :lastname_kana, :firstname_kana, :phone_number, :email)
+    end
 end

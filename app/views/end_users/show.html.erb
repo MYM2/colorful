@@ -26,7 +26,9 @@
 						</tr>
 						<tr>
 							<th></th>
-							<td><a href="/end_users/<%= current_end_user.id %>/edit" class="btn btn-primary btn-block" role="button">編集</a></td>
+							<td>
+								<%= link_to '編集' , edit_end_user_path, class:"btn btn-block btn-primary" %>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -92,7 +94,7 @@
 			</div><br/>
 			<!-- 退会手続き画面へのリンク -->
 			<div class="leave">
-				<a href="/leaves/<%= current_end_user.id %>" class="btn btn-danger" role="button">退会手続きへ</a>
+				<%= link_to '退会手続きへ', leafe_path, class:"btn btn-danger" %>
 			</div>
 		</div>
 		<div class="col-xs-3"></div>
