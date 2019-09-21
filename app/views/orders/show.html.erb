@@ -1,0 +1,10 @@
+<h1>購入履歴一覧</h1>
+<div class="order-user-purchase-history">
+  <%= render 'order_user_purchase-histories', order_con: order_content %>
+</div>
+
+
+
+      <div class="paginate">
+        <%= paginate @carts, class: "paginate" %>
+      </div>

@@ -1,18 +1,20 @@
 class OrdersController < ApplicationController
-  def index
+  def show
+    @end_user = current_end_user
+    @order= @end_user.Orders.includes(:order_contents)
   end
 
   def new
-    # オーダー関係オブジェクト
-    @order = Order.new
-    @order_content = OrderContent.new
     @end_user = current_end_user
-
-    @delivery = @end_user.deliveries.find_by(default: :true)
-
     # カートの中身
     @carts = @end_user.carts.includes(:product)
     @freight = 500
+
+    # オーダー関係オブジェクト
+    @order = Order.new
+    @carts.length.times {@order.order_contents.build}
+
+    @delivery = @end_user.deliveries.find_by(default: :true)
 
     # カート内合計金額
     @carts_total = @end_user.carts.includes(:product)
@@ -26,15 +28,22 @@ class OrdersController < ApplicationController
   def create
     # オーダー関係オブジェクト
     @order = Order.new(order_params)
-    params[:carts].each do |cart|
-      @cart = Oreder_content.new(:carts)
-    end
+    @end_user = current_end_user
+    binding.pry
+      if @order.save
+        flash[:success] = "注文が完了しました。"
+        redirect_to new_order_path(@end_user)
+      else
+        flash[:danger] = "注文に失敗しました。"
+        redirect_to new_order_path(@end_user)
+      end
 
   end
 
   private
     def order_params
-    params.require(:order).permit(:deliveries_address, :payment_method, :subtotal_ex_tax, :subtotal_in_tax, :freight, :arrival_status, :order_content, :carts)
+      params.require(:order).permit(:deliveries_address, :payment_method, :subtotal_ex_tax, :subtotal_in_tax, :freight, :arrival_status,
+                                    order_contents_attributes: [:id, :product_id, :product_qty, :price_sum_ex_tax, :price_sum_in_tax])
     end
 
 end
