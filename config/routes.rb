@@ -14,12 +14,13 @@ Rails.application.routes.draw do
     resources :replies, only: [:create]
     resources :inquiries, only: [:index, :show]
     resources :end_users, only: [:index, :show, :edit, :destroy, :update]
+    delete 'admin/end_users/:id' => 'end_users#really_destroy', as:'really_destroy'
     resources :discs, only: [:destroy]
     resources :songs, only: [:destroy]
   end
 
   resources :end_users, only: [:show, :edit, :update]
-  resources :leaves, only: [:show, :update]
+  resources :leaves, only: [:show, :destroy]
   resources :rankings, only: [:index]
   resources :cards, only: [:index]
   resources :searches, only: [:index]
@@ -31,7 +32,8 @@ Rails.application.routes.draw do
   resources :favorites, only: [:destroy, :create]
   resources :products, only: [:index, :show]
   resources :inquiries, only: [:new, :create]
-  resources :deliveries, only: [:index, :edit, :destroy, :new, :update, :create]
+  resources :deliveries, only: [:show, :edit, :destroy, :new, :update, :create]
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

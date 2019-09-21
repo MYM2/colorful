@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_074631) do
+ActiveRecord::Schema.define(version: 2019_09_19_093828) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 2019_09_17_074631) do
     t.string "firstname_kanji"
     t.string "lastname_kana"
     t.string "firstname_kana"
-    t.integer "phone_number"
-    t.integer "zipcode"
+    t.string "phone_number"
+    t.string "zipcode"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,11 +96,10 @@ ActiveRecord::Schema.define(version: 2019_09_17_074631) do
     t.string "firstname_kanji"
     t.string "lastname_kana"
     t.string "firstname_kana"
-    t.integer "phone_number"
-    t.boolean "leaved", default: false, null: false
-    t.datetime "leave_at"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
@@ -152,6 +151,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_074631) do
     t.integer "arrival_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "end_user_id"
   end
 
   create_table "products", force: :cascade do |t|

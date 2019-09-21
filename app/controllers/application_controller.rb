@@ -15,10 +15,18 @@ class ApplicationController < ActionController::Base
 	    products_path
  end
 
+before_action :set_search
+
+def set_search
+  #@search = Product.search(params[:q])
+  @search = Product.ransack(params[:q]) #ransackメソッド推奨
+  @search_products = @search.result.page(params[:page])
+  
+end
 
 
 protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:lastname_kanji, :firstname_kanji, :lastname_kana, :firstname_kana, :zipcode, :address, :phone_number])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:lastname_kanji, :firstname_kanji, :lastname_kana, :firstname_kana, :phone_number])
   end
 end
