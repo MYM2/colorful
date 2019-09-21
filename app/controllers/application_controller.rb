@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
 	    products_path
  end
 
+before_action :set_search
+
+def set_search
+  #@search = Product.search(params[:q])
+  @search = Product.ransack(params[:q]) #ransackメソッド推奨
+  @search_products = @search.result.page(params[:page])
+  
+end
 
 
 protected

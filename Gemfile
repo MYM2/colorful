@@ -94,4 +94,8 @@ gem 'slick'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
+<<<<<<< HEAD
 gem 'paranoia'
+=======
+gem 'ransack'
+>>>>>>> 4bccbff8ae8cf6512a8a2eb3f4b14ae04873e138
