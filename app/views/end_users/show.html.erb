@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-xs-3"></div>
 		<div class="col-xs-6">
-			<h3><%= @end_user.lastname_kanji %> <%= @end_user.firstname_kanji %> 様のマイページ</h3></br>
+			<h3><%= @end_user.lastname_kanji %> <%= @end_user.firstname_kanji %> 様のマイページ</h3><br>
 			<!-- 会員情報一覧の表示 -->
 			<h4>会員情報一覧</h4>
 				<table class="table table-bordered">
@@ -32,14 +32,14 @@
 						</tr>
 					</tbody>
 				</table>
-				</br>
+				<br>
 			<div class="credit">
 				<h4>クレジットカード一覧</h4>
 				・VISA 下4桁 0000
 				<a href="" class="btn btn-primary" role="button">編集</a>
 				<a href="" class="btn btn-danger" role="button">削除</a>　※何も設定してません
 				<a href="" class="btn btn-primary" role="button">クレジットカードの追加はこちら</a>
-			</div></br>
+			</div><br>
 			<!-- お届け先一覧の表示 -->
 			<h4>お届け先一覧</h4>
 				<table class="table table-bordered table-condensed">
@@ -87,11 +87,11 @@
   			<!-- 届け先住所の追加画面へのリンク -->
 			<div class="add_delivery">
 				<a href="/deliveries/new" class="btn btn-primary" role="button">お届け先の追加はこちら</a>
-			</div><br/>
+			</div><br>
 			<!-- 購入履歴へのリンク -->
 			<div class="history">
 				<a href="/orders" class="btn btn-primary" role="button">購入履歴</a>
-			</div><br/>
+			</div><br>
 			<!-- 退会手続き画面へのリンク -->
 			<div class="leave">
 				<%= link_to '退会手続きへ', leafe_path, class:"btn btn-danger" %>
