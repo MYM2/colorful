@@ -12,8 +12,15 @@ class Admin::ProductsController < ApplicationController
     @artist = @product.artist
     @genre = @product.genre
     @label = @product.label
-    @arrival = Arrival.new
-    @disposal = Disposal.new
+    @arrival_new = Arrival.new
+    @disposal_new = Disposal.new
+    arrivals = @product.arrivals
+    @arrival = arrivals.all.sum(:received_qty)
+    disposal = @product.disposals
+    @disposal = disposal.all.sum(:scrapped_qty)
+    order_content = @product.order_contents
+    @order_content = order_content.all.sum(:product_qty)
+    @stock = @arrival - @disposal - @order_content
   end
 
   def edit
