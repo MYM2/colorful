@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     # オーダー関係オブジェクト
     @order = Order.new(order_params)
     @end_user = current_end_user
-    binding.pry
+    @order.end_user_id = current_end_user.id
       if @order.save
         flash[:success] = "注文が完了しました。"
         redirect_to new_order_path(@end_user)
