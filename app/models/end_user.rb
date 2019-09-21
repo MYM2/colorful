@@ -13,6 +13,6 @@ class EndUser < ApplicationRecord
          validates :email, :encrypted_password, :lastname_kanji, :firstname_kanji, :lastname_kana,
 			  :firstname_kana, :phone_number,
 			   presence: true
-
+         acts_as_paranoid #論理削除用のgemである'paranoia'を使用するための記述
 
 end
