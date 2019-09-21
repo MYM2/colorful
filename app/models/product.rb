@@ -16,4 +16,9 @@ class Product < ApplicationRecord
 
 	accepts_nested_attributes_for :discs, allow_destroy: true
 	# cocoon使用時の記述
+
+	
+
+
+
 end

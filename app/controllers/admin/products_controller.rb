@@ -1,5 +1,7 @@
 class Admin::ProductsController < ApplicationController
 
+
+
   def index
     @products = Product.includes([:artist, :genre]).page(params[:page]).reverse_order.per(20)
   end
@@ -10,6 +12,8 @@ class Admin::ProductsController < ApplicationController
     @artist = @product.artist
     @genre = @product.genre
     @label = @product.label
+    @arrival = Arrival.new
+    @disposal = Disposal.new
   end
 
   def edit
