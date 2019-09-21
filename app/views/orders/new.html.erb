@@ -96,6 +96,7 @@
               <%= g.hidden_field :product_qty, :value => @carts[index].product_qty %>
               <%= g.hidden_field :price_sum_ex_tax, :value => @carts[index].product.price * @carts[index].product_qty %>
               <%= g.hidden_field :price_sum_in_tax, :value => @carts[index].product.price * @carts[index].product_qty %>
+              <%= hidden_field_tag :cart, :value => @carts %>
             <% index += 1 %>
           <% end %>
 

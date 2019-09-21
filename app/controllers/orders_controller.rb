@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def show
     @end_user = current_end_user
-    @order= @end_user.Orders.includes(:order_contents)
+    @orders = @end_user.orders.includes(:order_contents).page(params[:page]).reverse_order.per(20)
   end
 
   def new
@@ -32,10 +32,10 @@ class OrdersController < ApplicationController
     @order.end_user_id = current_end_user.id
       if @order.save
         flash[:success] = "注文が完了しました。"
-        redirect_to new_order_path(@end_user)
+        redirect_to products_path
       else
         flash[:danger] = "注文に失敗しました。"
-        redirect_to new_order_path(@end_user)
+        redirect_to products_path
       end
 
   end

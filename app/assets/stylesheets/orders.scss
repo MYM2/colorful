@@ -58,3 +58,20 @@
   font-size: 24px;
 }
 
+.order-user-purchase-history {
+  width: 80%;
+  margin: auto;
+}
+.order-user-purchase-history h1, .order-user-purchase-history h2 {
+  text-align: center;
+  border: 1px solid gray;
+  margin: 0;
+  padding: 10px;
+}
+
+.order-purchase-history {
+  width: 50%;
+  float: left;
+  border: 1px solid gray;
+}
+
