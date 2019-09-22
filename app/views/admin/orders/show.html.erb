@@ -1,2 +1,27 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+
+<div class="order-user-purchase-history">
+<h1><%= @end_user.lastname_kanji %><%= @end_user.firstname_kanji %>さんの購入履歴一覧</h1>
+      <% @orders.each do |order| %>
+        <div class ="order-histories-content clearfix">
+          <h2 class="clearfix"><%= order.created_at.strftime('%Y年%m月%d日 %H時%M分')  %>の購入</h2>
+          <%= render 'order_user_purchase-histories', order: order %>
+        </div>
+        <div class ="order-histories-status">
+          <div class= "order-histories-status-content">
+            <h4>配送状況：
+            <%= form_with model: order, url: admin_order_path do |f| %>
+              <%= f.hidden_field :id, :value => order.id %>
+              <%= f.select :arrival_status, options_for_select( [["準備中", 0], ["出荷中", 1], ["出荷済み", 2]], order.arrival_status)%>
+              <%= submit_tag "ステータス変更", :name => nil, class: "btn btn-warning" %>
+            <% end %>
+            </h4>
+            <h4>配送先　：<%= order.deliveries_address %></h4>
+            <h4>合計金額：<%= order.subtotal_ex_tax  %>円</h4>
+          </div>
+        </div>
+      <% end %>
+</div>
+
+      <div class="paginate">
+        <%= paginate @orders, class: "paginate" %>
+      </div>
