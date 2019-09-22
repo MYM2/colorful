@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'products#index'
   devise_for :admin_users
   devise_for :end_users
   namespace :admin do
