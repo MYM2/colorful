@@ -31,10 +31,9 @@
      <%# 支払い方法選択 %>
      <h1>お支払い方法  <%= link_to "編集", cards_path, class: "btn btn-default" %></h1>
        <div class="radio-button-area">
-         <%= radio_button_tag :payment, 0 %> クレジットカード<br>
-          <h4>カード内容　表示予定</h4>
-         <%= radio_button_tag :payment, 1 %> 銀行振込<br>
-         <%= radio_button_tag :payment, 2 %> 代金引換<br>
+         <%= radio_button_tag(:payment, 0) %> クレジットカード<br>
+         <%= radio_button_tag(:payment, 1) %> 銀行振込<br>
+         <%= radio_button_tag(:payment, 2, checked: true) %> 代金引換<br>
        </div>
     </div>
   </div>
