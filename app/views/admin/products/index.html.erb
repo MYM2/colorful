@@ -13,6 +13,28 @@
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to product.artist.artist_name, admin_artist_path(product.artist) %>
           <br>
           <%= product.genre.genre_name %>
+          <br>
+          <!-- #在庫数計算 -->
+            <!-- # 入荷数計算 -->
+            <% arrivals = product.arrivals %>
+            <% @arrival = arrivals.all.sum(:received_qty) %>
+            <!-- # 廃棄数計算 -->
+            <% disposal = product.disposals %>
+            <% @disposal = disposal.all.sum(:scrapped_qty) %>
+            <!-- # 注文数計算 -->
+            <% order_content = product.order_contents %>
+            <% @order_content = order_content.all.sum(:product_qty) %>
+            <!-- # 在庫計算 -->
+            <% @stock = @arrival - @disposal - @order_content %>
+          在庫数 <%= @stock %>
+          <br>
+           <% if product.arrivals.present? %>
+            入荷日時<br>
+            <% @arrival_created = product.arrivals.last %>
+            <%= @arrival_created.created_at %>
+           <% else %>
+            入荷履歴なし
+           <% end %>
         </div>
       </div>
     <% end %>
