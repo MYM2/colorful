@@ -15,7 +15,7 @@
           <br>
           購入枚数<%= c.product_qty.to_s(:delimited) %>枚
           <br>
-          小計<%= (c.price_sum_in_tax + order.freight).to_s(:delimited) %>円（税＋送料込み）
+          小計<%= c.price_sum_in_tax.to_s(:delimited) %>円（税込み）
           <br>
         </div>
       </div>

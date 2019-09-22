@@ -10,7 +10,8 @@ module Colorful
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    config.Tax = 1.08
+    config.InTax = 1.08
+    config.Tax = 0.08
     config.Freight = 500
 
     # Settings in config/environments/* take precedence over those specified here.

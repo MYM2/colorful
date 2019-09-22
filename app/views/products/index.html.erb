@@ -23,7 +23,7 @@
           <%= product.genre.genre_name %>
           <br>
           <br>
-          ¥<%= product.price.to_s(:delimited) %>
+          <%= (product.price * Colorful::Application.config.InTax).floor.to_s(:delimited) %>円
         </div>
       </div>
     <% end %>

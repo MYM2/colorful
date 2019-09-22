@@ -50,7 +50,7 @@
 
       <div class="cart-total clearfix">
         <div class="cart-total-content">
-            <h2>合計 <%= @total_price.to_s(:delimited) %> 円</h2>
+            <h2>合計 <%= @total_price_in_tax.to_s(:delimited) %> 円</h2>
         </div>
       </div>
   </div>
@@ -62,15 +62,15 @@
       <tbody>
         <tr>
           <td>商品の小計</td>
-          <td class="table-Left-justification"><%= @total_price.to_s(:delimited) %></td>
+          <td class="table-Left-justification"><%= @total_price_in_tax.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <td>送料</td>
-          <td class="table-Left-justification"><%= @freight.to_s(:delimited) %></td>
+          <td class="table-Left-justification"><%= @freight.to_s(:delimited) %>円</td>
         </tr>
         <tr class="order-price-total">
           <td>合計</td>
-          <td class="table-Left-justification"><%= (@total_price + @freight).to_s(:delimited) %></td>
+          <td class="table-Left-justification"><%= (@total_price_in_tax + @freight).to_s(:delimited) %>円</td>
         </tr>
       </tbody>
     </table>
@@ -83,7 +83,7 @@
           <%= f.hidden_field :deliveries_address, :value => @delivery.address %>
           <%= f.hidden_field :payment_method, :value => :payment %>
           <%= f.hidden_field :subtotal_ex_tax, :value => @total_price %>
-          <%= f.hidden_field :subtotal_in_tax, :value => @total_price %>
+          <%= f.hidden_field :subtotal_in_tax, :value => @total_price_in_tax %>
           <%= f.hidden_field :freight, :value => @freight %>
           <%= f.hidden_field :arrival_status, :value => 0 %>
 
@@ -95,7 +95,7 @@
               <%= g.hidden_field :product_id, :value => @carts[index].product_id %>
               <%= g.hidden_field :product_qty, :value => @carts[index].product_qty %>
               <%= g.hidden_field :price_sum_ex_tax, :value => @carts[index].product.price * @carts[index].product_qty %>
-              <%= g.hidden_field :price_sum_in_tax, :value => @carts[index].product.price * @carts[index].product_qty %>
+              <%= g.hidden_field :price_sum_in_tax, :value => (@carts[index].product.price * @carts[index].product_qty * Colorful::Application.config.InTax).floor %>
               <%= hidden_field_tag :cart, :value => @carts %>
             <% index += 1 %>
           <% end %>
