@@ -27,6 +27,6 @@ end
 
 protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:lastname_kanji, :firstname_kanji, :lastname_kana, :firstname_kana, :phone_number, deliveries_attributes: [:lastname_kanji, :firstname_kanji, :lastname_kana, :firstname_kana, :phone_number, :zipcode, :address]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:lastname_kanji, :firstname_kanji, :lastname_kana, :firstname_kana, :phone_number, deliveries_attributes: [:lastname_kanji, :firstname_kanji, :lastname_kana, :firstname_kana, :phone_number, :zipcode, :address, :default]])
   end
 end

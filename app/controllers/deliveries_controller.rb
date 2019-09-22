@@ -11,7 +11,6 @@ class DeliveriesController < ApplicationController
 
   def new
     @delivery = Delivery.new
-    @end_user = EndUser.new
   end
 
   def destroy
@@ -36,6 +35,7 @@ class DeliveriesController < ApplicationController
 
    private
   def delivery_params
-    params.require(:delivery).permit(:lastname_kanji,:firstname_kanji,:lastname_kana,:firstname_kana,:zipcode,:address,:phone_number, deliveries_attributes: [:id, :lastname_kanji,:firstname_kanji,:lastname_kana,:firstname_kana,:zipcode,:address,:phone_number])
+    　params.require(:delivery).permit(:lastname_kanji,:firstname_kanji,:lastname_kana,:firstname_kana,:zipcode,:address,:phone_number)
   end
 end
+

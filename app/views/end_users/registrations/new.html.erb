@@ -57,6 +57,7 @@
          <div class="t_field">
            <%= d.text_field :address, autofocus: true, :size=>"25", placeholder: "住所" %>
          </div>
+         <%= d.hidden_field :default, :value => "true" %>
        <% end %><br>
 
   <div class="t_actions">
