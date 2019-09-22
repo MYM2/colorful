@@ -17,8 +17,9 @@ class OrdersController < ApplicationController
     @delivery = @end_user.deliveries.find_by(default: :true)
 
     # カート内合計金額
+    @carts_total = @end_user.carts.includes(:product)
     @total_price = 0
-    @carts.each do |cart|
+    @carts_total.each do |cart|
       @total_price += cart.product.price * cart.product_qty
     end
     @total_price_in_tax = (@total_price * Colorful::Application.config.InTax).floor
