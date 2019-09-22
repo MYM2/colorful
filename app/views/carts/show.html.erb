@@ -16,7 +16,7 @@
 
       <div class="cart-total clearfix">
         <div class="cart-total-content">
-            <h4>合計 <%= @total_price %> 円</h4>
+            <h4>合計 <%= @total_price_in_tax.to_s(:delimited) %> 円</h4>
             <%= link_to "レジに進む", new_order_path, class: "btn btn-warning" %>
         </div>
       </div>
