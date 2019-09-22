@@ -1,0 +1,31 @@
+
+<div class="order-user-purchase-history">
+<h1>購入履歴一覧</h1>
+      <% @orders.each do |order| %>
+        <div class ="order-histories-content clearfix">
+          <h2 class="clearfix"><%= order.created_at.strftime('%Y年%m月%d日 %H時%M分')  %>の購入</h2>
+          <%= render 'order_user_purchase-histories', order: order %>
+        </div>
+        <div class ="order-histories-status">
+          <div class= "order-histories-status-content">
+            <h4>配送状況：
+              <% if order.arrival_status == 0 %>
+                <%= "準備中" %>
+              <% elsif order.arrival_status == 1 %>
+                <%= "出荷中" %>
+              <% elsif order.arrival_status == 2 %>
+                <%= "出荷済み" %>
+              <% end %>
+            </h4>
+            <h4>配送先　：<%= order.deliveries_address %></h4>
+            <h4>合計金額：<%= order.subtotal_in_tax + order.freight %>円（送料<%= order.freight %>円＋税込み）</h4>
+          </div>
+        </div>
+      <% end %>
+</div>
+
+
+
+      <div class="paginate">
+        <%= paginate @orders, class: "paginate" %>
+      </div>
