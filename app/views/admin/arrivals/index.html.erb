@@ -1,2 +1,33 @@
-<h1>Admin::Arrivals#index</h1>
-<p>Find me in app/views/admin/arrivals/index.html.erb</p>
+<div class="row" style="">
+
+			<%= render 'layouts/list' %>
+	<div class="search_index col-lg-10">
+		<div class="arrival_title">
+			<h1>商品入荷履歴一覧</h1>
+		</div>
+		<!-- 入荷履歴 -->
+				<% @arrival.each do |arrival| %>
+					<div class="arrival_box">
+						<div class="arrival_image_box">
+							<%= attachment_image_tag arrival.product, :jacket_image, fallback: "no_image.png",class: "arrival_image_file" %>
+						</div>
+						<div class="arrival_content">
+							<h4>
+								<span class="glyphicon glyphicon-music" aria-hidden="true"></span>
+								<%= link_to arrival.product.product_name, admin_product_path(arrival.product_id) %>
+							</h4>
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							<%= link_to arrival.product.artist.artist_name, admin_artist_path(arrival.product.artist_id) %><br>
+							<%= arrival.product.genre.genre_name %>
+							<p class="arrival_date">入荷日時 <%= arrival.created_at %><br>
+							入荷数 <%= arrival.received_qty %></P>
+						</div>
+					</div>
+				<% end %>
+				<div class="paginate">
+					<%= paginate @arrival, class: "paginate" %>
+				</div>
+
+
+	</div>
+</div>

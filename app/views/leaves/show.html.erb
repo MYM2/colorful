@@ -1,2 +1,18 @@
-<h1>Leaves#show</h1>
-<p>Find me in app/views/leaves/show.html.erb</p>
+<div class="leaves">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6">
+				<h3>ユーザー退会手続き</h3></br>
+				<p>※下記「退会する」ボタンをクリックすると、退会処理が確定します。</p>
+
+				<td><%= link_to "退会する", leafe_path(@end_user),  method: :delete, "data-confirm" => "本当に退会しますか？",class:"btn-lg btn-danger btn-block" %></td><br>
+
+
+
+				<%= link_to "マイページへ戻る", end_user_path, class: 'btn btn-default' %>
+			</div>
+			<div class="col-sm-3">
+		</div>
+	</div>
+</div>

@@ -1,15 +1,5 @@
 <div class="artist">
-	<%  if @artist_new.errors.any? %>
-		<div class="arert alert-danger">
-			<ul>
-				<% @artist_new.errors.fullmessages.each do |message| %>
-				<li><%= message %></li>
-			</ul>
-				<% end %>
-		</div>
-	<% end %>
-
-
+	
 	<h2 class="artist_title">アーティスト情報新規登録</h2>
 
 	<h4>アーティスト情報を入力してください</h4>
@@ -25,12 +15,11 @@
 			<div class="">
 				<%= a.text_area :artist_introduction, :placeholder => "紹介文の入力", :class => 'artist_introduction' %>
 			</div>
-			<%= a.submit '新規登録', :class => "btn_artist" %>
+			<%= a.submit '新規登録', :class => "btn_artist_new" %>
 
 		<% end %>
 	</div>
-	
-	<%= link_to admin_admin_users_path do %>
-		<button class="back">戻る</button>
-	<% end %>
+	<div class="btn_artist">
+		<%= link_to '戻る', admin_admin_users_path, :class => 'back' %>
+	</div>
 </div>

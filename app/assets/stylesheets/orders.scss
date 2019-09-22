@@ -1,3 +1,92 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.clearfix {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.confirmation {
+  width: 80%;
+  margin: auto;
+}
+
+.order-user-confirmation {
+  margin: 50px auto;
+  border: 1px solid gray;
+}
+.user-deliver, .user-payment-method {
+  width: 50%;
+  float: left;
+}
+.user-deliver table, .user-deliver h1, .user-payment-method h1, .radio-button-area, .order-content-confirmation h1, .order-price-confirmation table, .order-price-confirmation h1 {
+  width: 80%;
+  margin: 50px auto;
+}
+
+.radio-button-area {
+  font-size: 24px;
+}
+
+.order-content-confirmation {
+  margin: auto;
+  border: 1px solid gray;
+}
+.order-content {
+  width: 80%;
+  margin: auto;
+}
+
+.order-price-confirmation {
+  width: 40%;
+  margin-top: 100px;
+  float: right;
+  border: 1px solid gray;
+}
+.table-Left-justification {
+  text-align: right;
+}
+.order-confirm {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 80%;
+  margin: auto;
+}
+.order-price-total {
+  font-size: 24px;
+}
+
+.order-user-purchase-history {
+  width: 80%;
+  margin: auto;
+}
+.order-user-purchase-history h1, .order-user-purchase-history h2 {
+  text-align: center;
+  border: 1px solid gray;
+  margin: 0;
+  padding: 10px;
+}
+
+.order-purchase-history {
+  width: 50%;
+  float: left;
+  border: 1px solid gray;
+}
+.order-histories-content {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid gray;
+}
+.order-histories-status {
+  width: 100%;
+  border: 1px solid gray;
+}
+.order-histories-status-content {
+  margin: auto;
+  width: 60%;
+  text-align: left;
+}
+
+

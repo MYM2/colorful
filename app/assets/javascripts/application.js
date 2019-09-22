@@ -21,8 +21,13 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+window.addEventListener('popstate', function(e) {
+  window.location.reload();
+});
 
-$(function() {
+
+$(document).on('turbolinks:load', function() {
+
   $('.slick').slick(
     {
         autoplay:true,
@@ -32,11 +37,14 @@ $(function() {
 });
 
 //ジャケット画像にマウスカーソルを載せたとき四角に戻す。
-$(function() {
-  $('.product-list-image').hover(function()
+
+$(document).on('turbolinks:load', function() {
+
+  $('.product-list-image-animation').hover(function()
    {
-      $(this).stop().animate({borderRadius:'0'},100);
+    $(this).stop().animate({borderRadius:'0'},100);
    }, function() {
     $(this).stop().animate({borderRadius:'1000'},100);
    });
 });
+

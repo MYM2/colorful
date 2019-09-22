@@ -1,0 +1,26 @@
+<div class="cart-content clearfix">
+        <%= link_to(product_path(cart.product)) do %>
+          <%= attachment_image_tag cart.product, :jacket_image, fallback: "no_image.png", class: "cart-image" %>
+        <% end %>
+
+        <div class="cart-text">
+          <h4><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= link_to cart.product.product_name, product_path(cart.product) %></h4>
+          <br>
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to cart.product.artist.artist_name, artist_path(cart.product.artist) %>
+          <br>
+          <%= cart.product.genre.genre_name %>
+        </div>
+
+        <div class="cart-price">
+          <h4>税込み <%= (cart.product.price * cart.product_qty * Colorful::Application.config.InTax).floor.to_s(:delimited) %> 円</h4>
+          <br>
+          <br>
+            <%= form_with model: cart do |f| %>
+            <%= f.select :product_qty, options_for_select((1..15), cart.product_qty)%>
+            <%= submit_tag "数量変更", :name => nil, class: "btn btn-warning" %>
+          <% end %>
+          <br>
+          <br>
+          <%= link_to "商品を削除する", cart_path(cart), method: :delete, class: "btn btn-danger" %>
+        </div>
+</div>

@@ -1,2 +1,54 @@
-<h1>Admin::EndUsers#show</h1>
-<p>Find me in app/views/admin/end_users/show.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+            <h3>ユーザー情報詳細</h3><br>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>氏名</th>
+                        <td><%= @admin_end_user.lastname_kanji %> <%= @admin_end_user.firstname_kanji %></td>
+                    </tr>
+                    <tr>
+                        <th>カナ</th>
+                        <td><%= @admin_end_user.lastname_kana %> <%= @admin_end_user.firstname_kana %></td>
+                    </tr>
+                    <tr>
+                        <th>電話番号</th>
+                        <td><%= @admin_end_user.phone_number %></td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス</th>
+                        <td><%= @admin_end_user.email %></td>
+                    </tr>
+                </tbody>
+            </table>
+            </br>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-3">
+            <%= link_to "編集する" , edit_admin_end_user_path, class:"btn btn-block btn-primary" %>
+        </div>
+        <div class="col-xs-3">
+            <%= link_to "ユーザーの購入履歴を見る" , admin_order_path, class:"btn btn-block btn-primary" %>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-3">
+            <%= link_to "論理削除する" , admin_end_user_path(@admin_end_user), method: :delete, "data-confirm" => "本当に論理削除しますか？", class:"btn btn-block btn-danger" %><br>
+
+            <%= link_to "ユーザー情報一覧へ戻る", admin_end_users_path, class: 'btn btn-default' %>
+
+        </div>
+        <div class="col-xs-3">
+            <%= link_to "物理削除する" , admin_really_destroy_path(@admin_end_user), method: :delete,"data-confirm" => "本当に物理削除しますか？", class:"btn btn-block btn-danger" %>
+        </div>
+        <div class="col-xs-3"></div>
+    </div>
+</div>

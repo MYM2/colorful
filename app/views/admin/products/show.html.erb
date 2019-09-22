@@ -1,4 +1,5 @@
 <div class="product-show">
+  <%= render 'layouts/messages' %>
 
 <!== 作品情報 ==>
   <div class="product-content clearfix">
@@ -20,12 +21,17 @@
 
 <!== 販売情報 ==>
     <div class="product-content-price">
-      <p>税別 <%= @product.price %>円</p>
+      <p>税別 <%= @product.price.to_s(:delimited) %>円</p>
       <br>
-      <p>在庫があるか表示　予定</p>
+      <p>在庫数　<%= @stock %></p>
+      <% if @stock == 0 %>
+        <p class= "stopped-false" >※売り切れ</p>
+      <% else @stock == true %>
+        <p class= "stopped-true" >※在庫あり</p>
+      <% end %>
       <% if @product.stopped == false %>
         <p class= "stopped-false" >※販売中</p>
-      <% elsif @product == true %>
+      <% elsif @product.stopped == true %>
         <p class= "stopped-true" >※販売停止中</p>
       <% end %>
     </div>
@@ -47,8 +53,27 @@
         </div>
 
 <!== 管理情報 ==>
+  <!-- 在庫管理機能 -->
+    <!-- 入荷機能 -->
+    <div class="stock">
+      <div class="product_arrival_box">
+        <%= form_for @arrival_new,url: admin_arrivals_path do |arrival| %>
+          <%= arrival.select :received_qty, options_for_select((1..20)), class: 'qty_btn' %>
+          <%= arrival.hidden_field :product_id, value: @product.id %>
+          <%= submit_tag '入荷する', :name => nil, class: "btn btn-warning" %>
+        <% end %>
+      </div>
+      <!-- 廃棄機能 -->
+      <div class="product_disposal_box">
+        <%= form_for @disposal_new,url: admin_disposals_path do |disposal| %>
+          <%= disposal.select :scrapped_qty, options_for_select((1..@stock)), class: 'qty_btn' %>
+          <%= disposal.hidden_field :product_id, value: @product.id %>
+          <%= submit_tag '廃棄する', :name => nil, class: "btn btn-warning" %>
+        <% end %>
+    </div>
+
+
       <div class="manage-product">
-        <p>在庫数変更機能　予定</p>
         <%= link_to "商品編集画面へ", edit_admin_product_path(@product) %>
         <%= link_to "一覧", admin_products_path %>
         <button class="btn btn-danger">販売ステータス変更 予定</button>

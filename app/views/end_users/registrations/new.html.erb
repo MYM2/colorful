@@ -9,49 +9,34 @@
 
 　 <div class="st_field">
     <%= f.text_field :lastname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　姓"  %>
-
     <%= f.text_field :firstname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　名" %>
-  </div><br />
-
-   <div class="st_field">
+  </div><br>
+  <div class="st_field">
     <%= f.text_field :lastname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　姓" %>
-
     <%= f.text_field :firstname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　名" %>
-  </div><br />
-
-   <div class="st_field">
-    <%= f.text_field :zipcode, autofocus: true, :size=>"25", placeholder: "郵便番号" %>
-    ※ハイフン無しで入力してください
-  </div><br />
-
-   <div class="t_field">
-    <%= f.text_field :address, autofocus: true, :size=>"55", placeholder: "住所" %>
-  </div><br />
-
+  </div><br>
    <div class="st_field">
     <%= f.text_field :phone_number, autofocus: true, :size=>"25", placeholder: "電話番号" %>
     ※ハイフン無しで入力してください
-  </div><br />
-
+  </div><br>
   <div class="t_field">
     <%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"55", placeholder: "メールアドレス" %>
-  </div><br />
-
+  </div><br>
   <div class="t_field">
     <% if @minimum_password_length %>
     <em><% @minimum_password_length %></em>
     <% end %>
     <%= f.password_field :password, autocomplete: "new-password", :size=>"55", placeholder: "パスワード" %>
-  </div><br />
-
+  </div><br>
   <div class="t_field">
     <%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"55", placeholder: "パスワード(確認用)" %>
-  </div><br />
+  </div><br>
+
 
   <div class="t_actions">
     <%= f.submit "新規登録" %>
   </div>
-<% end %><br />
+<% end %><br>
 
 <p class="glyphicon glyphicon-record" aria-hidden="true">アカウントをお持ちの方は<a href="/end_users/sign_in">ログイン</a>へ</p>
 </div>
