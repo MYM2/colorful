@@ -14,13 +14,17 @@ class Admin::ProductsController < ApplicationController
     @label = @product.label
     @arrival_new = Arrival.new
     @disposal_new = Disposal.new
-    arrivals = @product.arrivals
-    @arrival = arrivals.all.sum(:received_qty)
-    disposal = @product.disposals
-    @disposal = disposal.all.sum(:scrapped_qty)
-    order_content = @product.order_contents
-    @order_content = order_content.all.sum(:product_qty)
-    @stock = @arrival - @disposal - @order_content
+    #在庫数計算
+      # 入荷数計算
+      arrivals = @product.arrivals
+      @arrival = arrivals.all.sum(:received_qty)
+      # 廃棄数計算
+      disposal = @product.disposals
+      @disposal = disposal.all.sum(:scrapped_qty)
+      # 注文数計算
+      order_content = @product.order_contents
+      @order_content = order_content.all.sum(:product_qty)
+      @stock = @arrival - @disposal - @order_content
   end
 
   def edit

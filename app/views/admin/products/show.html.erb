@@ -24,6 +24,11 @@
       <p>税別 <%= @product.price %>円</p>
       <br>
       <p>在庫数　<%= @stock %></p>
+      <% if @stock == 0 %>
+        <p class= "stopped-false" >※売り切れ</p>
+      <% else @stock == true %>
+        <p class= "stopped-true" >※在庫あり</p>
+      <% end %>
       <% if @product.stopped == false %>
         <p class= "stopped-false" >※販売中</p>
       <% elsif @product.stopped == true %>
