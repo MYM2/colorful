@@ -32,13 +32,13 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @end_user = current_end_user
     @order.end_user_id = current_end_user.id
-      # if @order.save
+      if @order.save
         flash[:success] = "注文が完了しました。"
         redirect_to products_path
-      # else
+      else
         flash[:danger] = "注文に失敗しました。"
-        # redirect_to products_path
-      # end
+        redirect_to products_path
+      end
 
   end
 
