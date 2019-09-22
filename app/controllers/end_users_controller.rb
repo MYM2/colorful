@@ -17,6 +17,6 @@ class EndUsersController < ApplicationController
 
     protected
     def end_user_params
-      params.require(:end_user).permit(:lastname_kanji, :firstname_kanji, :lastname_kana, :firstname_kana, :zipcode, :address, :phone_number, :email)
+      params.require(:end_user).permit(:lastname_kanji, :firstname_kanji, :lastname_kana, :firstname_kana, :phone_number, :email)
     end
 end

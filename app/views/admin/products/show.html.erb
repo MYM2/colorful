@@ -21,7 +21,7 @@
 
 <!== 販売情報 ==>
     <div class="product-content-price">
-      <p>税別 <%= @product.price %>円</p>
+      <p>税別 <%= @product.price.to_s(:delimited) %>円</p>
       <br>
       <p>在庫数　<%= @stock %></p>
       <% if @stock == 0 %>

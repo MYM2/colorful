@@ -1,3 +1,5 @@
+  <%= render 'layouts/messages' %>
+
       <div class="slick">
         <%= image_tag 'slick1.jpg' %>
         <%= image_tag 'slick2.jpg' %>
@@ -21,7 +23,7 @@
           <%= product.genre.genre_name %>
           <br>
           <br>
-          ¥<%= product.price %>
+          <%= (product.price * Colorful::Application.config.InTax).floor.to_s(:delimited) %>円
         </div>
       </div>
     <% end %>
