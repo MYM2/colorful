@@ -6,10 +6,10 @@
 				<h3>ユーザー退会手続き</h3></br>
 				<p>※下記「退会する」ボタンをクリックすると、退会処理が確定します。</p>
 
-                <!-- フォームでコントローラーとアクションの指定をしてデータを渡す -->
-				<%= form_for(@end_user, url: {controller: "leaves", action: "update"}) do |f| %>
-				    <p><%= f.submit '退会する', class: "leave_submit", :class=>"btn btn-danger btn-lg btn-block" %></p></br>
-				<% end %>
+				<td><%= link_to "退会する", leafe_path(@end_user),  method: :delete, "data-confirm" => "本当に退会しますか？",class:"btn-lg btn-danger btn-block" %></td><br>
+
+
+
 				<%= link_to "マイページへ戻る", end_user_path, class: 'btn btn-default' %>
 			</div>
 			<div class="col-sm-3">

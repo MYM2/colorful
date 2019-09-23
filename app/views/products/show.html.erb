@@ -21,19 +21,24 @@
 
 <!== 販売情報 ==>
     <div class="product-content-price">
-      <p>税別 <%= @product.price %>円</p>
+      <p>税込 <%= (@product.price * Colorful::Application.config.InTax).floor.to_s(:delimited)%>円</p>
       <br>
       <!== カートに入れる個数 ==>
 
       <br>
       <%# <%= form_tag(@cart{ :controller => 'carts', :action => 'create' }, method: :post) do |f| %1> %>
       <%= form_with model: @cart do |f| %>
-        <%= f.select :product_qty, options_for_select((1..15)) %>
+        <%= f.select :product_qty, options_for_select((1..@stock)) %>
         <%= f.hidden_field :product_id, value: @product.id %>
         <%= submit_tag 'カートに入れる', :name => nil, class: "btn btn-warning" %>
       <% end %>
 
-      <p>在庫があるか表示　予定</p>
+
+      <% if @stock == 0 %>
+        <p class= "stopped-false" >※売り切れ</p>
+      <% else @stock == true %>
+        <p class= "stopped-true" >※在庫あり</p>
+      <% end %>
       <% if @product.stopped == false %>
         <p class= "stopped-false" >※販売中</p>
       <% elsif @product == true %>
