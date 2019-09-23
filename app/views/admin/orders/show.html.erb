@@ -8,12 +8,11 @@
         </div>
         <div class ="order-histories-status">
           <div class= "order-histories-status-content">
-            <h4>配送状況：
-            <%= form_with model: order, url: admin_order_path do |f| %>
-              <%= f.hidden_field :id, :value => order.id %>
-              <%= f.select :arrival_status, options_for_select( [["準備中", 0], ["出荷中", 1], ["出荷済み", 2]], order.arrival_status)%>
-              <%= submit_tag "ステータス変更", :name => nil, class: "btn btn-warning" %>
-            <% end %>
+            <h4>配送状況：<%= form_with model: order, url: admin_order_path(order.id)  do |f| %>
+                            <%= f.hidden_field :end_user_id, :value => @end_user.id %>
+                            <%= f.select :arrival_status, options_for_select( [["準備中", 0], ["出荷中", 1], ["出荷済み", 2]], order.arrival_status)%>
+                            <%= submit_tag "ステータス変更", :name => nil, class: "btn btn-warning" %>
+                          <% end %>
             </h4>
             <h4>配送先　：<%= order.deliveries_address %></h4>
             <h4>合計金額：<%= order.subtotal_ex_tax  %>円</h4>
