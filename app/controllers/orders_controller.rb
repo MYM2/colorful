@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_end_user!
   def show
     @end_user = current_end_user
     @orders = @end_user.orders.includes(:order_contents).page(params[:page]).reverse_order.per(5)
