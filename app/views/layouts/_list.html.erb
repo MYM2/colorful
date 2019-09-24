@@ -8,16 +8,21 @@
     <div class="">
         <ul class="nav nav-pills nav-stacked">
             <li class="side_title"><b>総合人気ランキング</b></li>
+            <!-- ランキング機能をつける（１０位まで） -->
             <% @ranking = Product.find(OrderContent.group(:product_id).order('sum(price_sum_ex_tax) desc').limit(10).pluck(:product_id)) %>
+            <!-- ランキングを繰り返し -->
             <% @ranking.each.with_index(1) do |ranking, i| %>
                 <div class="side_text"><%= "#{i}" %>位 <%= link_to ranking.product_name, admin_product_path(ranking) %></div>
             <% end %>
 
 
             <li class="side_title"><b>ジャンル</b></li>
+            <!-- ジャンルを全て変数に入れる -->
             <% @genre = Genre.all %>
+            <!-- 繰り返し処理 -->
             <% @genre.each do |genre| %>
                 <div class="side_text">
+                  <!-- リンクにコントローラー指定・繰り返し内容で検索 -->
                   <%= link_to genre.genre_name,{:controller=>"searches",:action=>"index",:q=>{:product_name_or_artist_artist_name_or_genre_genre_name_cont=> genre.genre_name }}  %>
                 </div>
             <% end %>
