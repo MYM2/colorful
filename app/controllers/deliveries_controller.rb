@@ -1,16 +1,10 @@
 class DeliveriesController < ApplicationController
   before_action :authenticate_end_user!
   def show
-<<<<<<< HEAD
+
     @end_user = current_end_user
     @deliveries = @end_user.deliveries
                #↑end_userのdeliveriesのデータを持ってくる　モデル名.アソシエーション名で関連するデータを持ってくる
-=======
-    end_user = current_end_user
-    @delivery = end_user.deliveries
-    # 　　　　　　↑end_userのdeliveriesのデータを持ってくる　モデル名.アソシエーション名で関連するデータを持ってくる
-
->>>>>>> f1edb3fce5a30be3880f9610d995d2bb0319716a
   end
 
   def edit
@@ -38,7 +32,9 @@ class DeliveriesController < ApplicationController
   def update
     # デフォルト住所をフォルスにする
     @delivery = current_end_user.deliveries.find_by(default: :true)
+    if @delivery != nil
     @delivery.update(default: false)
+    end
     # 選択した住所をトゥルーにする
     @delivery_default = Delivery.find(params[:id])
     @delivery_default.default = true
