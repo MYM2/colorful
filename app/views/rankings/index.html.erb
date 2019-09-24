@@ -8,15 +8,14 @@
     </div>
 
     <div class ="ranking-list-contents clearfix">
-      <% n = 0 %>
-      <% @product.each do |product| %>
+      <% @product.each.with_index(1) do |product, i| %>
         <div class="ranking-list-content">
           <%= link_to(admin_product_path(product)) do %>
             <%= attachment_image_tag product, :jacket_image, fallback: "no_image.png", class: "ranking-list-image product-list-image-animation" %>
           <% end %>
             <div class="ranking-list-text">
               <div class="ranking_text_left">
-                <div class="rank"><span class="glyphicon glyphicon-king" aria-hidden="true" aria-hidden="true" href="/admin/rankings"></span><%= n+=1 %> 位</div>
+                <div class="rank"><span class="glyphicon glyphicon-king" aria-hidden="true" aria-hidden="true" href="/admin/rankings"></span><%= "#{i}" %> 位</div>
                 <h4 class="ranking_name"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= link_to product.product_name, admin_product_path(product) %></h4>
                 <br>
                 <span class="glyphicon glyphicon-user ranking_artist" aria-hidden="true"></span><%= link_to product.artist.artist_name, admin_artist_path(product.artist), class: "ranking_artist" %>
