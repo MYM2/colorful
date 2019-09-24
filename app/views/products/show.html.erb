@@ -48,7 +48,7 @@
       <% end %>
 
 
-      <% if @stock == 0 %>
+      <% if @stock <= 0 %>
         <p class= "stopped-false" >※売り切れ</p>
       <% else @stock == true %>
         <p class= "stopped-true" >※在庫あり</p>

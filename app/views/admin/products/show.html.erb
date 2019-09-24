@@ -24,7 +24,7 @@
       <p>税別 <%= @product.price.to_s(:delimited) %>円</p>
       <br>
       <p>在庫数　<%= @stock %></p>
-      <% if @stock == 0 %>
+      <% if @stock <= 0 %>
         <p class= "stopped-false" >※売り切れ</p>
       <% else @stock == true %>
         <p class= "stopped-true" >※在庫あり</p>
