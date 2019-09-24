@@ -7,17 +7,18 @@
 		</div>
 		<!-- 入荷履歴 -->
 				<% @arrival.each do |arrival| %>
-					<div class="arrival_box clearfix">
+					<div class="arrival_box">
+
 						<div class="arrival_image_box">
 							<%= attachment_image_tag arrival.product, :jacket_image, fallback: "no_image.png",class: "arrival_image_file" %>
 						</div>
 						<div class="arrival_content">
 							<h4>
 								<span class="glyphicon glyphicon-music" aria-hidden="true"></span>
-								<%= link_to arrival.product.product_name, product_path(arrival.product_id) %>
+								<%= link_to arrival.product.product_name, admin_product_path(arrival.product_id) %>
 							</h4>
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-							<%= link_to arrival.product.artist.artist_name, artist_path(arrival.product.artist_id) %><br>
+							<%= link_to arrival.product.artist.artist_name, admin_artist_path(arrival.product.artist_id) %><br>
 							<%= arrival.product.genre.genre_name %>
 							<p class="arrival_date">入荷日時 <%= arrival.created_at %><br>
 							入荷数 <%= arrival.received_qty %></P>

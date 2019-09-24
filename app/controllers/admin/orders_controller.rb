@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+	before_action :authenticate_admin_user!
   def index
     @orders = Order.all.includes(:order_contents).page(params[:page]).reverse_order.per(5)
   end
