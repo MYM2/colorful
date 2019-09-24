@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :discs, only: [:destroy]
     resources :songs, only: [:destroy]
   end
-  # post '/admin/orders/:id' => 'admin/orders#update', as: 'admin_order_update'
+
   resources :end_users, only: [:show, :edit, :update]
   resources :leaves, only: [:show, :destroy]
   resources :rankings, only: [:index]
@@ -29,8 +29,9 @@ Rails.application.routes.draw do
   resources :carts, only: [:show, :destroy, :update, :create]
   resources :artists, only: [:index, :show]
   resources :reviews, only: [:destroy, :create]
-  resources :favorites, only: [:destroy, :create]
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resources :favorites, only: [:create, :destroy]
+  end
   resources :inquiries, only: [:new, :create]
   resources :deliveries, only: [:show, :edit, :destroy, :new, :update, :create]
 
