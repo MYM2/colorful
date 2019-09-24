@@ -37,7 +37,6 @@ class DeliveriesController < ApplicationController
 
    private
   def delivery_params
-
     params.require(:delivery).permit(:lastname_kanji,:firstname_kanji,:lastname_kana,:firstname_kana,:zipcode,:address,:phone_number)
   end
 end
