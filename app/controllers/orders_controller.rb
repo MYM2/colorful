@@ -34,6 +34,8 @@ class OrdersController < ApplicationController
     @end_user = current_end_user
     @order.end_user_id = current_end_user.id
       # if @order.save
+    binding.pry
+        @cart = order_params(params[:cart])
         flash[:success] = "注文が完了しました。"
         # カート内を削除
         redirect_to products_path
@@ -46,7 +48,7 @@ class OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:deliveries_address, :payment_method, :subtotal_ex_tax, :subtotal_in_tax, :freight, :arrival_status, :cart,
+      params.require(:order).permit(:deliveries_address, :payment_method, :subtotal_ex_tax, :subtotal_in_tax, :freight, :arrival_status, :cart[],
                                     order_contents_attributes: [:id, :product_id, :product_qty, :price_sum_ex_tax, :price_sum_in_tax])
     end
 
