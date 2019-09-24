@@ -91,7 +91,7 @@
 			</div><br>
 			<!-- 購入履歴へのリンク -->
 			<div class="history">
-				<a href="/orders" class="btn btn-primary" role="button">購入履歴</a>
+        <%= link_to "購入履歴", order_path(@end_user.id), class:"btn btn-primary" %>
 			</div><br>
 			<!-- 退会手続き画面へのリンク -->
 			<div class="leave">

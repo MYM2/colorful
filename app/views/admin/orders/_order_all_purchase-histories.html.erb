@@ -1,0 +1,27 @@
+
+      <div class="order-all-purchase-history">
+          <table class="table">
+            <thead>
+              <tr>
+                <td>CD名</td>
+                <td>アーティスト名</td>
+                <td>ジャンル</td>
+                <td>購入枚数</td>
+                <td>小計（税抜）</td>
+              </tr>
+            </thead>
+            <tbody>
+            <% order.order_contents.each do |c| %>
+              <tr>
+                <td><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= link_to c.product.product_name, product_path(c.product) %></td>
+                <td><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to c.product.artist.artist_name, artist_path(c.product.artist) %></td>
+                <td><%= c.product.genre.genre_name %></td>
+                <td><%= c.product_qty %>枚</td>
+                <td><%= c.price_sum_ex_tax.to_s(:delimited) %>円</td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+      </div>
+
+
