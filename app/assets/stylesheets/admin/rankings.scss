@@ -1,3 +1,174 @@
 // Place all the styles related to the admin::rankings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.ranking_title{
+	text-align: center;
+	background-color: #fff651;
+}
+.ranking_title h1{
+	margin: 0;
+	line-height: 50px;
+}
+.rank{
+	font-size: 25px;
+}
+.ranking_name{
+	margin: 0;
+}
+.ranking_genre{
+	margin: 0;
+}
+// １位
+.ranking-list-content:nth-child(1){
+	width: 100%;
+	height: 250px;
+	padding: 0;
+	.ranking-list-image{
+		width: 250px;
+		height: 250px;
+	}
+	.ranking_text_left{
+		float: left;
+	}
+	.rank{
+		font-size: 50px;
+	    color: gold;
+	}
+	.ranking_name{
+		font-size: 35px;
+		margin: 0;
+	}
+	.ranking_artist{
+		font-size: 30px;
+	}
+	.ranking-list-text{
+		padding: 1%;
+		height: 250px;
+	}
+	.ranking_genre{
+		font-size: 25px;
+	}
+	.rinking_text_right{
+		float: left;
+		font-size: 20px;
+		padding-top: 10px;
+		padding-left: 50px;
+	}
+	.right_text{
+		margin: 15px 0;
+	}
+
+}
+// ２位
+.ranking-list-content:nth-child(2){
+	width: 100%;
+	height: 250px;
+	padding: 0;
+	.ranking-list-image{
+		width: 250px;
+		height: 250px;
+	}
+	.ranking_text_left{
+		float: left;
+	}
+	.rank{
+		font-size: 50px;
+	    color: silver;
+	}
+	.ranking_name{
+		font-size: 35px;
+		margin: 0;
+	}
+	.ranking_artist{
+		font-size: 30px;
+	}
+	.ranking-list-text{
+		padding: 1%;
+		height: 250px;
+	}
+	.ranking_genre{
+		font-size: 25px;
+	}
+	.rinking_text_right{
+		float: left;
+		font-size: 20px;
+		padding-top: 10px;
+		padding-left: 50px;
+	}
+	.right_text{
+		margin: 15px 0;
+	}
+
+}
+// ３位
+.ranking-list-content:nth-child(3){
+	width: 100%;
+	height: 250px;
+	padding: 0;
+	.ranking-list-image{
+		width: 250px;
+		height: 250px;
+	}
+	.ranking_text_left{
+		float: left;
+	}
+	.rank{
+		font-size: 50px;
+	    color: #ff8c00;
+	}
+	.ranking_name{
+		font-size: 35px;
+		margin: 0;
+	}
+	.ranking_artist{
+		font-size: 30px;
+	}
+	.ranking-list-text{
+		padding: 1%;
+		height: 250px;
+	}
+	.ranking_genre{
+		font-size: 25px;
+	}
+	.rinking_text_right{
+		float: left;
+		font-size: 20px;
+		padding-top: 10px;
+		padding-left: 50px;
+	}
+	.right_text{
+		margin: 15px 0;
+	}
+
+}
+
+
+
+
+
+
+//商品一覧
+
+
+.ranking-list-content {
+  float: left;
+  overflow: hidden;  //はみ出た文は非表示
+  text-overflow: ellipsis;  //はみ出た文は...で表示
+  white-space: nowrap;   //改行禁止
+  vertical-align: top;
+  border: 1px solid gray;
+  width: 25%;
+  height:17em;
+  padding: 1%;
+}
+
+.ranking-list-image {
+  border-radius: 50%;
+  width: 50%;
+  float:left;
+}
+.ranking-list-text {
+  width: 50%;
+  float:left;
+  padding: 5%;
+}
