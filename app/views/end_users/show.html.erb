@@ -32,6 +32,7 @@
 						</tr>
 					</tbody>
 				</table>
+
 			<!-- お届け先一覧の表示 -->
 			<h4>お届け先一覧</h4>
 				<table class="table table-bordered table-condensed">
@@ -73,6 +74,7 @@
 					<% end %>
 				</table>
 
+
 			<!-- 届け先住所のページネーション -->
 		 	<div class="paginate">
 			    <%= paginate @delivery, class: "paginate" %>
@@ -92,7 +94,13 @@
 			</div><br>
 			<!-- 購入履歴へのリンク -->
 			<div class="history">
+
 				<a href="/orders/(current_end_user_id)" class="btn btn-primary" role="button">購入履歴</a>
+
+
+        <%= link_to "購入履歴", order_path(@end_user.id), class:"btn btn-primary" %>
+
+
 			</div><br>
 			<!-- 退会手続き画面へのリンク -->
 			<div class="leave">
@@ -101,4 +109,6 @@
 		</div>
 		<div class="col-xs-3"></div>
 	</div>
+
 </div>
+

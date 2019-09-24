@@ -4,7 +4,7 @@
       <tr>
         <td><%= song_edit.text_field :track_number %></td>
         <td><%= song_edit.text_field :song_name %></td>
-        <td><%= link_to "曲を削除", admin_song_path(song_edit.object.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></td>
+        <td><%= link_to "曲を削除", admin_song_path(song_edit.object.id), remote: true, method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></td>
       </tr>
     </tbody>
   </table>

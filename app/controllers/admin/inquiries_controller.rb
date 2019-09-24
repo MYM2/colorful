@@ -1,4 +1,5 @@
 class Admin::InquiriesController < ApplicationController
+	before_action :authenticate_admin_user!
   def index
   	@inquiry = Inquiry.page(params[:page]).reverse_order.per(5)
   end

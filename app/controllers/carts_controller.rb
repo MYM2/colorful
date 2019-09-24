@@ -7,10 +7,11 @@ class CartsController < ApplicationController
 
     @carts_total = @end_user.carts.includes(:product)
       @total_price = 0
+      @total_price_in_tax = 0
       @carts_total.each do |cart|
         @total_price += cart.product.price * cart.product_qty
+        @total_price_in_tax += (cart.product.price * Colorful::Application.config.InTax).floor * cart.product_qty
        end
-      @total_price_in_tax = (@total_price * Colorful::Application.config.InTax).floor
   end
 
   def destroy

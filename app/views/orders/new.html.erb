@@ -1,44 +1,63 @@
 <div class="confirmation clearfix">
+
+  <%= form_with(model: @order) do |f| %>
   <h1>ご注文内容</h1>
 
   <div class="order-user-confirmation clearfix">
-    <div class="user-deliver">
-     <%# 選択住所 %>
-     <h1>お届け先住所  <%= link_to "編集", delivery_path(@delivery), class: "btn btn-default" %></h1>
-        <table class="table table-bordered table-striped">
-          <tbody>
-            <tr>
-              <td>氏名</td>
-              <td><%= @delivery.lastname_kanji %> <%= @delivery.firstname_kanji %>　様</td>
-            </tr>
-            <tr>
-              <td>郵便番号</td>
-              <td><%= @delivery.zipcode %></td>
-            </tr>
-            <tr>
-              <td>住所</td>
-              <td><%= @delivery.address %></td>
-            </tr>
-            <tr>
-              <td>電話番号</td>
-              <td><%= @delivery.phone_number %></td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
-    </div>
-    <div class="user-payment-method">
-     <%# 支払い方法選択 %>
-     <h1>お支払い方法  <%= link_to "編集", cards_path, class: "btn btn-default" %></h1>
-       <div class="radio-button-area">
-         <%= radio_button_tag(:payment, 0) %> クレジットカード<br>
-         <%= radio_button_tag(:payment, 1) %> 銀行振込<br>
-         <%= radio_button_tag(:payment, 2, checked: true) %> 代金引換<br>
-       </div>
-    </div>
+
+      <div class="user-deliver">
+       <%# 選択住所 %>
+       <h1>お届け先住所  <%= link_to "選択", delivery_path(@end_user), class: "btn btn-default" %></h1>
+       <% if @delivery == nil %>
+          <table class="table table-bordered table-striped">
+            <thead>
+            </thead>
+            <tbody>
+              <tr>
+                <td> お届け先住所の登録がありません。登録して下さい。</td>
+              </tr>
+            </tbody>
+          </table>
+        <% else %>
+          <table class="table table-bordered table-striped">
+            <thead>
+            </thead>
+            <tbody>
+              <tr>
+                <td>氏名</td>
+                <td><%= @delivery.lastname_kanji %> <%= @delivery.firstname_kanji %>　様</td>
+              </tr>
+              <tr>
+                <td>郵便番号</td>
+                <td><%= @delivery.zipcode %></td>
+              </tr>
+              <tr>
+                <td>住所</td>
+                <td><%= @delivery.address %></td>
+              </tr>
+              <tr>
+                <td>電話番号</td>
+                <td><%= @delivery.phone_number %></td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+      <% end %>
+      </div>
+
+
+      <div class="user-payment-method">
+       <h1>お支払い方法  <%= link_to "編集", cards_path, class: "btn btn-default" %></h1>
+         <div class="radio-button-area">
+            <%= f.radio_button(:payment_method, 0) %> クレジットカード<br>
+            <%= f.radio_button(:payment_method, 1) %> 銀行振込<br>
+            <%= f.radio_button(:payment_method, 2, checked: true) %> 代金引換<br>
+         </div>
+      </div>
+
   </div>
 
-  <%# オーダー内容 %>
+
   <div class="order-content-confirmation">
   <h1>お届け商品</h1>
       <% @carts.each do |cart_content| %>
@@ -54,10 +73,13 @@
       </div>
   </div>
 
-  <%# 最終確認内容 %>
+
   <div class="order-price-confirmation">
     <h1>ご注文内容</h1>
     <table class="table table-striped">
+      <thead>
+      </thead>
+
       <tbody>
         <tr>
           <td>商品の小計</td>
@@ -73,35 +95,33 @@
         </tr>
       </tbody>
     </table>
-      <div class="order-confirm">
-        <h4> ※この内容で注文します</h4>
-        <br>
 
-          <%# 注文内容 %>
-        <%= form_with(model: @order) do |f| %>
-          <%= f.hidden_field :deliveries_address, :value => @delivery.address %>
-          <%= f.hidden_field :payment_method, :value => :payment %>
-          <%= f.hidden_field :subtotal_ex_tax, :value => @total_price %>
-          <%= f.hidden_field :subtotal_in_tax, :value => @total_price_in_tax %>
-          <%= f.hidden_field :freight, :value => @freight %>
-          <%= f.hidden_field :arrival_status, :value => 0 %>
+        <div class="order-confirm">
+          <h4> ※この内容で注文します</h4>
+          <br>
 
-          <%# 注文詳細内容 %>
-          <% index = 0 %>
-          <%= f.fields_for :order_contents do |g| %>
-<%# @cartのindex番目のレコードを取得 %>
-<%# 該当レコードの値をorder_contentsにセット %>
-              <%= g.hidden_field :product_id, :value => @carts[index].product_id %>
-              <%= g.hidden_field :product_qty, :value => @carts[index].product_qty %>
-              <%= g.hidden_field :price_sum_ex_tax, :value => @carts[index].product.price * @carts[index].product_qty %>
-              <%= g.hidden_field :price_sum_in_tax, :value => (@carts[index].product.price * @carts[index].product_qty * Colorful::Application.config.InTax).floor %>
-              <%= hidden_field_tag :cart, :value => @carts %>
-            <% index += 1 %>
+            <% if @delivery != nil %>
+                <%= f.hidden_field :deliveries_address, :value => @delivery.address %>
+                <%= f.hidden_field :subtotal_ex_tax, :value => @total_price %>
+                <%= f.hidden_field :subtotal_in_tax, :value => @total_price_in_tax %>
+                <%= f.hidden_field :freight, :value => @freight %>
+                <%= f.hidden_field :arrival_status, :value => 0 %>
+
+                <%# 注文詳細内容 %>
+                <% index = 0 %>
+                <%= f.fields_for :order_contents do |g| %>
+                    <%= g.hidden_field :product_id, :value => @carts[index].product_id %>
+                    <%= g.hidden_field :product_qty, :value => @carts[index].product_qty %>
+                    <%= g.hidden_field :price_sum_ex_tax, :value => @carts[index].product.price * @carts[index].product_qty %>
+                    <%= g.hidden_field :price_sum_in_tax, :value => (@carts[index].product.price * @carts[index].product_qty * Colorful::Application.config.InTax).floor %>
+                  <% index += 1 %>
+                <% end %>
+
+                <%= f.submit "注文を確定する", :name => :send, class: "btn btn-warning" %>
+            <% end %>
           <% end %>
+        </div>
 
-          <%= f.submit "注文を確定する", :name => nil, class: "btn btn-warning" %>
-        <% end %>
-      </div>
   </div>
 
 </div>

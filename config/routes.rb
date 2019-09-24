@@ -26,12 +26,15 @@ Rails.application.routes.draw do
   resources :cards, only: [:index]
   resources :searches, only: [:index]
   resources :order_contents, only: [:create]
-  resources :orders, only: [:show, :create, :new]
+
+  resources :orders, only: [:create, :new, :show]
+
   resources :carts, only: [:show, :destroy, :update, :create]
   resources :artists, only: [:index, :show]
   resources :reviews, only: [:destroy, :create]
-  resources :favorites, only: [:destroy, :create]
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resources :favorites, only: [:create, :destroy]
+  end
   resources :inquiries, only: [:new, :create]
   patch '/deliveries/:id/delivery_update' => 'deliveries#delivery_up', as: 'd_u'
   resources :deliveries, only: [:show, :edit, :destroy, :new, :update, :create]

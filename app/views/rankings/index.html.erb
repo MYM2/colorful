@@ -1,2 +1,39 @@
-<h1>Rankings#index</h1>
-<p>Find me in app/views/rankings/index.html.erb</p>
+<div class="row" style="">
+
+  <%= render 'layouts/list' %>
+  <div class="search_index col-lg-10">
+
+    <div class="ranking_title">
+      <h1>総合人気ランキング</h1>
+    </div>
+
+    <div class ="ranking-list-contents clearfix">
+      <% @product.each.with_index(1) do |product, i| %>
+        <div class="ranking-list-content">
+          <%= link_to(admin_product_path(product)) do %>
+            <%= attachment_image_tag product, :jacket_image, fallback: "no_image.png", class: "ranking-list-image product-list-image-animation" %>
+          <% end %>
+            <div class="ranking-list-text">
+              <div class="ranking_text_left">
+                <div class="rank"><span class="glyphicon glyphicon-king" aria-hidden="true" aria-hidden="true" href="/admin/rankings"></span><%= "#{i}" %> 位</div>
+                <h4 class="ranking_name"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= link_to product.product_name, admin_product_path(product) %></h4>
+                <br>
+                <span class="glyphicon glyphicon-user ranking_artist" aria-hidden="true"></span><%= link_to product.artist.artist_name, admin_artist_path(product.artist), class: "ranking_artist" %>
+                <br>
+                <p class="ranking_genre"><%= product.genre.genre_name %></p>
+                  <div class="ranking_price">
+                    ¥<%= product.price %>
+                  </div>
+
+              </div>
+
+
+
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>
