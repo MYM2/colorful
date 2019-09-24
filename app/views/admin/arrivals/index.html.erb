@@ -8,6 +8,7 @@
 		<!-- 入荷履歴 -->
 				<% @arrival.each do |arrival| %>
 					<div class="arrival_box">
+
 						<div class="arrival_image_box">
 							<%= attachment_image_tag arrival.product, :jacket_image, fallback: "no_image.png",class: "arrival_image_file" %>
 						</div>

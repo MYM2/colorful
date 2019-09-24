@@ -18,14 +18,16 @@ Rails.application.routes.draw do
     resources :discs, only: [:destroy]
     resources :songs, only: [:destroy]
   end
-
+  # post '/admin/orders/:id' => 'admin/orders#update', as: 'admin_order_update'
   resources :end_users, only: [:show, :edit, :update]
   resources :leaves, only: [:show, :destroy]
   resources :rankings, only: [:index]
   resources :cards, only: [:index]
   resources :searches, only: [:index]
   resources :order_contents, only: [:create]
-  resources :orders, only: [:show, :create, :new]
+
+  resources :orders, only: [:create, :new, :show]
+
   resources :carts, only: [:show, :destroy, :update, :create]
   resources :artists, only: [:index, :show]
   resources :reviews, only: [:destroy, :create]

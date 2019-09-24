@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+
   before_action :authenticate_end_user!
+
   def show
     @end_user = current_end_user
     @orders = @end_user.orders.includes(:order_contents).page(params[:page]).reverse_order.per(5)
@@ -19,11 +21,14 @@ class OrdersController < ApplicationController
 
     # カート内合計金額
     @carts_total = @end_user.carts.includes(:product)
-    @total_price = 0
-    @carts_total.each do |cart|
-      @total_price += cart.product.price * cart.product_qty
-    end
-    @total_price_in_tax = (@total_price * Colorful::Application.config.InTax).floor
+
+      @total_price = 0
+      @total_price_in_tax = 0
+      @carts_total.each do |cart|
+        @total_price += cart.product.price * cart.product_qty
+        @total_price_in_tax += (cart.product.price * Colorful::Application.config.InTax).floor * cart.product_qty
+       end
+
 
 
   end
@@ -35,6 +40,12 @@ class OrdersController < ApplicationController
     @order.end_user_id = current_end_user.id
       if @order.save
         flash[:success] = "注文が完了しました。"
+
+        @carts = @end_user.carts
+          @carts.each do |cart|
+            cart.destroy
+          end
+
         redirect_to products_path
       else
         flash[:danger] = "注文に失敗しました。"
@@ -48,5 +59,12 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:deliveries_address, :payment_method, :subtotal_ex_tax, :subtotal_in_tax, :freight, :arrival_status,
                                     order_contents_attributes: [:id, :product_id, :product_qty, :price_sum_ex_tax, :price_sum_in_tax])
     end
+
+
+    # def order_params
+    #   params.require(:order).permit(:deliveries_address, :payment_method, :subtotal_ex_tax, :subtotal_in_tax, :freight, :arrival_status, :cart => [:id],
+    #                                 order_contents_attributes: [:id, :product_id, :product_qty, :price_sum_ex_tax, :price_sum_in_tax])
+    # end
+
 
 end

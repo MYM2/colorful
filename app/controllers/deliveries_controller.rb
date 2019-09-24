@@ -4,6 +4,7 @@ class DeliveriesController < ApplicationController
     end_user = current_end_user
     @delivery = end_user.deliveries
     # 　　　　　　↑end_userのdeliveriesのデータを持ってくる　モデル名.アソシエーション名で関連するデータを持ってくる
+
   end
 
   def edit
@@ -36,6 +37,9 @@ class DeliveriesController < ApplicationController
 
    private
   def delivery_params
-    params.require(:delivery).permit(:lastname_kanji,:firstname_kanji,:lastname_kana,:firstname_kana,:zipcode,:address,:phone_number)
+
+    　params.require(:delivery).permit(:lastname_kanji,:firstname_kanji,:lastname_kana,:firstname_kana,:zipcode,:address,:phone_number)
   end
 end
+
+

@@ -32,14 +32,7 @@
 						</tr>
 					</tbody>
 				</table>
-				<br>
-			<div class="credit">
-				<h4>クレジットカード一覧</h4>
-				・VISA 下4桁 0000
-				<a href="" class="btn btn-primary" role="button">編集</a>
-				<a href="" class="btn btn-danger" role="button">削除</a>　※何も設定してません
-				<a href="" class="btn btn-primary" role="button">クレジットカードの追加はこちら</a>
-			</div><br>
+
 			<!-- お届け先一覧の表示 -->
 			<h4>お届け先一覧</h4>
 				<table class="table table-bordered table-condensed">
@@ -80,6 +73,17 @@
 					</tbody>
 					<% end %>
 				</table>
+
+
+				<div class="credit">
+				<h4>クレジットカード一覧</h4>
+				・VISA 下4桁 0000
+				<a href="" class="btn btn-primary" role="button">編集</a>
+				<a href="" class="btn btn-danger" role="button">削除</a>　※何も設定してません
+				<a href="" class="btn btn-primary" role="button">クレジットカードの追加はこちら</a>
+			</div><br>
+
+
 			<!-- 届け先住所のページネーション -->
 		 	<div class="paginate">
 			    <%= paginate @delivery, class: "paginate" %>
@@ -90,7 +94,9 @@
 			</div><br>
 			<!-- 購入履歴へのリンク -->
 			<div class="history">
-				<a href="/orders" class="btn btn-primary" role="button">購入履歴</a>
+
+        <%= link_to "購入履歴", order_path(@end_user.id), class:"btn btn-primary" %>
+
 			</div><br>
 			<!-- 退会手続き画面へのリンク -->
 			<div class="leave">
@@ -99,4 +105,6 @@
 		</div>
 		<div class="col-xs-3"></div>
 	</div>
+
 </div>
+

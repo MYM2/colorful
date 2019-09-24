@@ -10,7 +10,10 @@
         </div>
 
         <div class="cart-price">
-          <h3>税込み <%= (cart.product.price * cart.product_qty * Colorful::Application.config.InTax).floor.to_s(:delimited) %> 円</h3>
+
+
+          <h3>税込み <%= ((cart.product.price * Colorful::Application.config.InTax).floor * cart.product_qty).to_s(:delimited) %> 円</h3>
+
           <br>
           <br>
           <h4>数量 <%= cart.product_qty %></h4>
