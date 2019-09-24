@@ -1,4 +1,5 @@
 class EndUsersController < ApplicationController
+  before_action :authenticate_end_user!
   def show
   	@end_user = EndUser.find(params[:id])
     @delivery = @end_user.deliveries.page(params[:page]).reverse_order.per(2)

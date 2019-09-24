@@ -1,4 +1,5 @@
 class Admin::ArrivalsController < ApplicationController
+  before_action :authenticate_admin_user!
   def index
   	@arrival = Arrival.includes([:product]).page(params[:page]).reverse_order.per(16)
   end

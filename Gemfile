@@ -97,3 +97,5 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'paranoia'
 
 gem 'ransack'
+
+gem 'rails-i18n'

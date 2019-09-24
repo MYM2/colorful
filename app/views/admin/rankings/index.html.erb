@@ -1,2 +1,61 @@
-<h1>Admin::Rankings#index</h1>
-<p>Find me in app/views/admin/rankings/index.html.erb</p>
+<div class="row" style="">
+
+  <%= render 'layouts/list' %>
+  <div class="search_index col-lg-10">
+
+    <div class="ranking_title">
+      <h1>売り上げ総合ランキング</h1>
+    </div>
+
+    <div class ="ranking-list-contents clearfix">
+      <% @product.each.with_index(1) do |product, i| %>
+        <div class="ranking-list-content">
+          <%= link_to(admin_product_path(product)) do %>
+            <%= attachment_image_tag product, :jacket_image, fallback: "no_image.png", class: "ranking-list-image product-list-image-animation" %>
+          <% end %>
+            <div class="ranking-list-text">
+              <div class="ranking_text_left">
+                <div class="rank"><span class="glyphicon glyphicon-king" aria-hidden="true" aria-hidden="true" href="/admin/rankings"></span><%= "#{i}" %> 位</div>
+                <h4 class="ranking_name"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= link_to product.product_name, admin_product_path(product) %></h4>
+                <br>
+                <span class="glyphicon glyphicon-user ranking_artist" aria-hidden="true"></span><%= link_to product.artist.artist_name, admin_artist_path(product.artist), class: "ranking_artist" %>
+                <br>
+                <p class="ranking_genre"><%= product.genre.genre_name %></p>
+              </div>
+              <div class="rinking_text_right">
+                  <!-- # 注文数計算 -->
+                  <% order_content = product.order_contents %>
+                  <% @order_content = order_content.all.sum(:product_qty) %>
+                  <div class="right_text">
+                    購入枚数<%= @order_content %>
+                  </div>
+                <!-- #在庫数計算 -->
+                  <!-- # 入荷数計算 -->
+                  <% arrivals = product.arrivals %>
+                  <% @arrival = arrivals.all.sum(:received_qty) %>
+                  <!-- # 廃棄数計算 -->
+                  <% disposal = product.disposals %>
+                  <% @disposal = disposal.all.sum(:scrapped_qty) %>
+                  <!-- # 在庫計算 -->
+                  <% @stock = @arrival - @disposal - @order_content %>
+                  <div class="right_text">
+                    在庫数 <%= @stock %>
+                  </div>
+                  <div class="right_text">
+                    <% if product.arrivals.present? %>
+                      入荷日時<br>
+                      <% @arrival_created = product.arrivals.last %>
+                      <%= @arrival_created.created_at %>
+                    <% else %>
+                      入荷履歴なし
+                    <% end %>
+                  </div>
+              </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>

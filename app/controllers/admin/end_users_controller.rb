@@ -1,4 +1,5 @@
 class Admin::EndUsersController < ApplicationController
+  before_action :authenticate_admin_user!
   def index
     @admin_end_users = EndUser.with_deleted
     # with_deleted = all + 論理削除されたデータ (with_deletedをつけると論理削除されたデータも表示する

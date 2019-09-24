@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   resources :cards, only: [:index]
   resources :searches, only: [:index]
   resources :order_contents, only: [:create]
+
   resources :orders, only: [:create, :new, :show]
+
   resources :carts, only: [:show, :destroy, :update, :create]
   resources :artists, only: [:index, :show]
   resources :reviews, only: [:destroy, :create]

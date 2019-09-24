@@ -1,4 +1,5 @@
 <div class="confirmation clearfix">
+
   <%= form_with(model: @order) do |f| %>
   <h1>ご注文内容</h1>
 
@@ -55,6 +56,7 @@
 
   </div>
 
+
   <div class="order-content-confirmation">
   <h1>お届け商品</h1>
       <% @carts.each do |cart_content| %>
@@ -70,11 +72,13 @@
       </div>
   </div>
 
+
   <div class="order-price-confirmation">
     <h1>ご注文内容</h1>
     <table class="table table-striped">
       <thead>
       </thead>
+
       <tbody>
         <tr>
           <td>商品の小計</td>
@@ -90,6 +94,7 @@
         </tr>
       </tbody>
     </table>
+
         <div class="order-confirm">
           <h4> ※この内容で注文します</h4>
           <br>
@@ -115,6 +120,7 @@
             <% end %>
           <% end %>
         </div>
+
   </div>
 
 </div>

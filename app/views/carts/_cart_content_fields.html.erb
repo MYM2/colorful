@@ -12,7 +12,9 @@
         </div>
 
         <div class="cart-price">
+
           <h4>税込み <%= ((cart.product.price * Colorful::Application.config.InTax).floor * cart.product_qty).to_s(:delimited) %> 円</h4>
+
           <br>
           <br>
             <%= form_with model: cart do |f| %>

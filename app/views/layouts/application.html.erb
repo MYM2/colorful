@@ -69,9 +69,8 @@
           </li>
         <% end %>
 
-                <!-- ここから検索バーです -->
+        <!-- ここから検索バーです -->
         <% if admin_user_signed_in? %>
-        
           <%= search_form_for @search, url: admin_searches_path do |f| %>
             <div class="search_btn_box">
               <%= f.submit "検索", class: "search_btn" %>
@@ -92,7 +91,7 @@
             </div>
           <% end %>
         <% end %>
-        　　　　<!-- ここまで検索バーです -->
+        <!-- ここまで検索バーです -->
 
 
 
