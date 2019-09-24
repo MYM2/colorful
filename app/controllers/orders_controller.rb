@@ -35,6 +35,10 @@ class OrdersController < ApplicationController
     @order.end_user_id = current_end_user.id
       if @order.save
         flash[:success] = "注文が完了しました。"
+        @carts = @end_user.carts
+          @carts.each do |cart|
+            cart.destroy
+          end
         redirect_to products_path
       else
         flash[:danger] = "注文に失敗しました。"
