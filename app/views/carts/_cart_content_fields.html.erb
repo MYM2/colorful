@@ -14,11 +14,16 @@
         <div class="cart-price">
 
           <h4>税込み <%= ((cart.product.price * Colorful::Application.config.InTax).floor * cart.product_qty).to_s(:delimited) %> 円</h4>
+          <% if cart.product_qty >= cart.product.getqty(cart.product) %>
+            <h4>在庫がありません<h4>
+          <% else %>
+            <h4>購入可能です<h4>
+          <% end %>
 
           <br>
           <br>
             <%= form_with model: cart do |f| %>
-            <%= f.select :product_qty, options_for_select((1..cart.product.getqty(cart.product)), cart.product_qty)%>
+            <%= f.select :product_qty, options_for_select((1..cart.product_qty + 100), cart.product_qty)%>
             <%= submit_tag "数量変更", :name => nil, class: "btn btn-warning" %>
           <% end %>
           <br>

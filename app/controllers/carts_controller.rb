@@ -32,7 +32,7 @@ class CartsController < ApplicationController
       @cart_in = @carts.find_by_product_id(@cart.product.id)
 
       if @cart_in.update(product_qty: @cart_in.product_qty + @cart.product_qty )
-          flash[:success] = "数量を足しました。"
+          flash[:success] = "カートの商品を追加しました。"
           redirect_to product_path(@cart.product.id)
         else
           flash[:danger] = "カートに商品を追加できませんでした。"
