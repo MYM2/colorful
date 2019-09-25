@@ -27,7 +27,7 @@
 						<td>
 							<!-- 最終購入日の表示 -->
 							<% if user.orders.last != nil %>
-							  <%= user.orders.last.created_at%>
+							  <%= user.orders.last.created_at.strftime('%Y年%m月%d日 %H時%M分') %>
 							<% else %>
 							  <p>未購入</p>
 							<% end %>

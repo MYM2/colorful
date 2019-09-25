@@ -31,8 +31,14 @@ class Admin::EndUsersController < ApplicationController
 
   def update
      @admin_end_user = EndUser.with_deleted.find(params[:id])
-     @admin_end_user.update(admin_end_user_params)
-     redirect_to admin_end_user_path(@admin_end_user.id)
+     if @admin_end_user.update(admin_end_user_params)
+      flash[:notice] = 'アーティストを新規追加しました。'
+      redirect_to admin_end_user_path(@admin_end_user.id)
+    else
+      flash[:danger] = 'アーティストの追加に失敗しました'
+      redirect_to new_admin_artist_path
+    end
+     
   end
 
   protected

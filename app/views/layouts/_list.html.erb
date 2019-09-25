@@ -10,10 +10,18 @@
         <ul class="nav nav-pills nav-stacked">
             <li class="side_title"><b>総合人気ランキング</b></li>
             <!-- ランキング機能をつける（１０位まで） -->
-            <% @ranking = Product.find(OrderContent.group(:product_id).order('sum(price_sum_ex_tax) desc').limit(10).pluck(:product_id)) %>
-            <!-- ランキングを繰り返し -->
-            <% @ranking.each.with_index(1) do |ranking, i| %>
-                <div class="side_text"><%= "#{i}" %>位 <%= link_to ranking.product_name, admin_product_path(ranking) %></div>
+            <% if admin_user_signed_in? %>
+                <% @ranking = Product.find(OrderContent.group(:product_id).order('sum(price_sum_ex_tax) desc').limit(10).pluck(:product_id)) %>
+                <!-- ランキングを繰り返し -->
+                <% @ranking.each.with_index(1) do |ranking, i| %>
+                    <div class="side_text"><%= "#{i}" %>位 <%= link_to ranking.product_name, admin_product_path(ranking) %></div>
+                <% end %>
+            <% else %>
+                <% @ranking = Product.find(OrderContent.group(:product_id).order('sum(price_sum_ex_tax) desc').limit(10).pluck(:product_id)) %>
+                <!-- ランキングを繰り返し -->
+                <% @ranking.each.with_index(1) do |ranking, i| %>
+                    <div class="side_text"><%= "#{i}" %>位 <%= link_to ranking.product_name, product_path(ranking) %></div>
+                <% end %>
             <% end %>
 
 
