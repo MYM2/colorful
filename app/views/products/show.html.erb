@@ -41,11 +41,13 @@
       <!== カートに入れる個数 ==>
 
       <br>
-      <%# <%= form_tag(@cart{ :controller => 'carts', :action => 'create' }, method: :post) do |f| %1> %>
-      <%= form_with model: @cart do |f| %>
-        <%= f.select :product_qty, options_for_select((1..@stock)) %>
-        <%= f.hidden_field :product_id, value: @product.id %>
-        <%= submit_tag 'カートに入れる', :name => nil, class: "btn btn-warning" %>
+      <%# 販売停止の商品は購入できない %>
+      <% if @product.stopped == false %>
+        <%= form_with model: @cart do |f| %>
+          <%= f.select :product_qty, options_for_select((1..@stock)) %>
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <%= submit_tag 'カートに入れる', :name => nil, class: "btn btn-warning" %>
+        <% end %>
       <% end %>
 
 
@@ -56,7 +58,7 @@
       <% end %>
       <% if @product.stopped == false %>
         <p class= "stopped-false" >※販売中</p>
-      <% elsif @product == true %>
+      <% elsif @product.stopped == true %>
         <p class= "stopped-true" >※販売停止中</p>
       <% end %>
     </div>
