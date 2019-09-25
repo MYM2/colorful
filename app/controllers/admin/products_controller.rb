@@ -26,6 +26,7 @@ class Admin::ProductsController < ApplicationController
       order_content = @product.order_contents
       @order_content = order_content.all.sum(:product_qty)
       @stock = @arrival - @disposal - @order_content
+      @reviews = @product.reviews.page(params[:page]).reverse_order.per(5)
   end
 
   def edit

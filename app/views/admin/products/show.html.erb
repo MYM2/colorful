@@ -84,4 +84,33 @@
         <% end %>
 
       </div>
+        <!-- レビュー表示 -->
+      <div class="review_content_box">
+          <div class="review_post_title">
+            <h2 class="">商品レビュー</h2>
+          </div>
+          <% @reviews.each do |review| %>
+          <div class="review_index_box">
+            <div class="review_created_at">
+              <%= review.created_at %>
+            </div>
+            <div class="review_user_name">
+              <div class="review_destroy">
+              <%= review.end_user.lastname_kanji %>
+              <%= review.end_user.firstname_kanji %>さん
+                <%= link_to '削除', review_path(review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'review_delete' %>
+
+              </div>
+            </div>
+
+            <div class="review_content clearfix">
+              <%= review.review_content %>
+            </div>
+          </div>
+        <% end %>
+          <div class="paginate">
+            <%= paginate @reviews, class: "paginate" %>
+          </div>
+      </div>
+
 </div>
