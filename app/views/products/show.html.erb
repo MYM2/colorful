@@ -85,12 +85,12 @@
                   </div>
                   <div class="review_post_content_box">
                     <%= form_for @review, url: reviews_path do |review| %>
-                    <%= review.hidden_field :end_user_id, :value => @end_user %>
-                    <%= review.hidden_field :product_id, :value => @product.id %>
-                    <%= review.text_area :review_content , class: "review_post_content" %>
+                      <%= review.hidden_field :end_user_id, :value => @end_user %>
+                      <%= review.hidden_field :product_id, :value => @product.id %>
+                      <%= review.text_area :review_content , class: "review_post_content" %>
+                      <%= review.submit '投稿する', class: "review_submit" %>
+                    <% end %>
                   </div>
-                    <%= review.submit '投稿する', class: "review_submit" %>
-              <% end %>
               <% else %>
               <% end %>
             </div>
