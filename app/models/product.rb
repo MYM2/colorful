@@ -21,6 +21,15 @@ class Product < ApplicationRecord
     favorites.where(end_user_id: end_user.id).exists?
   end	
 
+  def getqty(product)
+    arrivals = product.arrivals
+    @arrival = arrivals.all.sum(:received_qty)
+    disposal = product.disposals
+    @disposal = disposal.all.sum(:scrapped_qty)
+    order_content = product.order_contents
+    @order_content = order_content.all.sum(:product_qty)
+    @stock = @arrival - @disposal - @order_content
+  end
 
 
 end
