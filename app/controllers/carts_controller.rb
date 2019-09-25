@@ -24,14 +24,32 @@ class CartsController < ApplicationController
 
   def create
     @cart = Cart.new(cart_params)
-    @cart.end_user_id = current_end_user.id
-    @product = Product.find(@cart.product_id)
-      if @cart.save
-        flash[:success] = "カートに商品を追加しました。"
-        redirect_to product_path(@product)
-      else
-        redirect_to products_path
-      end
+    @end_user = current_end_user
+    @carts = @end_user.carts
+
+    # カート内にすでにある場合は数量を足す
+    if @carts.find_by_product_id(@cart.product.id)
+      @cart_in = @carts.find_by_product_id(@cart.product.id)
+
+      if @cart_in.update(product_qty: @cart_in.product_qty + @cart.product_qty )
+          flash[:success] = "数量を足しました。"
+          redirect_to product_path(@cart.product.id)
+        else
+          flash[:danger] = "カートに商品を追加できませんでした。"
+          redirect_to products_path
+        end
+    else #カート内にない商品の場合は追加する。
+      @cart = Cart.new(cart_params)
+      @cart.end_user_id = current_end_user.id
+        if @cart.save
+          flash[:success] = "カートに商品を追加しました。"
+          redirect_to product_path(@cart.product.id)
+        else
+          flash[:danger] = "カートに商品を追加できませんでした。"
+          redirect_to products_path
+        end
+    end
+
   end
 
   def update
