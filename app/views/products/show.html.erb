@@ -7,7 +7,21 @@
   <!== ジャケット画像 ==>
     <div class="product-content-image">
       <%= attachment_image_tag @product, :jacket_image, fallback: "no_image.png", class: "product-content-image-file" %>
-      <p>いいね機能実装予定</p>
+
+      <div id="favorite">
+        <% if @product.favorited_by?(current_end_user) %>
+          <%= link_to product_favorite_path(@product.id, current_end_user.id), method: :delete, remote: :true do %>
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <%= @product.favorites.count %> 件のいいね
+          <% end %>
+        <% else %>
+          <%= link_to product_favorites_path(@product.id), method: :post, remote: :true do %>
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <%= @product.favorites.count %> 件のいいね
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
 
   <!== アーティスト情報、分類 ==>
@@ -34,7 +48,7 @@
       <% end %>
 
 
-      <% if @stock == 0 %>
+      <% if @stock <= 0 %>
         <p class= "stopped-false" >※売り切れ</p>
       <% else @stock == true %>
         <p class= "stopped-true" >※在庫あり</p>
@@ -114,6 +128,6 @@
 
   <!== 管理情報 ==>
       <div class="manage-product">
-        <%= link_to "一覧", admin_products_path %>
+        <%= link_to "一覧", products_path %>
       </div>
 </div>

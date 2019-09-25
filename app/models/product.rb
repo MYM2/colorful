@@ -17,7 +17,9 @@ class Product < ApplicationRecord
 	accepts_nested_attributes_for :discs, allow_destroy: true
 	# cocoon使用時の記述
 
-	
+  def favorited_by?(end_user) #いいねしているかどうか
+    favorites.where(end_user_id: end_user.id).exists?
+  end	
 
 
 

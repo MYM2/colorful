@@ -66,6 +66,14 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:id])
+    if @product.stopped == false
+      @product.update(stopped: true)
+        redirect_to admin_product_path(@product)
+    else
+      @product.update(stopped: false)
+        redirect_to admin_product_path(@product)
+    end
   end
 
   private
