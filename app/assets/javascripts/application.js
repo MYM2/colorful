@@ -47,4 +47,3 @@ $(document).on('turbolinks:load', function() {
     $(this).stop().animate({borderRadius:'1000'},100);
    });
 });
-
