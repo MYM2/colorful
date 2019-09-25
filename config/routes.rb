@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'products#index'
   devise_for :admin_users
   devise_for :end_users
+
   namespace :admin do
     resources :rankings, only: [:index]
     resources :searches, only: [:index]
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
   resources :inquiries, only: [:new, :create]
+  patch '/deliveries/:id/delivery_update' => 'deliveries#delivery_up', as: 'd_u'
   resources :deliveries, only: [:show, :edit, :destroy, :new, :update, :create]
 
 

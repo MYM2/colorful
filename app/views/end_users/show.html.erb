@@ -75,6 +75,10 @@
 				</table>
 
 
+			<!-- 届け先住所のページネーション -->
+		 	<div class="paginate">
+			    <%= paginate @delivery, class: "paginate" %>
+
 				<div class="credit">
 				<h4>クレジットカード一覧</h4>
 				・VISA 下4桁 0000
@@ -83,10 +87,6 @@
 				<a href="" class="btn btn-primary" role="button">クレジットカードの追加はこちら</a>
 			</div><br>
 
-
-			<!-- 届け先住所のページネーション -->
-		 	<div class="paginate">
-			    <%= paginate @delivery, class: "paginate" %>
   			</div>
   			<!-- 届け先住所の追加画面へのリンク -->
 			<div class="add_delivery">
@@ -95,7 +95,11 @@
 			<!-- 購入履歴へのリンク -->
 			<div class="history">
 
+				<a href="/orders/(current_end_user_id)" class="btn btn-primary" role="button">購入履歴</a>
+
+
         <%= link_to "購入履歴", order_path(@end_user.id), class:"btn btn-primary" %>
+
 
 			</div><br>
 			<!-- 退会手続き画面へのリンク -->
