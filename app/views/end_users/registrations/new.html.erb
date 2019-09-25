@@ -7,7 +7,7 @@
 
 <h4>会員情報を入力して下さい</h4>
 
-　 <div class="st_field">
+   <div class="st_field">
     <%= f.text_field :lastname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　姓"  %>
     <%= f.text_field :firstname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　名" %>
   </div><br>
@@ -31,6 +31,7 @@
   <div class="t_field">
     <%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"55", placeholder: "パスワード(確認用)" %>
   </div><br>
+
 
     <h4>デフォルトの住所を入力してください</h4>
     <!-- fields_forでは新しく画面が開かれるたびにフォームを作るので、入力エラー時にフォームが増えてしまうのを防ぐための記述 -->
@@ -59,6 +60,7 @@
          </div>
          <%= d.hidden_field :default, :value => "true" %>
        <% end %><br>
+
 
   <div class="t_actions">
     <%= f.submit "新規登録" %>

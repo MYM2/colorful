@@ -2,19 +2,21 @@
 
 <!-- 住所変更画面の表示（注文確認→住所変更） -->
 
-<input type="radio" name="delivery" value="male">男性
-<input type="radio" name="delivery" value="female">女性</br>
 
+<% @deliveries.each do |d| %>
+  <td><%= d.lastname_kanji %></td></br>
+  <td><%= d.firstname_kanji %></td></br>
+  <td><%= d.zipcode %></td></br>
+  <td><%= d.address %></td></br>
 
-<% @delivery.each do |delivery| %>
-<input type="radio" name="delivery" value="address">
-<td><%= delivery.address %></td></br>
+  <%= form_for(d) do |f| %>
+   <p><%= f.submit '選択する', :class=>"btn btn-block btn-primary"%>
+   </p><br/>
+
+<% end %>
 <% end %>
 
 
-
-<input type="radio" value="male" name="user[gender]" id="user_gender_male">rr
-<input type="radio" value="female" name="user[gender]" id="user_gender_female">ee
 
 
 

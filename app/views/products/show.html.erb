@@ -1,16 +1,30 @@
 <div class="product-show">
   <%= render 'layouts/messages' %>
 
-<!== 作品情報 ==>
+  <!== 作品情報 ==>
   <div class="product-content clearfix">
 
-<!== ジャケット画像 ==>
+  <!== ジャケット画像 ==>
     <div class="product-content-image">
       <%= attachment_image_tag @product, :jacket_image, fallback: "no_image.png", class: "product-content-image-file" %>
-      <p>いいね機能実装予定</p>
+
+      <div id="favorite">
+        <% if @product.favorited_by?(current_end_user) %>
+          <%= link_to product_favorite_path(@product.id, current_end_user.id), method: :delete, remote: :true do %>
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <%= @product.favorites.count %> 件のいいね
+          <% end %>
+        <% else %>
+          <%= link_to product_favorites_path(@product.id), method: :post, remote: :true do %>
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <%= @product.favorites.count %> 件のいいね
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
 
-<!== アーティスト情報、分類 ==>
+  <!== アーティスト情報、分類 ==>
     <div class="product-content-text">
       <h1><span class="glyphicon glyphicon-music" aria-hidden="true"></span><%= @product.product_name %></h1>
       <br>
@@ -19,7 +33,7 @@
       <h3><%= @label.label_name %></h3>
     </div>
 
-<!== 販売情報 ==>
+  <!== 販売情報 ==>
     <div class="product-content-price">
       <p>税込 <%= (@product.price * Colorful::Application.config.InTax).floor.to_s(:delimited)%>円</p>
       <br>
@@ -34,7 +48,7 @@
       <% end %>
 
 
-      <% if @stock == 0 %>
+      <% if @stock <= 0 %>
         <p class= "stopped-false" >※売り切れ</p>
       <% else @stock == true %>
         <p class= "stopped-true" >※在庫あり</p>
@@ -47,7 +61,7 @@
     </div>
   </div>
 
-<!== 収録情報 ==>
+  <!== 収録情報 ==>
         <div class="show-discs">
           <h3>収録曲</h3>
           <% @discs.each do |disc| %>
@@ -61,9 +75,59 @@
                 <br>
           <% end %>
         </div>
+        <div class="review">
+              <!-- レビューを書く -->
+              <% if end_user_signed_in?%>
+                <div class="review_post">
+                  <div class="review_post_title">
+                    <h2 class="">レビューを書く</h2>
+                  </div>
+                  <div class="review_post_content_box">
+                    <%= form_for @review, url: reviews_path do |review| %>
+                    <%= review.hidden_field :end_user_id, :value => @end_user %>
+                    <%= review.hidden_field :product_id, :value => @product.id %>
+                    <%= review.text_area :review_content , class: "review_post_content" %>
+                  </div>
+                    <%= review.submit '投稿する', class: "review_submit" %>
+              <% end %>
+              <% else %>
+              <% end %>
+            </div>
+              <!-- レビュー表示 -->
+              <div class="review_content_box">
+                <div class="review_post_title">
+                  <h2 class="">商品レビュー</h2>
+                </div>
+                <% @reviews.each do |review| %>
+                <div class="review_index_box">
+                  <div class="review_created_at">
+                    <%= review.created_at %>
+                  </div>
+                  <div class="review_user_name">
+                    <div class="review_destroy">
+                    <%= review.end_user.lastname_kanji %>
+                    <%= review.end_user.firstname_kanji %>さん
+                      <% if review.end_user_id == @end_user %>
+                      <%= link_to '削除', review_path(review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'review_delete' %>
+                      <% else %>
+                      <% end %>
+                    </div>
+                  </div>
 
-<!== 管理情報 ==>
+                  <div class="review_content clearfix">
+                    <%= review.review_content %>
+                  </div>
+                </div>
+              <% end %>
+                <div class="paginate">
+                  <%= paginate @reviews, class: "paginate" %>
+                </div>
+            </div>
+
+        </div>
+
+  <!== 管理情報 ==>
       <div class="manage-product">
-        <%= link_to "一覧", admin_products_path %>
+        <%= link_to "一覧", products_path %>
       </div>
 </div>

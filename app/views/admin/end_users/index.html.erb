@@ -3,49 +3,53 @@
         <div class="col-xs-2"></div>
         <div class="col-xs-8">
             <h3>ユーザー情報一覧</h3><br>
-<table class="table ">
-	<thead>
-		<tr>
-			<th>ユーザー名</th>
-			<th>最終購入履歴</th>
-			<th>購入金額(合計)</th>
-			<th>購入詳細</th>
-			<th>削除日</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @pages.each do |user| %>
+			<table class="table ">
+				<thead>
+					<tr>
+						<th>ユーザー名</th>
+						<th>最終購入日時</th>
+						<th>購入金額(合計)</th>
+						<th>購入詳細</th>
+						<th>削除日</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @pages.each do |user| %>
+					<tr>
+						<td>
+							<%= link_to admin_end_user_path(user) do  %>
+							<%= user.lastname_kanji %>
 
-		<tr>
-			<td>
-				<%= link_to admin_end_user_path(user) do  %>
-				<%= user.lastname_kanji %>
+							<%= user.firstname_kanji %>
 
-				<%= user.firstname_kanji %>
+							<% end %>
+						</td>
+						<td>
+							<!-- 最終購入日の表示 -->
+							<% if user.orders.last != nil %>
+							  <%= user.orders.last.created_at%>
+							<% else %>
+							  <p>未購入</p>
+							<% end %>
 
-				<% end %>
-			</td>
-			<td>
-				<!-- データが入ってから確認します。下のどっちかでいける？？？ -->
-				<%#= user.orders.select(:updated_at) %>
-				<%#= user.orders.updated_at %>
-			</td>
-			<td>
-				<!-- エンドユーザーが持つオーダーズテーブルの小計の合計を持ってくる -->
-				<%= user.orders.sum(:subtotal_in_tax) %>
-			</td>
-			<td>
-				<%= link_to "購入詳細", admin_order_path(user) %>
-			</td>
-			<td>
-				<%= user.deleted_at %>
-			</td>
-		</tr>
-	</tbody>
-		<% end %>
-</table>
-<div class="paginate">
-	<%= paginate @pages, class: "paginate" %>
-</div>
-</div>
+						</td>
+						<td>
+							<!-- エンドユーザーが持つオーダーズテーブルの小計の合計を持ってくる -->
+							<%= user.orders.sum(:subtotal_in_tax) %>
+						</td>
+						<td>
+							<%= link_to "購入詳細", admin_order_path(user) %>
+						</td>
+						<td>
+							<%= user.deleted_at %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<div class="paginate">
+				<%= paginate @pages, class: "paginate" %>
+			</div>
+		</div>
+	</div>
 </div>

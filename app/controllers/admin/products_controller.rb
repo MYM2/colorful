@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  before_action :authenticate_admin_user!
 
 
 
@@ -25,6 +26,7 @@ class Admin::ProductsController < ApplicationController
       order_content = @product.order_contents
       @order_content = order_content.all.sum(:product_qty)
       @stock = @arrival - @disposal - @order_content
+      @reviews = @product.reviews.page(params[:page]).reverse_order.per(5)
   end
 
   def edit
@@ -64,6 +66,14 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:id])
+    if @product.stopped == false
+      @product.update(stopped: true)
+        redirect_to admin_product_path(@product)
+    else
+      @product.update(stopped: false)
+        redirect_to admin_product_path(@product)
+    end
   end
 
   private
