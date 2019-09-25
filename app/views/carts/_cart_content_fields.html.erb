@@ -18,7 +18,7 @@
           <br>
           <br>
             <%= form_with model: cart do |f| %>
-            <%= f.select :product_qty, options_for_select((1..15), cart.product_qty)%>
+            <%= f.select :product_qty, options_for_select((1..cart.product.getqty(cart.product)), cart.product_qty)%>
             <%= submit_tag "数量変更", :name => nil, class: "btn btn-warning" %>
           <% end %>
           <br>

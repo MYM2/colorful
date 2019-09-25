@@ -6,7 +6,7 @@
 
   <!== ジャケット画像 ==>
     <div class="product-content-image">
-      <%= attachment_image_tag @product, :jacket_image, fallback: "no_image.png", class: "product-content-image-file" %>
+      <%= attachment_image_tag @product, :jacket_image, class: "product-content-image-file" %>
 
       <div id="favorite">
         <% if end_user_signed_in? %>
