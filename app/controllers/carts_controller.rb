@@ -30,14 +30,20 @@ class CartsController < ApplicationController
     # カート内にすでにある場合は数量を足す
     if @carts.find_by_product_id(@cart.product.id)
       @cart_in = @carts.find_by_product_id(@cart.product.id)
+      @qty = @cart_in.product_qty + @cart.product_qty 
+      if @qty > 99
+              @qty = 99
+              flash[:success] = "カート内の商品の数量が上限を超えました。"
+      else
+              flash[:success] = "カートの商品の数量を変更しました。"
+      end
+            if @cart_in.update(product_qty: @qty )
+              redirect_to product_path(@cart.product.id)
+            else
+              flash[:danger] = "カートに商品を追加できませんでした。"
+              redirect_to products_path
+            end
 
-      if @cart_in.update(product_qty: @cart_in.product_qty + @cart.product_qty )
-          flash[:success] = "カートの商品を追加しました。"
-          redirect_to product_path(@cart.product.id)
-        else
-          flash[:danger] = "カートに商品を追加できませんでした。"
-          redirect_to products_path
-        end
     else #カート内にない商品の場合は追加する。
       @cart = Cart.new(cart_params)
       @cart.end_user_id = current_end_user.id
