@@ -1,17 +1,17 @@
 class ReviewsController < ApplicationController
 
-	def create
-		@review = Review.new(review_params)
-		if @review.save
+  def create
+  	@review = Review.new(review_params)
+  	if @review.save
         flash[:success] = "レビューを投稿しました。"
         redirect_to product_path(@review.product_id)
       else
         flash[:danger] = "投稿内容を入力してください。"
         redirect_to product_path(@review.product_id)
       end
-	end
+  end
 
-	def destroy
+  def destroy
     review = Review.find(params[:id])
     product = review.product_id
     review.destroy
@@ -20,8 +20,8 @@ class ReviewsController < ApplicationController
     else
       redirect_to product_path(product)
     end
-	end
-	private
+  end
+  private
     def review_params
       params.require(:review).permit(:end_user_id,:product_id,:review_content)
     end
