@@ -15,7 +15,7 @@ class Admin::EndUsersController < ApplicationController
   end
 
   def destroy
-    @admin_end_user = EndUser.find(params[:id])
+    @admin_end_user = EndUser.with_deleted.find(params[:id])
     if @admin_end_user.destroy
       flash[:success] = 'ユーザーの論理削除が完了しました。'
       redirect_to admin_end_users_path
