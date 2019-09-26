@@ -139,9 +139,12 @@
 
 
 
-.stopped-false {
-  color: orange;
+.stopped-true {
+  color: red;
 }
 .saled-true {
-  color: gray;
+  color: green;
+}
+.saled-false {
+  color: orange;
 }
