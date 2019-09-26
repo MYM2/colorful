@@ -8,9 +8,13 @@ class InquiriesController < ApplicationController
 
   def create
   	inquiry = Inquiry.new(inquiry_params)
-  	inquiry.save
-  	flash[:notice] = 'お問い合わせあいがとうございます。<br>内容を確認の上後日管理者からご連絡させていただきます。'
-  	redirect_to products_path
+  	if inquiry.save
+  	  flash[:notice] = 'お問い合わせありがとうございます。''内容を確認の上後日管理者からご連絡させていただきます。'
+  	  redirect_to products_path
+    else
+      flash[:danger] = '問い合わせに失敗しました。'
+      redirect_to new_inquiry_path
+    end
   end
 
 

@@ -30,7 +30,8 @@
 
 body {
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
+  background-color: #cefff7;
 }
 .container {
   width: 100%;
@@ -69,10 +70,17 @@ footer a {
 .registration {
  text-align: center;
  padding: 30px;
+ background-color: #c7c7c7;
+ width: 60%;
+ margin: 0 auto
 }
 .session {
  text-align: center;
  padding: 50px;
+ background-color: #c7c7c7;
+ width: 50%;
+ margin: 0 auto;
+ margin-top: 150px;
 }
 .st_field input[type="text"] {
  width: 225px;
@@ -132,19 +140,20 @@ header{
 }
 .search_btn{
   padding: 15px;
-  float: right;
+  float: left;
   margin: 24px 10px;
 }
 .search_form{
-  width: 50%;
-  float: right;
+  width: 40%;
+  float: left;
   line-height: 48px;
   margin-top: 24px;
+  margin-left: 10px;
 }
 
 
 // ここからサイドバー
-.col-xs-2{
+.sidebar{
   background-color: #a3ffd1;
   padding-top: 20px;
   height: 100%;

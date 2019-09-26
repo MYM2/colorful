@@ -8,13 +8,10 @@
 				<% end %>
 		</div>
 	<% end %>
-
-
 	<h2 class="artist_title">アーティスト情報編集</h2>
-
 	<h4>アーティスト情報を入力してください</h4>
-
 	<div class="form">
+
 		<%= form_for @artist, url: admin_artist_path do |a| %>
 			<div class="image">
 				<%= a.attachment_field :artist_image, :class => 'attachment' %>
@@ -31,12 +28,10 @@
 			<div class="">
 				<%= a.submit '更新', :class => "btn_artist_new" %>
 			</div>
-
 		<% end %>
+
 	</div>
-	<div class="delete_box">
-		<%= link_to 'アーティストを削除', admin_artist_path(@artist.id), method: :delete, 'data-confirm' => '本当に削除しますか？', :class => "delete" %>
-	</div>
+
 	<div class="btn_artist">
 		<%= link_to '戻る', admin_artist_path(@artist.id), :class => 'back' %>
 	</div>
