@@ -39,6 +39,12 @@ body {
   padding: 0px;
   box-sizing: border-box;
 }
+.row {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 .nav nav-pills nav-stacked {
  background: #fcfbfb;
  border: 1px solid #ddd;
@@ -67,6 +73,9 @@ footer a {
  float: right !important;
 }
 
+#error_explanation {
+  color: red;
+}
 .registration {
  text-align: center;
  padding: 30px;
@@ -85,6 +94,12 @@ footer a {
 .st_field input[type="text"] {
  width: 225px;
  height: 40px;
+}
+.st_field {
+  width: 455px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
 }
 .t_field input[type="text"] {
  width: 455px;

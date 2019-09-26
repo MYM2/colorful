@@ -1,25 +1,121 @@
-
-
 <!-- 住所変更画面の表示（注文確認→住所変更） -->
+<!-- form_forをeach do の中に入れ子させて、届け先の数だけformを作ることで、届け先を選択できるようにしている -->
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3"></div>
+		<div class="col-xs-6">
+			<p class="adjust">お届け先を選択してください</p><br>
+			<% @deliveries.each do |d| %>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<td>氏名</td>
+						<td><%= d.lastname_kanji %>
+							<%= d.firstname_kanji %>
+						</td>
+					</tr>
+					<tr>
+						<td>郵便番号</td>
+						<td><%= d.zipcode %></td>
+					</tr>
+					<tr>
+						<td>住所</td>
+						<td><%= d.address %></td>
+					</tr>
+					<tr>
+						<td>電話番号</td>
+						<td><%= d.phone_number %></td>
+					</tr>
+				</thead>
+				<tbody>
+				    <tr>
+				    	<td></td>
+						<td><%= form_for(d) do |f| %>
+						<%= f.submit '選択する', :class=>"btn btn-primary"%>
+						<% end %></td>
+					</tr>
+				</tbody>
+			</table>
+			<% end %>
+		</div>
+	</div>
 
+		<div class="row">
+		<div class="col-xs-3"></div>
+		<div class="col-xs-9">
+		<!--　お届け先住所の追加 -->
+		<div class="delivery_new">
+			<p class="adjust">お届け先情報の追加</p>
+			<p>※新しいお届け先を追加する場合はこちらへ入力しください</p>
+		    <%= form_for(@delivery) do |f| %>
+		    <table>
+		    <tbody>
+		        <tr>
+		            <td>
+		                <i>氏名</i>
+		            </td>
+		            <td>
+		                <div class="st_field">
+		                    <%= f.text_field :lastname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　姓" %>
+		                    <%= f.text_field :firstname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　名" %>
+		                </div><br/>
+		            </td>
+		        </tr>
+		    </tbody>
+		    <tbody>
+		        <td>
+		             <i>カナ氏名　</i>
+		        </td>
+		        <td>
+		            <div class="st_field">
+		                <%= f.text_field :lastname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　姓" %>
+		                <%= f.text_field :firstname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　名" %>
+		            </div><br />
+		        </td>
+		    </tbody>
+		    <tbody>
+		        <td>
+		             <i>郵便番号</i>
+		        </td>
+		        <td>
+		            <div class="st_field">
+		                <%= f.text_field :zipcode, autofocus: true, :size=>"25", placeholder: "郵便番号" %>
+		                ※ハイフン無しで入力してください
+		            </div><br />
+		        </td>
+		    </tbody>
+		    <tbody>
+		        <td>
+		            <i>住所</i>
+		        </td>
+		        <td>
+		            <div class="t_field">
+		                <%= f.text_field :address, autofocus: true, :size=>"55", placeholder: "住所" %>
+		            </div><br />
+		        </td>
+		    </tbody>
+		    <tbody>
+		        <td>
+		            <i>電話番号</i>
+		        </td>
+		        <td>
+		            <div class="st_field">
+		                <%= f.text_field :phone_number, autofocus: true, :size=>"25", placeholder: "電話番号" %>
+		                ※ハイフン無しで入力してください
+		            </div><br />
+		        </td>
+		    </tbody>
 
-<% @deliveries.each do |d| %>
-  <td><%= d.lastname_kanji %></td></br>
-  <td><%= d.firstname_kanji %></td></br>
-  <td><%= d.zipcode %></td></br>
-  <td><%= d.address %></td></br>
-
-  <%= form_for(d) do |f| %>
-   <p><%= f.submit '選択する', :class=>"btn btn-block btn-primary"%>
-   </p><br/>
-
-<% end %>
-<% end %>
-
-
-
-
-
-
-<!-- ラジオボタンにユーザーの持つお届け先住所を表示する。ラジオボタンで選んだ住所をカートテーブルに入れる -->
-
+		    <tbody>
+		        <td></td>
+		        <td>
+		            <p><%= f.submit '追加', :class=>"btn btn-block btn-primary" %>
+		            </p><br/>
+		        </td>
+		    </tbody>
+		    </table>
+		    <% end %>
+		</div>
+		</div>
+	</div>
+</div>
