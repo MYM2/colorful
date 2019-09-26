@@ -16,7 +16,8 @@
 
 .order-user-confirmation {
   margin: 50px auto;
-  border: 1px solid gray;
+  box-shadow: 0 3px 0 0 lightgray, 0 1px 1px 3px lightgray;
+
 }
 .user-deliver, .user-payment-method {
   width: 50%;
@@ -32,9 +33,11 @@
 }
 
 .order-content-confirmation {
+  padding-top: 10px;
   margin: auto;
-  border: 1px solid gray;
+  box-shadow: 0 3px 0 0 lightgray, 0 1px 1px 3px lightgray;
 }
+
 .order-content {
   width: 80%;
   margin: auto;
@@ -44,7 +47,7 @@
   width: 40%;
   margin-top: 100px;
   float: right;
-  border: 1px solid gray;
+  box-shadow: 0 3px 0 0 lightgray, 0 1px 1px 3px lightgray;
 }
 .table-Left-justification {
   text-align: right;
@@ -71,6 +74,7 @@
 
 .order-user-purchase-history h1, .order-user-purchase-history h2 {
   text-align: center;
+  box-shadow: 0 3px 0 0 lightgray, 0 1px 1px 3px lightgray;
   border: 1px solid gray;
   margin: 0;
   padding: 10px;

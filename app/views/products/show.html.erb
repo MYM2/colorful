@@ -5,20 +5,21 @@
 
   <!== ジャケット画像 ==>
     <div class="product-content-image">
-      <%= attachment_image_tag @product, :jacket_image, fallback: "no_image.png", class: "product-content-image-file" %>
+      <%= attachment_image_tag @product, :jacket_image, class: "product-content-image-file" %>
 
       <div id="favorite">
-        <% if @product.favorited_by?(current_end_user) %>
-          <%= link_to product_favorite_path(@product.id, current_end_user.id), method: :delete, remote: :true do %>
-            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            <%= @product.favorites.count %> 件のいいね
-          <% end %>
-        <% else %>
-          <%= link_to product_favorites_path(@product.id), method: :post, remote: :true do %>
-            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <%= @product.favorites.count %> 件のいいね
+        <% if end_user_signed_in? %>
+          <% if @product.favorited_by?(current_end_user) %>
+            <%= link_to product_favorite_path(@product.id, current_end_user.id), method: :delete, remote: :true do %>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <% end %>
+          <% else %>
+            <%= link_to product_favorites_path(@product.id), method: :post, remote: :true do %>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <% end %>
           <% end %>
         <% end %>
+        <%= @product.favorites.count %> 件のいいね
       </div>
 
     </div>
@@ -39,11 +40,13 @@
       <!== カートに入れる個数 ==>
 
       <br>
-      <%# <%= form_tag(@cart{ :controller => 'carts', :action => 'create' }, method: :post) do |f| %1> %>
-      <%= form_with model: @cart do |f| %>
-        <%= f.select :product_qty, options_for_select((1..@stock)) %>
-        <%= f.hidden_field :product_id, value: @product.id %>
-        <%= submit_tag 'カートに入れる', :name => nil, class: "btn btn-warning" %>
+      <%# 販売停止の商品は購入できない %>
+      <% if @product.stopped == false %>
+        <%= form_with model: @cart do |f| %>
+          <%= f.select :product_qty, options_for_select(1..99) %>
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <%= submit_tag 'カートに入れる', :name => nil, class: "btn btn-warning" %>
+        <% end %>
       <% end %>
 
 
@@ -54,7 +57,7 @@
       <% end %>
       <% if @product.stopped == false %>
         <p class= "stopped-false" >※販売中</p>
-      <% elsif @product == true %>
+      <% elsif @product.stopped == true %>
         <p class= "stopped-true" >※販売停止中</p>
       <% end %>
     </div>
@@ -83,12 +86,12 @@
                   </div>
                   <div class="review_post_content_box">
                     <%= form_for @review, url: reviews_path do |review| %>
-                    <%= review.hidden_field :end_user_id, :value => @end_user %>
-                    <%= review.hidden_field :product_id, :value => @product.id %>
-                    <%= review.text_area :review_content , class: "review_post_content" %>
+                      <%= review.hidden_field :end_user_id, :value => @end_user %>
+                      <%= review.hidden_field :product_id, :value => @product.id %>
+                      <%= review.text_area :review_content , class: "review_post_content" %>
+                      <%= review.submit '投稿する', class: "review_submit" %>
+                    <% end %>
                   </div>
-                    <%= review.submit '投稿する', class: "review_submit" %>
-              <% end %>
               <% else %>
               <% end %>
             </div>
@@ -125,8 +128,4 @@
 
         </div>
 
-  <!== 管理情報 ==>
-      <div class="manage-product">
-        <%= link_to "一覧", products_path %>
-      </div>
 </div>
