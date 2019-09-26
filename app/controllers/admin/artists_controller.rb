@@ -6,7 +6,7 @@ class Admin::ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    @products = Product.includes([:artist, :genre]).page(params[:page]).reverse_order.per(20)
+    @products = @artist.products.includes([:artist, :genre]).page(params[:page]).reverse_order.per(20)
   end
 
   def edit
@@ -19,23 +19,27 @@ class Admin::ArtistsController < ApplicationController
 
    def update
     artist = Artist.find(params[:id])
-    artist.update(artist_params)
-    flash[:notice] = 'アーティストの情報を更新しました。'
-    redirect_to admin_artist_path(artist.id)
+    if artist.update(artist_params)
+      flash[:notice] = 'アーティストの情報を更新しました。'
+      redirect_to admin_artist_path(artist.id)
+    else
+      flash[:danger] = 'アーティスト名を入力してください'
+      redirect_to edit_admin_artist_path
+    end
   end
 
   def create
     @artist_new = Artist.new(artist_params)
-    @artist_new.save
-    flash[:notice] = 'アーティストを新規追加しました。'
-    redirect_to admin_artist_path(@artist_new)
+    if @artist_new.save
+      flash[:notice] = 'アーティストを新規追加しました。'
+      redirect_to admin_artist_path(@artist_new)
+    else
+      flash[:danger] = 'アーティストの追加に失敗しました'
+      redirect_to new_admin_artist_path
+    end
   end
 
-  def destroy
-    artist = Artist.find(params[:id])
-    artist.destroy
-    redirect_to admin_artists_path
-  end
+
 
 
   private

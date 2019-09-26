@@ -3,10 +3,9 @@
 	<% @artist.each do |artist| %>
 	<div class="artist_box">
 		<div class="artist_name_index">
-			<h2 class=""><%= link_to artist.artist_name, admin_artist_path(artist), :class => 'artist_link' %></h2>
+			<h2 class=""><%= link_to artist.artist_name, artist_path(artist), :class => 'artist_link' %></h2>
 		</div>
 		<div class="artist_image_box">
-					
 					<%= link_to artist_path(artist)  do %>
 					<%= attachment_image_tag artist, :artist_image, format: "jpg",:class => 'artist_image_index' %>
 				<% end %>
