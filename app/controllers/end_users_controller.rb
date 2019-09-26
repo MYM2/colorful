@@ -12,8 +12,13 @@ class EndUsersController < ApplicationController
 
   def update
   	 @end_user = EndUser.find(params[:id])
-  	 @end_user.update(end_user_params)
-  	 redirect_to end_user_path(@end_user.id)
+  	 if @end_user.update(end_user_params)
+       flash[:success] = 'ユーザー情報を編集しました。'
+  	   redirect_to end_user_path(@end_user.id)
+     else
+       flash[:danger] = "ユーザー情報の編集に失敗しました。"
+       redirect_to edit_end_user_path
+    end
   end
 
     protected

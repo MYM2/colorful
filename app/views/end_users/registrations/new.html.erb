@@ -1,11 +1,11 @@
 <div class="registration">
 
-<h2>ようこそColorfulへ！</h2>
+<h1>ようこそColorfulへ！</h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-<h4>会員情報を入力して下さい</h4>
+<h3>会員情報を入力して下さい</h3>
 
    <div class="st_field">
     <%= f.text_field :lastname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　姓"  %>
@@ -33,7 +33,7 @@
   </div><br>
 
 
-    <h4>デフォルトの住所を入力してください</h4>
+    <h3>デフォルトの住所を入力してください</h3>
     <!-- fields_forでは新しく画面が開かれるたびにフォームを作るので、入力エラー時にフォームが増えてしまうのを防ぐための記述 -->
        <% if resource.deliveries.blank? %>
        <% resource.deliveries.new %>
@@ -44,17 +44,17 @@
          <div class="st_field">
            <%= d.text_field :lastname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　姓"  %>
            <%= d.text_field :firstname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　名" %>
-         </div>
+         </div><br>
          <div class="st_field">
            <%= d.text_field :lastname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　姓" %>
            <%= d.text_field :firstname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　名" %>
-         </div>
+         </div><br>
          <div class="st_field">
-           <%= d.text_field :phone_number, autofocus: true, :size=>"25", placeholder: "電話番号" %>※ハイフン無しで入力してください
-         </div>
+           <%= d.text_field :phone_number, autofocus: true, :size=>"25", placeholder: "電話番号" %> ※ハイフン無しで入力してください
+         </div><br>
          <div class="st_field">
-           <%= d.text_field :zipcode, autofocus: true, :size=>"25", placeholder: "郵便番号" %>※ハイフン無しで入力してください
-         </div>
+           <%= d.text_field :zipcode, autofocus: true, :size=>"25", placeholder: "郵便番号" %> ※ハイフン無しで入力してください
+         </div><br>
          <div class="t_field">
            <%= d.text_field :address, autofocus: true, :size=>"25", placeholder: "住所" %>
          </div>

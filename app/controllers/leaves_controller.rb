@@ -4,10 +4,10 @@ class LeavesController < ApplicationController
   	@end_user = EndUser.find(params[:id])
   end
 
-  def update
-  	@end_user = EndUser.find(params[:id])
-  	@end_user.update(leaved: true)
-  	# leavedカラムをtrueに更新する
-  	redirect_to products_path
+  def destroy
+    @end_user = EndUser.find(params[:id])
+    if @end_user.destroy
+      flash[:success] = '退会手続きが完了いたしました。またのご利用をお待ちしております。'
+      redirect_to products_path
   end
 end

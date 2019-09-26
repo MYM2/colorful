@@ -36,8 +36,8 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
   resources :inquiries, only: [:new, :create]
-  patch '/deliveries/:id/delivery_update' => 'deliveries#delivery_up', as: 'd_u'
   resources :deliveries, only: [:show, :edit, :destroy, :new, :update, :create]
+  patch '/deliveries/:id/delivery_update' => 'deliveries#delivery_up', as: 'd_u'
 
 
 
