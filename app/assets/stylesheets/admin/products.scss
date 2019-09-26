@@ -12,6 +12,7 @@
 .input-product {
   width: 80%;
   margin: auto;
+  background-color: #eeeeee;
 }
 
 .input-product h1 {
@@ -36,13 +37,16 @@
 
 //商品一覧画面
 .product-list {
-  width: 80%;
+  width: 100%;
   margin: auto;
+  background-color: #c7c7c7;
 }
 .product-list h1 {
   text-align: center;
   padding: 5px;
   border: 1px solid gray;
+  margin: 0;
+  background-color: #fff651;
 }
 
 .ranking-list-content {
@@ -55,6 +59,7 @@
   width: 25%;
   height:15em;
   padding: 1%;
+
 }
 
 .product-list-image {
@@ -75,6 +80,7 @@
 .product-show {
   width: 80%;
   margin: auto;
+  background-color: #eeeeee;
 }
 .product-content {
   margin-top: 5%;
