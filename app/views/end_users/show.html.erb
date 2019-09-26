@@ -80,10 +80,10 @@
 			    <%= paginate @delivery, class: "paginate" %>
 
 				<div class="credit">
-				<h4>クレジットカード一覧</h4>
-				・VISA 下4桁 0000
-				<a href="" class="btn btn-primary" role="button">編集</a>
-				<a href="" class="btn btn-danger" role="button">削除</a>　※何も設定してません
+				<h4>クレジットカード</h4>
+				<%# <a href="" class="btn btn-primary" role="button">編集</a> %>
+				<%= link_to "クレジットカード編集",cards_show_path, class:"btn btn-primary" %>
+				<%# <a href="" class="btn btn-danger" role="button">削除</a>　※何も設定してません %>
 				<%= link_to "クレジットカード追加",cards_new_path, class:"btn btn-primary" %>
 			</div><br>
 
