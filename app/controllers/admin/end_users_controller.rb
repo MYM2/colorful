@@ -31,7 +31,7 @@ class Admin::EndUsersController < ApplicationController
       flash[:success] = 'ユーザーの物理削除が完了しました。'
       redirect_to admin_end_users_path
     else
-      flash[:danger] = "ユーザーの論理削除に失敗しました。"
+      flash[:danger] = "ユーザーの物理削除に失敗しました。"
       redirect_to admin_end_users_path
     end
   end
