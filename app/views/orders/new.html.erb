@@ -97,10 +97,11 @@
     </table>
 
         <div class="order-confirm">
-          <h4> ※この内容で注文します</h4>
-          <br>
-
-            <% if @delivery != nil %>
+            <% if @delivery == nil %>
+                <p>お届け先住所の登録がありません。登録して下さい。<p>
+            <% else %>
+                <h4> ※この内容で注文します</h4>
+                <br>
                 <%= f.hidden_field :deliveries_address, :value => @delivery.address %>
                 <%= f.hidden_field :subtotal_ex_tax, :value => @total_price %>
                 <%= f.hidden_field :subtotal_in_tax, :value => @total_price_in_tax %>
@@ -119,6 +120,7 @@
 
                 <%= f.submit "注文を確定する", :name => :send, class: "btn btn-warning" %>
             <% end %>
+
           <% end %>
         </div>
 
