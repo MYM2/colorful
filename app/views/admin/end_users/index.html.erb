@@ -35,7 +35,7 @@
 						</td>
 						<td>
 							<!-- エンドユーザーが持つオーダーズテーブルの小計の合計を持ってくる -->
-							<%= user.orders.sum(:subtotal_in_tax) %>
+							<%= user.orders.sum(:subtotal_ex_tax) %>
 						</td>
 						<td>
 							<%= link_to "購入詳細", admin_order_path(user) %>
