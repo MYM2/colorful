@@ -23,7 +23,7 @@ class CardsController < ApplicationController
     end
   end
 
-  def pay #payjpとCardのデータベース作成を実施します。
+  def pay
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params[:payjpToken].blank?
       flash[:danger] = "カード情報の登録に失敗しました。"
@@ -52,7 +52,7 @@ class CardsController < ApplicationController
     customer = Payjp::Customer.retrieve(card.customer_id)
     customer.delete
     if card.destroy
-        flash[:success] = "カード情報を登録しました。"
+        flash[:success] = "カード情報を削除しました。"
         redirect_to end_user_path(current_end_user.id)
     else
         flash[:danger] = "カード情報を削除できませんでした。"
