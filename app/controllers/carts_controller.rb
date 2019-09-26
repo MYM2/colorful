@@ -30,7 +30,7 @@ class CartsController < ApplicationController
     # カート内にすでにある場合は数量を足す
     if @carts.find_by_product_id(@cart.product.id)
       @cart_in = @carts.find_by_product_id(@cart.product.id)
-      @qty = @cart_in.product_qty + @cart.product_qty 
+      @qty = @cart_in.product_qty + @cart.product_qty
       if @qty > 99
               @qty = 99
               flash[:success] = "カート内の商品の数量が上限を超えました。"
