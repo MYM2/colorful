@@ -15,24 +15,39 @@ class Admin::EndUsersController < ApplicationController
   end
 
   def destroy
-    @admin_end_user = EndUser.find(params[:id])
-    @admin_end_user.destroy
-    redirect_to admin_end_users_path
+    @admin_end_user = EndUser.with_deleted.find(params[:id])
+    if @admin_end_user.destroy
+      flash[:success] = 'ユーザーの論理削除が完了しました。'
+      redirect_to admin_end_users_path
+    else
+      flash[:danger] = "ユーザーの論理削除に失敗しました。"
+      redirect_to admin_end_users_path
+    end
   end
 
   def really_destroy
     @admin_end_user = EndUser.with_deleted.find(params[:id])
-    @admin_end_user.really_destroy!
-    redirect_to admin_end_users_path
+    if @admin_end_user.really_destroy!
+      flash[:success] = 'ユーザーの物理削除が完了しました。'
+      redirect_to admin_end_users_path
+    else
+      flash[:danger] = "ユーザーの物理削除に失敗しました。"
+      redirect_to admin_end_users_path
+    end
   end
 
   def restore
   end
 
   def update
-     @admin_end_user = EndUser.with_deleted.find(params[:id])
-     @admin_end_user.update(admin_end_user_params)
-     redirect_to admin_end_user_path(@admin_end_user.id)
+    @admin_end_user = EndUser.with_deleted.find(params[:id])
+    if @admin_end_user.update(admin_end_user_params)
+      flash[:success] = 'ユーザー情報を編集しました。'
+      redirect_to admin_end_user_path
+    else
+      flash[:danger] = "ユーザー情報の編集に失敗しました。"
+      redirect_to edit_admin_end_user_path
+    end
   end
 
   protected

@@ -1,10 +1,8 @@
 <div class="artist">
-	
 	<h2 class="artist_title">アーティスト情報新規登録</h2>
-
 	<h4>アーティスト情報を入力してください</h4>
-
 	<div class="form">
+
 		<%= form_for @artist_new, url: admin_artists_path do |a| %>
 			<btn class="">
 				<%= a.attachment_field :artist_image, :class => 'attachment' %>
@@ -16,8 +14,8 @@
 				<%= a.text_area :artist_introduction, :placeholder => "紹介文の入力", :class => 'artist_introduction' %>
 			</div>
 			<%= a.submit '新規登録', :class => "btn_artist_new" %>
-
 		<% end %>
+		
 	</div>
 	<div class="btn_artist">
 		<%= link_to '戻る', admin_admin_users_path, :class => 'back' %>

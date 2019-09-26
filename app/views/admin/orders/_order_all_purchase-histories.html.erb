@@ -13,8 +13,8 @@
             <tbody>
             <% order.order_contents.each do |c| %>
               <tr>
-                <td><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= link_to c.product.product_name, product_path(c.product) %></td>
-                <td><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to c.product.artist.artist_name, artist_path(c.product.artist) %></td>
+                <td><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= link_to c.product.product_name, admin_product_path(c.product) %></td>
+                <td><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to c.product.artist.artist_name, admin_artist_path(c.product.artist) %></td>
                 <td><%= c.product.genre.genre_name %></td>
                 <td><%= c.product_qty %>枚</td>
                 <td><%= c.price_sum_ex_tax.to_s(:delimited) %>円</td>

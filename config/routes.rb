@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cards/new'
+  get 'cards/show'
   root 'products#index'
   devise_for :admin_users
   devise_for :end_users
@@ -23,7 +25,13 @@ Rails.application.routes.draw do
   resources :end_users, only: [:show, :edit, :update]
   resources :leaves, only: [:show, :destroy]
   resources :rankings, only: [:index]
-  resources :cards, only: [:index]
+  resources :cards, only: [:new, :show] do
+    collection do
+      post 'pay', to: 'cards#pay'
+      post 'delete', to: 'cards#delete'
+    end
+  end
+
   resources :searches, only: [:index]
   resources :order_contents, only: [:create]
 
@@ -36,8 +44,8 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
   resources :inquiries, only: [:new, :create]
-  patch '/deliveries/:id/delivery_update' => 'deliveries#delivery_up', as: 'd_u'
   resources :deliveries, only: [:show, :edit, :destroy, :new, :update, :create]
+  patch '/deliveries/:id/delivery_update' => 'deliveries#delivery_up', as: 'd_u'
 
 
 

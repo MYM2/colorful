@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
-    @end_user = EndUser.find(params[:id])
+    @end_user = EndUser.with_deleted.find(params[:id])
     @orders = @end_user.orders.includes(:order_contents).page(params[:page]).reverse_order.per(5)
   end
 

@@ -1,78 +1,85 @@
 <!--　お届け先住所の追加 -->
-<div class="delivery_new">
-    <h3>お届け先住所の追加</h3><br/>
-        <%= form_for(@delivery) do |f| %>
-    <table>
-    <tbody>
-        <tr>
-            <td>
-                <i>氏名　姓／名</i>
-            </td>
-            <td>
-                <div class="st_field">
-                    <%= f.text_field :lastname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　姓" %>
-                    <%= f.text_field :firstname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　名" %>
-                </div><br/>
-            </td>
-        </tr>
-    </tbody>
-    <tbody>
-        <td>
-             <i>カナ氏名　姓／名</i>
-        </td>
-        <td>
-            <div class="st_field">
-                <%= f.text_field :lastname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　姓" %>
-                <%= f.text_field :firstname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　名" %>
-            </div><br />
-        </td>
-    </tbody>
-    <tbody>
-        <td>
-             <i>郵便番号</i>
-        </td>
-        <td>
-            <div class="st_field">
-                <%= f.text_field :zipcode, autofocus: true, :size=>"25", placeholder: "郵便番号" %>
-                ※ハイフン無しで入力してください
-            </div><br />
-        </td>
-    </tbody>
-    <tbody>
-        <td>
-            <i>住所</i>
-        </td>
-        <td>
-            <div class="t_field">
-                <%= f.text_field :address, autofocus: true, :size=>"55", placeholder: "住所" %>
-            </div><br />
-        </td>
-    </tbody>
-    <tbody>
-        <td>
-            <i>電話番号</i>
-        </td>
-        <td>
-            <div class="st_field">
-                <%= f.text_field :phone_number, autofocus: true, :size=>"25", placeholder: "電話番号" %>
-                ※ハイフン無しで入力してください
-            </div><br />
-        </td>
-    </tbody>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-9">
+        <!--　お届け先住所の追加 -->
+            <p class="adjust">お届け先情報の追加</p>
+            <p>※新しいお届け先を追加する場合はこちらへ入力しください</p>
+            <%= form_for(@delivery) do |f| %>
+            <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <i>氏名　姓／名　</i>
+                    </td>
+                    <td>
+                        <div class="st_field">
+                            <%= f.text_field :lastname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　姓" %>
+                            <%= f.text_field :firstname_kanji, autofocus: true, :size=>"25", placeholder: "漢字氏名　名" %>
+                        </div><br/>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <td>
+                     <i>カナ氏名　姓／名　</i>
+                </td>
+                <td>
+                    <div class="st_field">
+                        <%= f.text_field :lastname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　姓" %>
+                        <%= f.text_field :firstname_kana, autofocus: true, :size=>"25", placeholder: "カナ氏名　名" %>
+                    </div><br />
+                </td>
+            </tbody>
+            <tbody>
+                <td>
+                     <i>郵便番号</i>
+                </td>
+                <td>
+                    <div class="st_field">
+                        <%= f.text_field :zipcode, autofocus: true, :size=>"25", placeholder: "郵便番号" %>
+                        ※ハイフン無しで入力してください
+                    </div><br />
+                </td>
+            </tbody>
+            <tbody>
+                <td>
+                    <i>住所</i>
+                </td>
+                <td>
+                    <div class="t_field">
+                        <%= f.text_field :address, autofocus: true, :size=>"55", placeholder: "住所" %>
+                    </div><br />
+                </td>
+            </tbody>
+            <tbody>
+                <td>
+                    <i>電話番号</i>
+                </td>
+                <td>
+                    <div class="st_field">
+                        <%= f.text_field :phone_number, autofocus: true, :size=>"25", placeholder: "電話番号" %>
+                        ※ハイフン無しで入力してください
+                    </div><br />
+                </td>
+            </tbody>
 
-    <tbody>
-        <td></td>
-        <td>
-            <p><%= f.submit '追加', :class=>"btn btn-block btn-primary" %>
-            </p><br/>
-        </td>
-    </tbody>
-    <tbody>
-        <td>
-            <%= link_to "マイページへ戻る", end_user_path(current_end_user.id), class: 'btn btn-default' %>
-        </td>
-        <td></td>
-    </tbody>
-    </table>
-    <% end %>
+            <tbody>
+                <td></td>
+                <td>
+                    <p><%= f.submit '追加', :class=>"btn btn-block btn-primary" %>
+                    </p><br/>
+                </td>
+            </tbody>
+            <tbody>
+                <td>
+                    <%= link_to "マイページへ戻る", end_user_path(current_end_user.id), class: 'btn btn-default' %>
+                </td>
+                <td></td>
+            </tbody>
+            </table>
+            <% end %>
+        </div>
+    </div>
 </div>
