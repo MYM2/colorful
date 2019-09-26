@@ -14,7 +14,6 @@ document.addEventListener(
 
         Payjp.createToken(card, (status, response) => {
           if (status === 200) { //成功した場合
-            console.log("aaaa");
             $("#card_number").removeAttr("name");
             $("#cvc").removeAttr("name");
             $("#exp_month").removeAttr("name");
@@ -24,7 +23,7 @@ document.addEventListener(
             ); //取得したトークンを送信できる状態にします
             document.inputForm.submit();
 
-            // alert("登録が完了しました"); //確認用
+            alert("登録が完了しました"); //確認用
           } else {
             alert("カード情報が正しくありません。"); //確認用
           }
