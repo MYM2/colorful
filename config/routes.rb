@@ -25,9 +25,8 @@ Rails.application.routes.draw do
   resources :end_users, only: [:show, :edit, :update]
   resources :leaves, only: [:show, :destroy]
   resources :rankings, only: [:index]
-  resources :card, only: [:new, :show] do
+  resources :cards, only: [:new, :show] do
     collection do
-      post 'show', to: 'cards#show'
       post 'pay', to: 'cards#pay'
       post 'delete', to: 'cards#delete'
     end

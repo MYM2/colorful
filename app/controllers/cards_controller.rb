@@ -7,7 +7,7 @@ class CardsController < ApplicationController
     card = Card.where(end_user_id: current_end_user.id).first
     if card.blank?
       flash[:notice] = "カード情報がありません。"
-      redirect_to cards_new_path
+      redirect_to new_card_path
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
@@ -19,7 +19,7 @@ class CardsController < ApplicationController
     card = Card.where(end_user_id: current_end_user.id)
     if card.exists?
       flash[:notice] = "カード登録は１枚まで可能です。"
-      redirect_to cards_show_path(current_end_user.id)
+      redirect_to card_path(current_end_user.id)
     end
   end
 
@@ -27,7 +27,7 @@ class CardsController < ApplicationController
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params[:payjpToken].blank?
       flash[:danger] = "カード情報の登録に失敗しました。"
-      redirect_to cards_new_path
+      redirect_to new_card_path
     else
       customer = Payjp::Customer.create(
       description: '登録テスト', #なくてもOK
@@ -41,7 +41,7 @@ class CardsController < ApplicationController
         flash[:success] = "カード情報を登録しました。"
       else
         flash[:danger] = "カード情報の登録に失敗しました。"
-        redirect_to cards_new_path
+        redirect_to new_card_path
       end
     end
   end
@@ -56,7 +56,7 @@ class CardsController < ApplicationController
         redirect_to end_user_path(current_end_user.id)
     else
         flash[:danger] = "カード情報を削除できませんでした。"
-      redirect_to cards_show_path(current_end_user.id)
+      redirect_to card_path(current_end_user.id)
     end
   end
 
