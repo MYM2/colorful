@@ -18,19 +18,24 @@ class OrdersController < ApplicationController
     @carts.length.times {@order.order_contents.build}
 
     @delivery = @end_user.deliveries.find_by(default: :true)
+    # カード情報
+    card = Card.where(end_user_id: current_end_user.id).first
+    if card.blank?
+      #
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
 
     # カート内合計金額
     @carts_total = @end_user.carts.includes(:product)
-
-      @total_price = 0
-      @total_price_in_tax = 0
+    @total_price = 0
+    @total_price_in_tax = 0
       @carts_total.each do |cart|
         @total_price += cart.product.price * cart.product_qty
         @total_price_in_tax += (cart.product.price * Colorful::Application.config.InTax).floor * cart.product_qty
-       end
-
-
-
+      end
   end
 
   def create

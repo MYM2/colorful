@@ -11,12 +11,14 @@
 .confirmation {
   width: 80%;
   margin: auto;
-  background-color: #eeeeee;
+  padding-bottom: 50px;
+  // background-color: #eeeeee;
 }
 
 .order-user-confirmation {
   margin: 50px auto;
   box-shadow: 0 3px 0 0 lightgray, 0 1px 1px 3px lightgray;
+  background-color: white;
 
 }
 .user-deliver, .user-payment-method {
@@ -31,11 +33,15 @@
 .radio-button-area {
   font-size: 24px;
 }
+.card-infomation {
+  margin-left: 50px;
+}
 
 .order-content-confirmation {
   padding-top: 10px;
   margin: auto;
   box-shadow: 0 3px 0 0 lightgray, 0 1px 1px 3px lightgray;
+  background-color: white;
 }
 
 .order-content {
@@ -48,6 +54,7 @@
   margin-top: 100px;
   float: right;
   box-shadow: 0 3px 0 0 lightgray, 0 1px 1px 3px lightgray;
+  background-color: white;
 }
 .table-Left-justification {
   text-align: right;
