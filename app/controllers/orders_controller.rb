@@ -44,13 +44,20 @@ class OrdersController < ApplicationController
     @end_user = current_end_user
     @order.end_user_id = current_end_user.id
       if @order.save
-        flash[:success] = "注文が完了しました。"
-
+        flash[:success] = "注文を受け付けました。お買い上げありがとうございます。"
+        #カート内の削除
         @carts = @end_user.carts
           @carts.each do |cart|
             cart.destroy
           end
 
+        if @order.payment_method == 0
+          card = Card.where(end_user_id: current_end_user.id).first
+          Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+          customer = Payjp::Customer.retrieve(card.customer_id)
+          @default_card_information = customer.cards.retrieve(card.card_id)
+          Payjp::Charge.create(currency: 'jpy', amount: @order.subtotal_in_tax, customer: customer)
+        end
         redirect_to products_path
       else
         flash[:danger] = "注文に失敗しました。"
