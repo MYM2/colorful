@@ -53,6 +53,7 @@
               <h4>カード払いを選択するにはマイページからクレジットカード情報を登録して下さい。</h4>
             <% else %>
               <%= f.radio_button(:payment_method, 0) %> クレジットカード<br>
+                  <%= image_tag 'cards.png'%>
                   <div class="card-infomation">
                     <h4><%= @default_card_information.brand %></h4>
                     <h4>カード番号  <%= "**** **** **** " + @default_card_information.last4 %></h4>
