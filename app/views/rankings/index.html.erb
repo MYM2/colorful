@@ -22,7 +22,7 @@
                 <br>
                 <p class="ranking_genre"><%= product.genre.genre_name %></p>
                   <div class="ranking_price">
-                    ¥<%= product.price %>
+                  税込 <%= (product.price * Colorful::Application.config.InTax).floor.to_s(:delimited)%>円
                   </div>
 
               </div>

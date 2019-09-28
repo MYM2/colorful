@@ -9,7 +9,6 @@
         <% end %>
         <div class="product-list-text">
           <h4><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= link_to product.product_name, admin_product_path(product) %></h4>
-          <br>
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to product.artist.artist_name, admin_artist_path(product.artist) %>
           <br>
           <%= product.genre.genre_name %>
@@ -31,7 +30,8 @@
            <% if product.arrivals.present? %>
             入荷日時<br>
             <% @arrival_created = product.arrivals.last %>
-            <%= @arrival_created.created_at.strftime("%Y年%m月%d日%H時%M分") %>
+            <%= @arrival_created.created_at.strftime("%Y年%m月%d日") %><br>
+            <%= @arrival_created.created_at.strftime("%H時%M分") %>
            <% else %>
             入荷履歴なし
            <% end %>
