@@ -1,3 +1,20 @@
 // Place all the styles related to the cards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card-show, .card-new {
+  padding-top: 50px;
+  width: 40%;
+  margin: auto;
+}
+.card-show h1, .card-new h1 {
+  text-align: center;
+}
+
+.card-regist {
+  padding-left: 20px;
+}
+
+.card-list {
+  margin-left: 60px;
+}

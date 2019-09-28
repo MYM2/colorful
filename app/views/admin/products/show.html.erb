@@ -24,13 +24,11 @@
       <br>
       <p>在庫数　<%= @stock %></p>
       <% if @stock <= 0 %>
-        <p class= "stopped-false" >※売り切れ</p>
+        <p class= "saled-false" >※売り切れ</p>
       <% else @stock == true %>
-        <p class= "stopped-true" >※在庫あり</p>
+        <p class= "saled-true" >※在庫あり</p>
       <% end %>
-      <% if @product.stopped == false %>
-        <p class= "stopped-false" >※販売中</p>
-      <% elsif @product.stopped == true %>
+      <% if @product.stopped == true %>
         <p class= "stopped-true" >※販売停止中</p>
       <% end %>
     </div>
@@ -38,14 +36,13 @@
 
 <!== 収録情報 ==>
         <div class="show-discs">
-          <h3>収録曲</h3>
+          <h1>収録曲</h1>
           <% @discs.each do |disc| %>
-                <p>DISC:<%= disc.disc_number %></p>
-                <p>Songs</p>
+                <h3>DISC:<%= disc.disc_number %></h3>
+                <br>
                 <!== 収録曲の処理 ==>
                 <% disc.songs.each do |song|%>
-                  <%= song.track_number %>.<%= song.song_name %>
-                  <br>
+                  <h4><%= song.track_number %>.<%= song.song_name %></h4>
                 <% end %>
                 <br>
           <% end %>
@@ -73,8 +70,7 @@
 
 
       <div class="manage-product">
-        <%= link_to "商品編集画面へ", edit_admin_product_path(@product) %>
-        <%= link_to "一覧", admin_products_path %>
+        <%= link_to "商品編集画面へ", edit_admin_product_path(@product), class:"btn btn-primary" %>
 
         <% if @product.stopped == false %>
           <%= link_to "販売停止にする", admin_product_path(@product), method: :delete, class: "btn btn-danger" %>

@@ -5,22 +5,20 @@
 
   <!== ジャケット画像 ==>
     <div class="product-content-image">
-      <%= attachment_image_tag @product, :jacket_image, class: "product-content-image-file" %>
+      <%= attachment_image_tag @product, :jacket_image, fallback: "no_image.png", class: "product-content-image-file" %>
 
       <div id="favorite">
         <% if end_user_signed_in? %>
           <% if @product.favorited_by?(current_end_user) %>
             <%= link_to product_favorite_path(@product.id, current_end_user.id), method: :delete, remote: :true do %>
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"><%= @product.favorites.count %>件のいいね</span>
             <% end %>
           <% else %>
             <%= link_to product_favorites_path(@product.id), method: :post, remote: :true do %>
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"><%= @product.favorites.count %>件のいいね</span>
             <% end %>
           <% end %>
         <% end %>
-        <br>
-        <%= @product.favorites.count %> 件のいいね
       </div>
 
     </div>
@@ -42,7 +40,7 @@
 
       <br>
       <%# 販売停止の商品は購入できない %>
-      <% if @product.stopped == false %>
+      <% if @product.stopped == false and end_user_signed_in? and @stock > 0 %>
         <%= form_with model: @cart do |f| %>
           <%= f.select :product_qty, options_for_select(1..99) %>
           <%= f.hidden_field :product_id, value: @product.id %>
@@ -52,13 +50,11 @@
 
 
       <% if @stock <= 0 %>
-        <p class= "stopped-false" >※売り切れ</p>
+        <p class= "saled-false" >※売り切れ</p>
       <% else @stock == true %>
-        <p class= "stopped-true" >※在庫あり</p>
+        <p class= "saled-true" >※在庫あり</p>
       <% end %>
-      <% if @product.stopped == false %>
-        <p class= "stopped-false" >※販売中</p>
-      <% elsif @product.stopped == true %>
+      <% if @product.stopped == true %>
         <p class= "stopped-true" >※販売停止中</p>
       <% end %>
     </div>
@@ -66,14 +62,13 @@
 
   <!== 収録情報 ==>
         <div class="show-discs">
-          <h3>収録曲</h3>
+          <h1>収録曲</h1>
           <% @discs.each do |disc| %>
-                <p>DISC:<%= disc.disc_number %></p>
-                <p>Songs</p>
+                <h3>DISC:<%= disc.disc_number %></h3>
+                <br>
                 <!== 収録曲の処理 ==>
                 <% disc.songs.each do |song|%>
-                  <%= song.track_number %>.<%= song.song_name %>
-                  <br>
+                  <h4><%= song.track_number %>.<%= song.song_name %></h4>
                 <% end %>
                 <br>
           <% end %>
