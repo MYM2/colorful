@@ -18,6 +18,8 @@
               <span class="glyphicon glyphicon-heart" aria-hidden="true"><%= @product.favorites.count %>件のいいね</span>
             <% end %>
           <% end %>
+        <% else%>
+          <h2><%= @product.favorites.count %>件のいいね</h2>
         <% end %>
       </div>
 
