@@ -78,10 +78,11 @@ footer a {
 }
 .registration {
  text-align: center;
- padding: 30px;
+ padding: 20px;
  background-color: #c7c7c7;
- width: 60%;
- margin: 0 auto
+}
+.botton-position {
+  text-align: right;
 }
 .session {
  text-align: center;
@@ -90,6 +91,10 @@ footer a {
  width: 50%;
  margin: 0 auto;
  margin-top: 150px;
+}
+.alert {
+  color: red;
+  font-size: 24px;
 }
 .st_field input[type="text"] {
  width: 225px;
