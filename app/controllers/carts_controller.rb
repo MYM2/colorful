@@ -4,6 +4,7 @@ class CartsController < ApplicationController
   def show
     @end_user = current_end_user
     @carts = @end_user.carts.includes(:product).page(params[:page]).reverse_order.per(5)
+    @orderd = true;
 
     @carts_total = @end_user.carts.includes(:product)
       @total_price = 0
