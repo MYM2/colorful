@@ -1,6 +1,12 @@
+
 <div class="session">
 
 <h2>ようこそColorfulへ！</h2></br>
+
+<!-- エラーメッセージの表示 -->
+<% if alert %>
+  <p class="alert alert-error"><%= alert %></p>
+<% end %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="t_field">
