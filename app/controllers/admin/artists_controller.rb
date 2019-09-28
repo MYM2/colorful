@@ -1,7 +1,7 @@
 class Admin::ArtistsController < ApplicationController
   before_action :authenticate_admin_user!
   def index
-    @artist = Artist.all
+    @artist = Artist.page(params[:page]).reverse_order.per(15)
   end
 
   def show
