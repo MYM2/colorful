@@ -5,6 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# 管理者
+AdminUser.create(:email, '':encrypted_password '')
+# エンドユーザー
+EndUser.create(:email '', :encrypted_password '', :lastname_kanji '',:firstname_kanji '', :lastname_kana '',:firstname_kana '',:phone_number '',)
+
+
+# お届け先
+Delivery.create(:end_user_id '', :lastname_kanji '',:firstname_kanji '',:lastname_kana '', :firstname_kana '',:phone_number '',:zipcode '',:address '')
+# カード
+Card.create(:end_user_id '',:customer_id '',:card_id '')
 # ジャンル
 Genre.create(genre_name: 'J-POP')
 Genre.create(genre_name: 'ロック')
@@ -89,3 +99,32 @@ Artist.create(artist_name: '加藤　ミリヤ' ,artist_introduction: '紹介文
 Artist.create(artist_name: 'モーニング娘。' ,artist_introduction: '紹介文を変更してください')
 Artist.create(artist_name: '福山　雅治' ,artist_introduction: '紹介文を変更してください')
 Artist.create(artist_name: 'DA PUMP' ,artist_introduction: '紹介文を変更してください')
+
+# 作品
+Product.create(:genre_id '',:artist_id '',:label_id '',:product_name '',:price '',:stopped '')
+
+# ディスク
+Disc.create(:product_id '',:disc_number '')
+# 収録曲
+Song.create(:disc_id '',:track_number '',:song_name '')
+# 入荷
+Arrival.ceate(:product_id '',:received_qty '')
+# 廃棄
+Disposal.create(:product_id '',:scrapped_qty '')
+# レビュー
+Review.create(:end_user_id '',:product_id '', :review_content '')
+
+# いいね
+Favorite.create(:product_id '',:end_user_id '')
+# 注文履歴
+Order.create(:end_user_id '',:deliveries_address '',:payment_method '',:subtotal_ex_tax '',:subtotal_in_tax '',:freight '',:arrival_status '')
+# 注文内容
+OrderContent.create(:order_id '',:product_id '',:product_qty '',:price_sum_ex_tax '',:price_sum_in_tax '')
+# 問い合わせ
+Inquiry.create(:inquirer_name '',:mail '',:inquiry_content)
+# 問い合わせ返信
+Reply.create(:inquiry_id '',:reply_content '')
+
+
+
+
