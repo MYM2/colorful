@@ -6,7 +6,7 @@
 			<div class="inquiry_index_box2">
 				<!-- 問い合わせ者名 -->
 				<div class="inquirer_index_name">
-					<% if inquiry.replies == true %>
+					<% if inquiry.replies.present? == true %>
 						<h3><%= inquiry.inquirer_name %>  返信済み</h3>
 					<% else %>
 						<h3><%= inquiry.inquirer_name %>  未返信</h3>
