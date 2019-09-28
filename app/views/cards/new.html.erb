@@ -1,66 +1,66 @@
+<div class="card-new">
+  <h1>クレジットカード情報新規登録</h1>
+  <hr>
+  <div class="card-regist">
 
-<%= form_tag(pay_cards_path, id: "charge-form",  name: "inputForm") do %>
-    <%= label_tag :カード番号 %>
-    <%= text_field_tag :number, "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number" %>
+    <%= form_tag(pay_cards_path, id: "charge-form",  name: "inputForm") do %>
+        <%# <%= label_tag :カード番号 %>
+        <h2>カード番号</h2>
+        <%= text_field_tag :number, "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number" %>
+        <%= image_tag 'cards.png'%>
+        <br>
+        <br>
+        <%# <%= label_tag :有効期限 %>
+        <h2>有効期限</h2>
+        <%= select_tag(:exp_month, options_for_select(1..12), id: 'exp_month', type: 'text', :prompt => "--")%>
+        <span>月／</span>
+
+        <%= select_tag(:exp_year, options_for_select(2019..2030), id: 'exp_year', type: 'text', :prompt => "--")%>
+        <span>年</span>
+        <br>
+        <br>
+        <%# <%= label_tag :セキュリティコード %>
+        <h2>セキュリティコード</h2>
+        <%= text_field_tag :cvc, "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc" %>
+        <br>
+        <br>
+        <%= submit_tag "追加する", id: "token_submit", class: "btn btn-default"%>
+    <% end %>
+  </div>
     <br>
-    <%= label_tag :有効期限 %>
-    <%= select_tag(:exp_month, options_for_select(1..12), id: 'exp_month', type: 'text', :prompt => "--")%>
-    <span>月/</span>
-
-    <%= select_tag(:exp_year, options_for_select(2019..2030), id: 'exp_year', type: 'text', :prompt => "--")%>
-    <span>年</span>
-
     <br>
-    <%= label_tag :セキュリティコード %>
-    <%= text_field_tag :cvc, "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc" %>
+    <%= link_to "マイページへ", end_user_path(current_end_user.id), class:"btn btn-primary" %>
+</div>
 
-    <br>
-    <%= submit_tag "追加する", id: "token_submit" %>
-  <% end %>
+<script>
+$(function(){
+  Payjp.setPublicKey("pk_test_e73bdbe706d5208d8c6d24f0"); //ここに公開鍵を直書き
+  let btn = document.getElementById("token_submit"); //IDがtoken_submitの場合に取得されます
+  btn.addEventListener("click", e => { //ボタンが押されたときに作動します
+    e.preventDefault(); //ボタンを一旦無効化します
+    let card = {
+      number: document.getElementById("card_number").value,
+      cvc: document.getElementById("cvc").value,
+      exp_month: document.getElementById("exp_month").value,
+      exp_year: document.getElementById("exp_year").value
+    }; //入力されたデータを取得します。
 
-<%= link_to "マイページへ", end_user_path(current_end_user.id), class:"btn btn-primary" %>
+    Payjp.createToken(card, (status, response) => {
+      if (status === 200) { //成功した場合
+        $("#card_number").removeAttr("name");
+        $("#cvc").removeAttr("name");
+        $("#exp_month").removeAttr("name");
+        $("#exp_year").removeAttr("name"); //データを自サーバにpostしないように削除
+        $("#charge-form").append(
+          $('<input type="hidden" name="payjpToken" />').val(response.id)
+        ); //取得したトークンを送信できる状態にします
+        document.inputForm.submit();
 
-<%# <%= form_tag(pay_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do %1> %>
-<%#   <label> カード番号</label> %>
-<%#   <%= text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number" %1> %>
-
-<%#         <label>有効期限</label> %>
-<%#         <select id="exp_month" name="exp_month" type="text" > %>
-<%#           <option value="">--</option> %>
-<%#           <option value="1">01</option> %>
-<%#           <option value="2">02</option> %>
-<%#           <option value="3">03</option> %>
-<%#           <option value="4">04</option> %>
-<%#           <option value="5">05</option> %>
-<%#           <option value="6">06</option> %>
-<%#           <option value="7">07</option> %>
-<%#           <option value="8">08</option> %>
-<%#           <option value="9">09</option> %>
-<%#           <option value="10">10</option> %>
-<%#           <option value="11">11</option> %>
-<%#           <option value="12">12</option> %>
-<%#         </select> %>
-
-<%#         <span>月/</span> %>
-<%#         <select id="exp_year" name="exp_year" type="text" > %>
-<%#           <option value="">--</option> %>
-<%#           <option value="2019">19</option> %>
-<%#           <option value="2020">20</option> %>
-<%#           <option value="2021">21</option> %>
-<%#           <option value="2022">22</option> %>
-<%#           <option value="2023">23</option> %>
-<%#           <option value="2024">24</option> %>
-<%#           <option value="2025">25</option> %>
-<%#           <option value="2026">26</option> %>
-<%#           <option value="2027">27</option> %>
-<%#           <option value="2028">28</option> %>
-<%#           <option value="2029">29</option> %>
-<%#         </select> %>
-<%#         <span>年</span> %>
-
-<%#       <br> %>
-<%#         <label>セキュリティコード</label> %>
-<%#     <%= text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc" %1> %>
-
-<%#   <%= submit_tag "追加する", id: "token_submit" %1> %>
-<%#   <% end %1> %>
+        alert("登録が完了しました"); //確認用
+      } else {
+        alert("カード情報が正しくありません。"); //確認用
+      }
+    });
+  });
+})
+</script>
