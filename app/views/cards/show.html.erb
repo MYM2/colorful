@@ -1,16 +1,30 @@
-<label>登録クレジットカード情報</label>
-<br>
-<%= @default_card_information.brand %>
-<br>
-<p>カード番号  <%= "**** **** **** " + @default_card_information.last4 %></p>
-<br>
-<% exp_month = @default_card_information.exp_month.to_s %>
-<% exp_year = @default_card_information.exp_year.to_s.slice(2,3) %>
-<p>期限　<%= exp_month + "月／" + exp_year + "年" %></p>
+<div class="card-show">
+  <h1>登録クレジットカード情報</h1>
+  <br>
+  <%= image_tag 'cards.png', class:"card-list"%>
+  <table class="table table-bordered">
+    <tbody>
+        <tr>
+          <td>ブランド</td><td><%= @default_card_information.brand %></td>
+        </tr>
+        <tr>
+          <td>カード番号</td><td><%= "**** **** **** " + @default_card_information.last4 %></td>
+        </tr>
+            <% exp_month = @default_card_information.exp_month.to_s %>
+            <% exp_year = @default_card_information.exp_year.to_s.slice(2,3) %>
+        <tr>
+          <td>カード期限</td><td><%= "20" + exp_year + "年／" + exp_month + "月" %></td>
+        </tr>
+    </tbody>
+  </table>
 
-<%= form_tag(delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do %>
-  <input type="hidden" name="card_id" value="">
-  <button>削除する</button>
-<% end %>
 
-<%= link_to "マイページへ", end_user_path(current_end_user.id), class:"btn btn-primary" %>
+  <%= form_tag(delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do %>
+    <input type="hidden" name="card_id" value="">
+    <button class="btn btn-default">削除する</button>
+  <% end %>
+
+  <br>
+  <%= link_to "マイページへ", end_user_path(current_end_user.id), class:"btn btn-primary" %>
+
+</div>
