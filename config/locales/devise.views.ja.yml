@@ -18,15 +18,25 @@ ja:
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
     attributes:
-      user:
+      end_user:
+        email: "メールアドレス"
+        password: "パスワード"
+        lastname_kanji: "漢字氏名　姓"
+        firstname_kanji: "漢字氏名　名"
+        lastname_kana: "カナ氏名　姓"
+        firstname_kana: "カナ氏名　名"
+        phone_number: "電話番号"
+        encrypted_password: "パスワード"
+
         current_password: "現在のパスワード"
         name: 名前
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+
     models:
-      user: "ユーザ"
+      end_user: "会員情報"
   devise:
     confirmations:
       new:
