@@ -41,7 +41,9 @@
 							<%= link_to "購入詳細", admin_order_path(user) %>
 						</td>
 						<td>
-							<%= user.deleted_at %>
+							<% if user.deleted_at != nil %>
+								<%= user.deleted_at.strftime('%Y年%m月%d日 %H時%M分') %>
+							<% end %>
 						</td>
 					</tr>
 					<% end %>

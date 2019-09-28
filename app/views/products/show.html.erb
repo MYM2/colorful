@@ -66,14 +66,13 @@
 
   <!== 収録情報 ==>
         <div class="show-discs">
-          <h3>収録曲</h3>
+          <h1>収録曲</h1>
           <% @discs.each do |disc| %>
-                <p>DISC:<%= disc.disc_number %></p>
-                <p>Songs</p>
+                <h3>DISC:<%= disc.disc_number %></h3>
+                <br>
                 <!== 収録曲の処理 ==>
                 <% disc.songs.each do |song|%>
-                  <%= song.track_number %>.<%= song.song_name %>
-                  <br>
+                  <h4><%= song.track_number %>.<%= song.song_name %></h4>
                 <% end %>
                 <br>
           <% end %>

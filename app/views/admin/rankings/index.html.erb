@@ -17,7 +17,6 @@
               <div class="ranking_text_left">
                 <div class="rank"><span class="glyphicon glyphicon-king" aria-hidden="true" aria-hidden="true" href="/admin/rankings"></span><%= "#{i}" %> 位</div>
                 <h4 class="ranking_name"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> <%= link_to product.product_name, admin_product_path(product) %></h4>
-                <br>
                 <span class="glyphicon glyphicon-user ranking_artist" aria-hidden="true"></span><%= link_to product.artist.artist_name, admin_artist_path(product.artist), class: "ranking_artist" %>
                 <br>
                 <p class="ranking_genre"><%= product.genre.genre_name %></p>
@@ -45,7 +44,8 @@
                     <% if product.arrivals.present? %>
                       入荷日時<br>
                       <% @arrival_created = product.arrivals.last %>
-                      <%= @arrival_created.created_at %>
+                      <%= @arrival_created.created_at.strftime("%Y年%m月%d日") %><br>
+                      <%= @arrival_created.created_at.strftime("%H時%M分") %>
                     <% else %>
                       入荷履歴なし
                     <% end %>

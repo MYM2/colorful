@@ -58,13 +58,22 @@
   border: 1px solid gray;
   width: 25%;
   height:15em;
-  padding: 1%;
-
+}
+.product-list-content {
+  float: left;
+  overflow: hidden;  //はみ出た文は非表示
+  text-overflow: ellipsis;  //はみ出た文は...で表示
+  white-space: nowrap;   //改行禁止
+  vertical-align: top;
+  border: 1px solid gray;
+  height:13em;
+  width: 25%;
 }
 
 .product-list-image {
   border-radius: 50%;
   width: 50%;
+  height: 100%;
   float:left;
 }
 .product-list-text {
@@ -99,12 +108,22 @@
   padding: 0 5%;
   float: left;
 }
+.product-content-text h3{
+  text-align: left;
+}
 
 .product-content-price {
   width: 40%;
   padding: 2%;
   font-size: 30px;
   float:left;
+}
+
+.show-discs h1 {
+  text-align: center;
+}
+.show-discs h3 {
+  text-align: left;
 }
 // 入荷・廃棄
 .stock{
